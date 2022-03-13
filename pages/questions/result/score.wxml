@@ -1,0 +1,7 @@
+<!--pages/questions/result/score.wxml-->
+<text>pages/questions/result/score.wxml</text>
+
+<view>
+  <text id="score-num">100</text>分
+</view>
+<button>分享给好友</button>

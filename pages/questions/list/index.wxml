@@ -1,0 +1,8 @@
+<!--pages/questions/list/index.wxml-->
+<text>pages/questions/list/index.wxml</text>
+
+<view wx:for="{{questions.items}}">
+  <text>{{item.title}}</text>
+</view>
+
+<button bindtap="goToScore">点击跳转分数</button>

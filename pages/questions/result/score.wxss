@@ -1,0 +1,5 @@
+/* pages/questions/result/score.wxss */
+
+#score-num {
+  font-size: 48px;
+}

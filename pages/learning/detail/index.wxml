@@ -1,0 +1,12 @@
+<!--pages/learning/detail/index.wxml-->
+<text>pages/learning/detail/index.wxml</text>
+
+<view id="video">
+  <video src="http://vjs.zencdn.net/v/oceans.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true"></video>
+</view>
+
+<view id="button-list">
+  <button>播放</button>
+  <button catchtouchstart="streamRecord" catchtouchend="endStreamRecord">尝试</button>
+  <button>重来</button>
+</view>
