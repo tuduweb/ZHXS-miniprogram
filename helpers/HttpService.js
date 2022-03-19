@@ -16,15 +16,18 @@ class HttpService extends WxRequest {
 			search      : '/goods/search/all', 
 			cart        : '/cart', 
 			address     : '/address', 
-			order       : '/order', 
-        }
+			order       : '/order',
+			questions   : '/questions',
+			matchStart  : '/match/start',
+			matchSubmit : '/match/submit'
+			}
         this.interceptors.use({
             request(request) {
             	request.header = request.header || {}
             	request.header['content-type'] = 'application/json'
                 if (request.url.indexOf('/api') !== -1 && wx.getStorageSync('token')) {
-                    request.header.Authorization = 'Bearer ' + wx.getStorageSync('token')
-                }
+										request.header.Authorization = 'Bearer ' + wx.getStorageSync('token')
+								}
                 wx.showLoading({
                     title: '加载中', 
                 })
@@ -77,6 +80,14 @@ class HttpService extends WxRequest {
 
 	signOut() {
 		return this.postRequest(this.$$path.signOut) 
+	}
+
+	matchStart() {
+		return this.getRequest(this.$$path.matchStart)
+	}
+
+	matchSubmit(data) {
+		return this.postRequest(this.$$path.matchSubmit)
 	}
 
 	getBanners(params) {

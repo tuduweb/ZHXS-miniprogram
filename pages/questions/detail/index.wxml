@@ -1,0 +1,16 @@
+<view>第<text>{{currentIndex}}</text>题</view>
+
+<view>题目：<text>{{questions[currentIndex%3].title}}</text></view>
+<view id="content">{{questions[currentIndex%3].content}}</view>
+
+<view id="options">
+  <block wx:for="{{questions[currentIndex%3].options}}">
+  <view data-option="{{index}}">选项{{index}} - {{item}}</view>
+</block>
+</view>
+
+<view id="detail-bottom">
+  <button bindtap="btn_last">上一题</button>
+  <button bindtap="goToScore">{{currentIndex}} / 50</button>
+  <button bindtap="btn_next">下一题</button>
+</view>

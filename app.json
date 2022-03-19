@@ -1,12 +1,19 @@
 {
   "pages": [
+
+    "pages/questions/start/index",
+
+
     "pages/start/index",
     "pages/index/index",
     "pages/classify/index",
     "pages/cart/index",
 
+
+
     "pages/questions/list/index",
     "pages/questions/result/score",
+    "pages/questions/detail/index",
 
     "pages/learning/list/index",
     "pages/learning/detail/index",
@@ -59,7 +66,7 @@
         "text": "语音学习"
       },
       {
-        "pagePath": "pages/questions/list/index",
+        "pagePath": "pages/questions/start/index",
         "iconPath": "assets/images/iconfont-user.png",
         "selectedIconPath": "assets/images/iconfont-user-active.png",
         "text": "问题"

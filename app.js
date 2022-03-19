@@ -7,6 +7,7 @@ import __config from './etc/config'
 App({
 	onLaunch() {
 		console.log('onLaunch')
+		console.log(wx.getStorageSync('token'))
 	},
 	onShow() {
 		console.log('onShow')

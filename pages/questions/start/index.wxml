@@ -1,0 +1,14 @@
+<!--pages/questions/list/index.wxml-->
+<text>pages/questions/list/index.wxml</text>
+
+<view wx:for="{{questions.items}}">
+  <text>{{item.title}}</text>
+</view>
+
+<view wx:for="{{match.data.questions}}">
+  <text bindtap="itemClick">{{item}}</text>
+</view>
+
+<view>第<text>10</text>题</view>
+
+<button bindtap="goToScore">点击跳转分数</button>
