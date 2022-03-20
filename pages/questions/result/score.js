@@ -1,4 +1,6 @@
 // pages/questions/result/score.js
+const App = getApp()
+
 Page({
 
   /**
@@ -12,7 +14,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.matchId)
+    //根据 matchId ..
+    if(options.matchId != "undefined") {
 
+      this.goods = App.HttpResource('/match/score/:id', {id: '@id'})
+
+      this.setData({
+        id: options.matchId
+      })
+
+    }
   },
 
   /**
@@ -26,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getScore(this.data.id)
   },
 
   /**
@@ -62,5 +74,18 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  getScore: function(id) {
+    this.goods.getAsync({id: id})
+    .then(res => {
+      const data = res.data
+      if(data.meta.code == 0) {
+        this.setData({
+          scoreData: data.data
+        })
+      }
+
+    })
+  } 
 })

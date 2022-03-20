@@ -2,6 +2,6 @@
 <text>pages/questions/result/score.wxml</text>
 
 <view>
-  <text id="score-num">100</text>分
+  <text id="score-num">{{scoreData.grade}}</text>分
 </view>
 <button>分享给好友123</button>

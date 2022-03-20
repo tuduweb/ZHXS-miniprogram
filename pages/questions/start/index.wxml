@@ -2,7 +2,7 @@
 <text>pages/questions/list/index.wxml</text>
 
 <view wx:for="{{questions.items}}">
-  <text>{{item.title}}</text>
+  <text bindtap="itemClick">{{item.title}}</text>
 </view>
 
 <view wx:for="{{match.data.questions}}">

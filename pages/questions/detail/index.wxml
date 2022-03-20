@@ -4,13 +4,20 @@
 <view id="content">{{questions[currentIndex%3].content}}</view>
 
 <view id="options">
-  <block wx:for="{{questions[currentIndex%3].options}}">
-  <view data-option="{{index}}">选项{{index}} - {{item}}</view>
+  <block wx:for="{{questions[currentIndex].options}}">
+  <view data-option="{{index}}" bindtap="btn_choose" class="{{ choices[currentIndex] == index ? 'checked' : '' }}">选项{{index}} - {{item}}</view>
 </block>
+</view>
+
+<view id="detail-choices">
+  <view wx:for="{{choices}}" bindtap="btn_goto" data-index="{{index}}" class="{{ choices[index] >= 0 ? 'checked' : '' }}">
+    {{index}}
+  </view>
 </view>
 
 <view id="detail-bottom">
   <button bindtap="btn_last">上一题</button>
-  <button bindtap="goToScore">{{currentIndex}} / 50</button>
-  <button bindtap="btn_next">下一题</button>
+  <button bindtap="goToScore">{{currentIndex + 1}} / {{maxIndex}}</button>
+  <button bindtap="btn_next" wx:if="{{currentIndex < maxIndex - 1}}">下一题</button>
+  <button bindtap="btn_submit" wx:else>提交</button>
 </view>

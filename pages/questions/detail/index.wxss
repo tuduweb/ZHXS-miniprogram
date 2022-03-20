@@ -18,6 +18,28 @@
   width: 100%;
 }
 
+#options>.checked{
+  background-color: #cccccc;
+}
+
+#detail-choices{
+  display: flex;
+}
+
+#detail-choices >view{
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background-color: #cccccc;
+  margin: 5px;
+  /* display: flex; */
+}
+
+#detail-choices >view[class='checked'] {
+  background-color:aqua;
+}
+
 #detail-bottom{
   position: fixed;
   bottom: 0rpx;

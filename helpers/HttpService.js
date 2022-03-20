@@ -19,7 +19,8 @@ class HttpService extends WxRequest {
 			order       : '/order',
 			questions   : '/questions',
 			matchStart  : '/match/start',
-			matchSubmit : '/match/submit'
+			matchSubmit : '/match/submit',
+			matchScore : '/match/score'
 			}
         this.interceptors.use({
             request(request) {
@@ -86,8 +87,16 @@ class HttpService extends WxRequest {
 		return this.getRequest(this.$$path.matchStart)
 	}
 
-	matchSubmit(data) {
-		return this.postRequest(this.$$path.matchSubmit)
+	matchSubmit(params) {
+		return this.postRequest(this.$$path.matchSubmit, {
+			data: params
+		})
+	}
+
+	matchScore(params) {
+		return this.postRequest(this.$$path.matchScore, {
+			data: params
+		})
 	}
 
 	getBanners(params) {
