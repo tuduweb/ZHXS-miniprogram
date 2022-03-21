@@ -18,7 +18,7 @@ Page({
     //根据 matchId ..
     if(options.matchId != "undefined") {
 
-      this.goods = App.HttpResource('/match/score/:id', {id: '@id'})
+      this.score = App.HttpResource('/match/score/:id', {id: '@id'})
 
       this.setData({
         id: options.matchId
@@ -77,7 +77,7 @@ Page({
   },
 
   getScore: function(id) {
-    this.goods.getAsync({id: id})
+    this.score.getAsync({id: id})
     .then(res => {
       const data = res.data
       if(data.meta.code == 0) {

@@ -7,3 +7,18 @@
 #video > video {
   width: 100%;
 }
+
+.wave{
+  /* position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999; */
+  width: 100vw;
+  height: 100px;
+  overflow: hidden;
+}
+.canvas {
+  width: 100vw;
+  height: 100px;
+  background-color: #ccc;
+}

@@ -2,11 +2,23 @@
 <text>pages/learning/detail/index.wxml</text>
 
 <view id="video">
-  <video src="http://vjs.zencdn.net/v/oceans.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true"></video>
+  <video id="study-video" src="http://vjs.zencdn.net/v/oceans.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true" bindtimeupdate="onVideoTimeUpdate"></video>
 </view>
 
 <view id="button-list">
   <button>播放</button>
-  <button catchtouchstart="streamRecord" catchtouchend="endStreamRecord">尝试</button>
+  <button catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
   <button>重来</button>
+</view>
+
+<view class="wave" id="wave_parent">
+  <canvas id="wave" type="2d" class="canvas"></canvas>
+</view>
+
+<view id="records">
+  <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">
+    <text>{{index}}</text>
+    <text>{{item.tempFilePath}}</text>
+    <text>{{item.duration}}ms</text>
+  </view>
 </view>

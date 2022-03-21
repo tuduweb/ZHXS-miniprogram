@@ -33,7 +33,7 @@ Page({
 			}, 
 			{
 				icon: '../../assets/images/iconfont-about.png',
-				text: '关于我们',
+				text: '分享应用',
 				path: '/pages/about/index'
 			}, 
 		]

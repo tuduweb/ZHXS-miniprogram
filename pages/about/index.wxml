@@ -11,5 +11,6 @@
 	<view class="about-item">
 		<text class="about-item-title">当前版本</text>
 		<text class="about-item-content ">v0.0.7 Beta</text>
+		<button open-type="share">分享应用</button>
 	</view>
 </view>
