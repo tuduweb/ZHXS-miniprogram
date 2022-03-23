@@ -2,10 +2,17 @@
 
 #video {
   width: 100%;
+  text-align: center;
 }
 
 #video > video {
-  width: 100%;
+  margin: 0 auto;
+  width: 700rpx;
+  border-radius: 20rpx;
+}
+
+#button-list{
+  display: flex;
 }
 
 .wave{
