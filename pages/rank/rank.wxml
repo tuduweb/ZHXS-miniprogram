@@ -1,0 +1,38 @@
+<!--pages/rank/rank.wxml-->
+<text>pages/rank/rank.wxml</text>
+
+<view id="top-msg-panel"></view>
+
+<view id="top-user">
+  <view class="top-user-item" wx:for="{{top3}}">
+    <view class="item-index">
+      <text>{{index + 1}}</text>
+    </view>
+    <view class="item-avatar">
+      <image src="/assets/images/faces/face1.jpeg"></image>
+    </view>
+    <view class="detail-userName">
+      <text>{{item.userName}}</text>
+    </view>
+    <view class="item-point">{{item.point}}</view>
+
+    <view class="detail-school">{{item.school}}</view>
+  </view>
+</view>
+
+<view class="item" wx:for="{{ranks}}">
+  <view class="item-index">
+    <text>{{index + 1}}</text>
+  </view>
+  <view class="item-avatar">
+    <image src="/assets/images/faces/face1.jpeg"></image>
+  </view>
+  <view class="item-detail">
+    <view class="detail-userName">{{item.userName}}</view>
+    <view class="detail-school">{{item.school}}</view>
+  </view>
+  <view class="item-point">
+    {{item.point}}
+  </view>
+
+</view>

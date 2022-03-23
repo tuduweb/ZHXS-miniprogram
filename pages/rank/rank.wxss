@@ -1,0 +1,123 @@
+/* pages/rank/rank.wxss */
+
+/* <view class="item" wx:for="{{ranks}}">
+  <view class="item-index">{{index + 1}}</view>
+  <view class="item-avatar">123</view>
+  <view class="item-detail">
+    <view class="detail-userName">{{item.userName}}</view>
+    <view class="detail-school">{{item.school}}</view>
+  </view>
+  <view class="item-point">
+    {{item.point}}
+  </view>
+</view> */
+
+#top-user{
+  height: 220px;
+  display: flex;
+}
+#top-user>.top-user-item{
+  display: flexbox;
+  width: 234rpx;
+  margin: 0 8rpx;
+  background-color: palegoldenrod;
+  border-radius: 5px;
+}
+#top-user>.top-user-item>view{
+  margin: 0 auto;
+}
+#top-user>.top-user-item>.item-index>text{
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background-color: orange;
+  color: #FFF;
+}
+#top-user>.top-user-item>.item-avatar{
+  margin: 10px 0;
+  text-align: center;
+}
+#top-user>.top-user-item>.item-avatar>image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+}
+
+#top-user>.top-user-item>.detail-userName{
+  text-align: center;
+  font-weight: bolder;
+
+}
+#top-user>.top-user-item>.detail-userName>text{
+  line-height: 1em;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+
+}
+
+#top-user>.top-user-item>.item-point{
+  text-align: center;
+  color: red;
+  font-weight: bolder;
+}
+
+#top-user>.top-user-item>.detail-school{
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.item{
+  border-bottom: 1px solid #ccc;
+  height: 60px;
+  padding: 10px 0;
+}
+.item>view{
+  float: left;
+  height: 60px;
+}
+.item>.item-index{
+  width: 100rpx;
+  text-align: center;
+  line-height: 100px;
+}
+.item>.item-index>text{
+  margin: 10px auto;
+  display: block;
+  background-color: #999;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  line-height: 50rpx;
+  color: #FFF;
+}
+.item>.item-avatar{
+  width: 150rpx;
+}
+.item>.item-avatar>image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  border: 1px solid orange;
+}
+.item>.item-detail{
+  width: 370rpx;
+}
+.item>.item-detail>.detail-userName{
+  font-size: 1em;
+  font-weight: bold;
+}
+.item>.item-detail>.detail-school{
+  font-size: 0.8em;
+}
+
+.item>.item-point{
+  width: 130rpx;
+  color: red;
+  line-height: 100rpx;
+}

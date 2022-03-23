@@ -1,8 +1,9 @@
 {
   "pages": [
 
-    "pages/questions/start/index",
+    "pages/rank/rank",
 
+    "pages/questions/start/index",
 
     "pages/start/index",
     "pages/index/index",
@@ -54,10 +55,10 @@
         "text": "主页"
       },
       {
-        "pagePath": "pages/classify/index",
+        "pagePath": "pages/rank/rank",
         "iconPath": "assets/images/iconfont-list.png",
         "selectedIconPath": "assets/images/iconfont-list-active.png",
-        "text": "分类"
+        "text": "排行"
       },
       {
         "pagePath": "pages/learning/detail/index",
