@@ -12,17 +12,62 @@
   </view>
 </view> */
 
+#top-nav{
+  display: flex;
+}
+
+#top-nav>view{
+  width: 50%;
+}
+
+#top-msg-panel{
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx 25rpx;
+  background-color: blanchedalmond;
+  border-radius: 10rpx;
+  padding: 50rpx;
+}
+#top-msg-panel>view{
+  display: flex;
+  flex-direction: column-reverse;
+  width: 200rpx;
+  text-align: center;
+}
+
+#top-msg-panel>view>.value{
+
+}
+#top-msg-panel>view>.value>text{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#top-msg-panel>view>.title{
+  color: #666;
+}
+
 #top-user{
   height: 220px;
   display: flex;
+  width: 720rpx;
+  margin: 0 17rpx;
 }
 #top-user>.top-user-item{
-  display: flexbox;
-  width: 234rpx;
+  width: 220rpx;
   margin: 0 8rpx;
   background-color: palegoldenrod;
   border-radius: 5px;
+  margin-top: 10rpx;
 }
+#top-user>.top-user-item:nth-child(2){
+  width: 230rpx;
+  margin-top: 0rpx;
+  padding-top: 10rpx;
+  background-color: rgb(223, 217, 156);
+}
+
 #top-user>.top-user-item>view{
   margin: 0 auto;
 }

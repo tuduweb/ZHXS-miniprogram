@@ -1,7 +1,25 @@
 <!--pages/rank/rank.wxml-->
 <text>pages/rank/rank.wxml</text>
 
-<view id="top-msg-panel"></view>
+<view id="top-nav">
+  <view>周榜</view>
+  <view>月榜</view>
+</view>
+
+<view id="top-msg-panel">
+  <view id="msg-total">
+    <view class="title">答题总数</view>
+    <view class="value"><text>58</text></view>
+  </view>
+  <view id="msg-maxPoint">
+    <view class="title">最高分数</view>
+    <view class="value"><text>58</text></view>
+  </view>
+  <view id="msg-accuracy">
+    <view class="title">正确率</view>
+    <view class="value"><text>58</text>%</view>
+  </view>
+</view>
 
 <view id="top-user">
   <view class="top-user-item" wx:for="{{top3}}">
