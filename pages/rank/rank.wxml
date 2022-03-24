@@ -21,6 +21,8 @@
   </view>
 </view>
 
+<view id="rank">
+
 <view id="top-user">
   <view class="top-user-item" wx:for="{{top3}}">
     <view class="item-index">
@@ -53,4 +55,5 @@
     {{item.point}}
   </view>
 
+</view>
 </view>
