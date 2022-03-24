@@ -1,7 +1,8 @@
 <!--pages/learning/detail/index.wxml-->
 <text>pages/learning/detail/index.wxml</text>
 
-<view id="video">
+<view id="video-panel">
+  <view id="video">
   <video id="study-video" src="http://vjs.zencdn.net/v/oceans.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true" bindtimeupdate="onVideoTimeUpdate"></video>
 </view>
 
@@ -10,10 +11,23 @@
   <button catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
   <button>重来</button>
 </view>
-
-<view class="wave" id="wave_parent">
-  <canvas id="wave" type="2d" class="canvas"></canvas>
 </view>
+
+<view id="result-panel">
+  <view id="result-score">
+    <text>80</text>
+  </view>
+  <view id="result-wave">
+    <view class="wave" id="wave_parent">
+      <canvas id="wave" type="2d" class="canvas"></canvas>
+    </view>
+  </view>
+  <view id="result-suggestion">
+    发音不够清晰
+  </view>
+</view>
+
+
 
 <view id="records">
   <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">

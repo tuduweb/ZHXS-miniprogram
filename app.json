@@ -1,6 +1,8 @@
 {
   "pages": [
 
+    "pages/learning/detail/index",
+
     "pages/rank/rank",
 
     "pages/questions/start/index",
@@ -17,7 +19,6 @@
     "pages/questions/detail/index",
 
     "pages/learning/list/index",
-    "pages/learning/detail/index",
 
     "pages/address/list/index",
     "pages/address/add/index",
