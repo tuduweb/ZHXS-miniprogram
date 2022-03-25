@@ -9,3 +9,9 @@
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/prompt.wxss';
 @import 'assets/styles/skyvow.wxss';
+
+.panel{
+  width: 700rpx;
+  margin: 0 25rpx;
+  background-color: #FFF;
+}

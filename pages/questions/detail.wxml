@@ -1,0 +1,36 @@
+<!--pages/questions/detail.wxml-->
+<view id="question-panel" class="panel">
+  <view id="userInfo">
+    <view id="userInfo-avatar">
+      <image src="/assets/images/faces/face1.jpeg"></image>
+    </view>
+    <view id="userInfo-userName">
+      <text>宇宙第一帅哥</text>
+    </view>
+  </view>
+
+  <view id="question-detail">
+      <view id="detail-index">
+        第<text>{{currentIndex+1}}</text>题
+      </view>
+      <view id="detail-description">
+      <text>青衣作为旦行的一支,扮演娴淑的中、青年 女子角色。其妆容有______特点。 </text>
+      </view>
+      
+      
+      <view id="detail-options">
+        <view class="option-item" wx:for="{{questions[currentIndex].options}}">
+          {{index+1}}. {{item}}
+        </view>
+      </view>
+
+      <view id="detail-buttons">
+        <button bindtap="btn_last">上一题</button>
+        <button bindtap="goToScore">{{currentIndex + 1}} / {{maxIndex}}</button>
+        <button bindtap="btn_next" wx:if="{{currentIndex < maxIndex - 1}}">下一题</button>
+        <button bindtap="btn_submit" wx:else>提交</button>
+      </view>
+
+    </view>
+
+</view>

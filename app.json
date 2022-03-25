@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/me/index",
+
+    "pages/questions/detail",
 
     "pages/learning/detail/index",
 

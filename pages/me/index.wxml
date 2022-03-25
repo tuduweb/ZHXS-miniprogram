@@ -1,0 +1,9 @@
+<!--pages/me/index.wxml-->
+<view id="userInfo-panel" class="panel">
+  <view id="userInfo-avatar">
+    <image src="/assets/images/faces/face1.jpeg"></image>
+  </view>
+  <view id="userInfo-userName">
+    <text>宇宙无敌大帅哥</text>
+  </view>
+</view>
