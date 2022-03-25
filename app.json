@@ -2,11 +2,15 @@
   "pages": [
     "pages/me/index",
 
+    "pages/rank/rank",
+
+
+
+
     "pages/questions/detail",
 
     "pages/learning/detail/index",
 
-    "pages/rank/rank",
 
     "pages/questions/start/index",
 

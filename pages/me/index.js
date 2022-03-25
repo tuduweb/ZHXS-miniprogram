@@ -5,7 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+		items: [
+			{
+				icon: '../../assets/images/iconfont-order.png',
+				text: '我的订单',
+				path: '/pages/order/list/index'
+			}, 
+			{
+				icon: '../../assets/images/iconfont-addr.png',
+				text: '收货地址',
+				path: '/pages/address/list/index'
+			}, 
+			{
+				icon: '../../assets/images/iconfont-kefu.png',
+				text: '联系客服',
+				path: '18521708248',
+			}, 
+			{
+				icon: '../../assets/images/iconfont-help.png',
+				text: '常见问题',
+				path: '/pages/help/list/index',
+			},
+		]
   },
 
   /**

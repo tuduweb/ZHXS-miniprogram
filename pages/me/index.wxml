@@ -1,9 +1,71 @@
 <!--pages/me/index.wxml-->
 <view id="userInfo-panel" class="panel">
-  <view id="userInfo-avatar">
-    <image src="/assets/images/faces/face1.jpeg"></image>
+  <view id="top-info-panel">
+    <view id="userInfo-avatar">
+      <image src="/assets/images/faces/face1.jpeg"></image>
+    </view>
+    <view id="userInfo-infos">
+      <view id="userInfo-userName">
+        <text>宇宙无敌大帅哥</text>
+      </view>
+      <view id="userInfo-school">
+        <text>国际实验学校</text>
+      </view>
+    </view>
   </view>
-  <view id="userInfo-userName">
-    <text>宇宙无敌大帅哥</text>
+
+  <view id="top-msg-panel">
+    <view id="msg-lowCase">
+      <view class="title">低分集</view>
+      <view class="value"><text>10</text></view>
+    </view>
+    <view id="msg-average">
+      <view class="title">选段平均分</view>
+      <view class="value"><text>70</text></view>
+    </view>
+    <view id="msg-minutes">
+      <view class="title">学习（分钟）</view>
+      <view class="value"><text>120</text>%</view>
+    </view>
+  </view>
+
+</view>
+
+<view id="moreInfo-panel" class="panel">
+
+  <view class="info-item" wx:for="{{items}}">
+    <view class="item-icon">
+      <image src="{{ item.icon }}" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="item-title">{{ item.text }}</view>
+    <view class="item-more">
+      <!-- <text wx:if="{{ index === 2 }}">{{ item.path }}</text> -->
+    </view>
+  </view>
+
+</view>
+
+<!--pages/usercenter/usercenter.wxml-->
+<view class="weui-cells__title">
+  带说明的列表项
+</view>
+<view class="weui-cells">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>标题文字</text>
+    </view>
+    <view class="weui-cell__ft">
+      说明文字
+    </view>
+  </view>
+</view>
+<view class="weui-cells">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <text>标题文字</text>
+    </view>
+    <view class="weui-cell__ft">
+      说明文字
+    </view>
   </view>
 </view>
