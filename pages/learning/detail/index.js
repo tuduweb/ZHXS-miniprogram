@@ -243,7 +243,7 @@ Page({
         const canvas = res[0].node
         const waveView = new WaveView({
           elem: canvas,
-          width:wx.getSystemInfoSync().windowWidth,
+          width: wx.getSystemInfoSync().windowWidth,
           height:100,
           scale: 1
         });
