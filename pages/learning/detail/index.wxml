@@ -1,15 +1,19 @@
 <!--pages/learning/detail/index.wxml-->
-<text>pages/learning/detail/index.wxml</text>
+<text>http://vjs.zencdn.net/v/oceans.mp4</text>
 
 <view id="video-panel">
   <view id="video">
-  <video id="study-video" src="http://vjs.zencdn.net/v/oceans.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true" bindtimeupdate="onVideoTimeUpdate"></video>
+  <video id="study-video" src="http://172.20.144.113:8080/video2.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true" bindtimeupdate="onVideoTimeUpdate"></video>
+</view>
+
+<view id="video-sub">
+  <text>{{segments[currentSegmentIndex].speaker}} : {{segments[currentSegmentIndex].txt}}</text>
 </view>
 
 <view id="button-list">
-  <button>播放</button>
-  <button catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
-  <button>重来</button>
+  <button class="btn1" bindtap="streamNext">播放</button>
+  <button class="btn2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
+  <button class="btn3">重来</button>
 </view>
 </view>
 

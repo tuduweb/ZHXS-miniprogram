@@ -5,6 +5,8 @@ const App = getApp()
 const RecordManager = wx.getRecorderManager()
 const AudioPlayer = wx.createInnerAudioContext()
 
+let stopFlag = false
+
 Page({
 
   /**
@@ -12,7 +14,28 @@ Page({
    */
   data: {
     currentSegmentIndex: 0,
-    sugments: [],
+    segments: [
+      {"speaker":"董亚兴","txt":"讲起学，学的补碗补木杓","start":"0","end":"4266","time":"0 - 4秒16","s":"[0, 0, 0]","e":"[0, 4, 16]","line":"董亚兴: 讲起学，学的补碗补木杓（0-4秒16）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"修补功夫艰难多，不如破篾学织箩","start":"4266","end":"10400","time":"4秒16  - 10秒24","s":"[0, 4, 16]","e":"[0, 10, 24]","line":"修补功夫艰难多，不如破篾学织箩（4秒16 -10秒24）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"织箩难起笃，不如学做屋","start":"10400","end":"16000","time":"10秒24  - 16秒","s":"[0, 10, 24]","e":"[0, 16, 0]","line":"织箩难起笃，不如学做屋（10秒24 -16秒）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"做屋上墙又怕跌，不如学打铁","start":"16000","end":"21316","time":"16秒 - 21秒19","s":"[0, 16, 0]","e":"[0, 21, 19]","line":"做屋上墙又怕跌，不如学打铁（16秒-21秒19）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"打铁无力气，不如“唧格唧格”弹棉被","start":"21316","end":"27433","time":"21秒19 - 27秒26","s":"[0, 21, 19]","e":"[0, 27, 26]","line":"打铁无力气，不如“唧格唧格”弹棉被（21秒19-27秒26）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"弹棉难脱弓，不如学裁缝","start":"27433","end":"32049","time":"27秒26 - 32秒03","s":"[0, 27, 26]","e":"[0, 32, 3]","line":"弹棉难脱弓，不如学裁缝（27秒26-32秒03）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"裁缝锤桌角，不如牵猪公","start":"32049","end":"38116","time":"32秒03 - 38秒07","s":"[0, 32, 3]","e":"[0, 38, 7]","line":"裁缝锤桌角，不如牵猪公（32秒03-38秒07）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"牵着猪公人见贱，还是阉鸡过赚钱","start":"38116","end":"44200","time":"38秒07 - 44秒12","s":"[0, 38, 7]","e":"[0, 44, 12]","line":"牵着猪公人见贱，还是阉鸡过赚钱（38秒07-44秒12）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"阉鸡阉出肠，不如舞蛇卖药方","start":"44200","end":"50100","time":"44秒12 - 50秒06","s":"[0, 44, 12]","e":"[0, 50, 6]","line":"阉鸡阉出肠，不如舞蛇卖药方（44秒12-50秒06）\n"}
+      ,
+      {"speaker":"董亚兴","txt":"卖药又怕医烂脚  算来算去无件好来学   好来学","start":"55100","end":"58400","time":"55秒06 - 58秒24","s":"[0, 55, 6]","e":"[0, 58, 24]","line":"卖药又怕医烂脚  算来算去无件好来学   好来学（55秒06-58秒24）\n"}
+      
+      ],
 
     recording: false,  // 正在录音
     recordStatus: 0,   // 状态： 0 - 录音中 1- 翻译中 2 - 翻译完成/二次翻译
@@ -26,6 +49,8 @@ Page({
   onLoad: function (options) {
     this.initStreamRecord()
     this.initWave()
+
+
   },
 
   /**
@@ -45,7 +70,7 @@ Page({
     query.exec(function(res){
       console.log(res[0])       // #the-id节点的上边界坐标
       res[1].scrollTop // 显示区域的竖直滚动位置
-      const _videoObj = wx.createVideoContext("study-bideo", res[0])
+      const _videoObj = wx.createVideoContext("study-video", res[0])
       console.log(_videoObj)
 
     })
@@ -93,10 +118,10 @@ Page({
   },
 
   onVideoTimeUpdate: function(e) {
+    let videoContext = wx.createVideoContext('study-video', this);
     console.log(e.detail.currentTime)
     var currentTime = parseInt(e.detail.currentTime)
-    if(currentTime >= 1) {
-      let videoContext = wx.createVideoContext('study-video', this);
+    if(currentTime >= this.data.segments[this.data.currentSegmentIndex].end / 1000) {
       videoContext.pause()
       console.log(e.detail.currentTime)
 
@@ -232,6 +257,13 @@ Page({
     AudioPlayer.onEnded(() => {
       console.log('结束')
     })
+  },
+  streamNext: function(e) {
+    this.setData({
+      currentSegmentIndex : this.data.currentSegmentIndex + 1
+    })
+    let videoContext = wx.createVideoContext('study-video');
+    videoContext.play()
   },
 
   initWave() {
