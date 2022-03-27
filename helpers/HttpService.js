@@ -20,7 +20,8 @@ class HttpService extends WxRequest {
 			questions   : '/questions',
 			matchStart  : '/match/start',
 			matchSubmit : '/match/submit',
-			matchScore : '/match/score'
+			matchScore  : '/match/score',
+			studyDetail : '/study',
 			}
         this.interceptors.use({
             request(request) {
@@ -97,6 +98,10 @@ class HttpService extends WxRequest {
 		return this.postRequest(this.$$path.matchScore, {
 			data: params
 		})
+	}
+
+	getStudyDetail(id) {
+		return this.getRequest(`${this.$$path.studyDetail}/${id}`)
 	}
 
 	getBanners(params) {

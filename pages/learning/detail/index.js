@@ -13,6 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    studyId : 1,
     currentSegmentIndex: 0,
     segments: [
       {"speaker":"董亚兴","txt":"讲起学，学的补碗补木杓","start":"0","end":"4266","time":"0 - 4秒16","s":"[0, 0, 0]","e":"[0, 4, 16]","line":"董亚兴: 讲起学，学的补碗补木杓（0-4秒16）\n"}
@@ -47,6 +48,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    //获取study_id
+    console.log(options.query)
+
+    const id = this.data.studyId
+    App.HttpService.getStudyDetail(id)
+    .then(res => {
+        const data = res.data
+        console.log("studyDetail", data)
+        if (data.meta.code == 0) {
+            //
+        }
+    })
+
     this.initStreamRecord()
     this.initWave()
 
