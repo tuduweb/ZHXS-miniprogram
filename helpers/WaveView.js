@@ -53,7 +53,7 @@ export class WaveView {
     var ctx = This.ctx;
     var scale = set.scale;
     var width = set.width * scale;
-    var height = set.height * scale;
+    var height = set.height * scale;//set.height * scale
     var speedx = set.speed * dataLength / sampleRate;
     var phase = This._phase -= speedx; //位移速度
     var amplitude = powerLevel / 100;
@@ -63,6 +63,7 @@ export class WaveView {
     ctx.clearRect(0, 0, width, height);
     //绘制包围背景
     ctx.beginPath();
+    console.log("pathWidth", width)
     for (var i = 0, x = 0; x < width; i++, x += scale) {
       if (x == 0) {
         ctx.moveTo(x, path1[i]);

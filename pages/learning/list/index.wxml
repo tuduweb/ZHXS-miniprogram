@@ -1,2 +1,41 @@
 <!--pages/learning/list/index.wxml-->
-<text>pages/learning/list/index.wxml</text>
+<view id="index-top">
+  <view class="bg">
+    <image src="/assets/images/index-bg1.jpg" mode="aspectFill"></image>
+  </view>
+  <view class="topbar front">
+    <view class="sign-icon">
+      <image src="/assets/images/signIn.png"></image>
+    </view>
+    <view class="search-area">
+      <view class="icon">
+        <image src="/assets/images/search-icon@2x.png"></image>
+      </view>
+      <view class="search-main">
+      <text>戏曲搜索</text>
+      </view>
+    </view>
+    <view class="voice-icon"><image src="/assets/images/voice-icon@2x.png"></image></view>
+  </view>
+
+  <view class="desc-panel front">
+    <view class="left-img">
+      <image src="/assets/images/index-left-img.png"></image>
+    </view>
+    <view class="description">
+      <text>商人子弟董亚兴因家道中落，离别乡妻十余载以卖杂货为生。有日在山村巧遇流落异乡改名为贤姑的妻子，顿觉似曾相识。于是借着送货为由，接近贤姑以打探其身世。当珠妹从货担取出一个饰盒时，董亚兴一反常态，坚决不送。追问之下道出这是他多年积攒为妻子买下的一副珠花。贤姑被感动，夫妻相认双双还家。</text>
+    </view>
+  </view>
+</view>
+
+<view id="index-bottom">
+  <view class="bg">
+    <image src="/assets/images/index-bg3.jpg" mode="aspectFill"></image>
+  </view>
+  <view class="btn-groups front">
+    <view class="btn-item" wx:for="{{[1, 2, 3]}}" bindtap="onButtonClicked" data-id="{{index}}">
+      <image src="/assets/images/index-btn{{item}}.png"></image>
+    </view>
+
+  </view>
+</view>

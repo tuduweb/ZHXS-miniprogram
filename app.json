@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/learning/list/index",
+    "pages/learning/detail/index",
+
     "pages/me/index",
 
     "pages/rank/rank",
@@ -8,9 +11,6 @@
 
 
     "pages/questions/detail",
-
-    "pages/learning/detail/index",
-
 
     "pages/questions/start/index",
 
@@ -24,8 +24,6 @@
     "pages/questions/list/index",
     "pages/questions/result/score",
     "pages/questions/detail/index",
-
-    "pages/learning/list/index",
 
     "pages/address/list/index",
     "pages/address/add/index",
@@ -44,46 +42,40 @@
     "pages/user/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#479de6",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "小商城",
-    "backgroundColor": "#f8f8f8",
+    "navigationBarBackgroundColor": "#f5eee6",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "朝花戏拾",
+    "backgroundColor": "#000",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#479de6",
+    "selectedColor": "#e60000",
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "assets/images/iconfont-home.png",
-        "selectedIconPath": "assets/images/iconfont-home-active.png",
-        "text": "主页"
+        "pagePath": "pages/learning/list/index",
+        "iconPath": "assets/images/bottom-btn1.png",
+        "selectedIconPath": "assets/images/bottom-btn1-active.png",
+        "text": "练习"
       },
       {
         "pagePath": "pages/rank/rank",
-        "iconPath": "assets/images/iconfont-list.png",
-        "selectedIconPath": "assets/images/iconfont-list-active.png",
-        "text": "排行"
-      },
-      {
-        "pagePath": "pages/learning/detail/index",
-        "iconPath": "assets/images/iconfont-cart.png",
-        "selectedIconPath": "assets/images/iconfont-cart-active.png",
-        "text": "语音学习"
+        "iconPath": "assets/images/bottom-btn2.png",
+        "selectedIconPath": "assets/images/bottom-btn2-active.png",
+        "text": "竞技"
       },
       {
         "pagePath": "pages/questions/start/index",
-        "iconPath": "assets/images/iconfont-user.png",
-        "selectedIconPath": "assets/images/iconfont-user-active.png",
-        "text": "问题"
+        "iconPath": "assets/images/bottom-btn3.png",
+        "selectedIconPath": "assets/images/bottom-btn3-active.png",
+        "text": "榜单"
       },
       {
-        "pagePath": "pages/user/index",
-        "iconPath": "assets/images/iconfont-user.png",
-        "selectedIconPath": "assets/images/iconfont-user-active.png",
+        "pagePath": "pages/me/index",
+        "iconPath": "assets/images/bottom-btn4.png",
+        "selectedIconPath": "assets/images/bottom-btn4-active.png",
         "text": "我的"
       }
     ]

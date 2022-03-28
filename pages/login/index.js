@@ -16,7 +16,7 @@ Page({
     	this.signIn(this.goIndex)
     },
     goIndex() {
-    	App.WxService.switchTab('/pages/index/index')
+    	App.WxService.switchTab('/pages/me/index')
     },
 	showModal() {
 		App.WxService.showModal({

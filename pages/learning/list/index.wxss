@@ -1,1 +1,119 @@
 /* pages/learning/list/index.wxss */
+page{
+  background-color: #ffffff;
+}
+#index-top{
+  position: relative;
+  top: 0;
+}
+
+#index-top, #index-top>.bg>image{
+  height: 50vh;
+}
+#index-bottom{
+  position: relative;
+  height: 50vh;
+}
+#index-bottom>.bg{
+  width: 750rpx;
+  height: 533rpx;
+  bottom: 0;
+}
+
+.topbar{
+  margin-top: 10rpx;
+  display: flex;
+  height: 80rpx;
+}
+.bg{
+  position: absolute;
+  z-index: 1;
+}
+.bg>image{
+  width: 750rpx;
+}
+
+.sign-icon{
+  margin: 10rpx;
+}
+.sign-icon>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.search-area{
+  display: flex;
+  flex-direction: row;
+}
+.search-area>.icon>image{
+  margin: 10rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+.search-area>.search-main{
+  line-height: 60rpx;
+  padding-left: 5rpx;
+  color: #888;
+}
+.voice-icon{
+  margin: 0 20rpx;
+  margin-top: 5rpx;
+  width: 40rpx;
+  height: 55rpx;
+}
+.voice-icon>image{
+  width: 40rpx;
+  height: 55rpx;
+}
+.topbar>.search-area{
+  width: 600rpx;
+  height: 60rpx;
+  background-color: #FFF;
+  border-radius: 10rpx;
+  border: 1rpx solid #CCC;
+}
+
+#index-bottom>.bg>image{
+  height: 533rpx;
+}
+
+.front{
+  position: absolute;
+  z-index: 22;
+}
+
+.desc-panel{
+  display: flex;
+  height: 50vh;
+  font-size: 0.8em;
+  align-items:center;
+  justify-content:center;
+}
+
+.desc-panel>.left-img{
+  width: 350rpx;
+}
+
+.desc-panel>.left-img>image{
+  width: 334rpx;
+  height: 388rpx;
+}
+.desc-panel>.description{
+  /* text-indent: 2em; */
+  width: 400rpx;
+}
+
+.btn-groups{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  height: 50vh;
+  width: 300rpx;
+  margin-left: 350rpx;
+  padding-top: 10rpx;
+}
+
+.btn-groups>.btn-item>image{
+  width: 363rpx;
+  height: 136rpx;
+}
