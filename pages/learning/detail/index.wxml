@@ -1,5 +1,4 @@
 <!--pages/learning/detail/index.wxml-->
-<text>http://vjs.zencdn.net/v/oceans.mp4</text>
 
 <view id="video-panel">
   <view id="video">
@@ -17,9 +16,11 @@
 </view>
 </view>
 
+<!-- <canvas id="wave2" type="2d"></canvas> -->
+
 <view id="result-panel">
   <view id="result-score">
-    <text>80</text>
+    <text>{{grade}}</text>
   </view>
   <view id="result-wave">
     <view class="wave" id="wave_parent">
@@ -27,7 +28,12 @@
     </view>
   </view>
   <view id="result-suggestion">
-    发音不够清晰
+    <view class="title">
+      <image src="/assets/images/title_yjfk@2x.png" style="margin-top: 10rpx;margin-left: 20rpx;vertical-align: middle;width:200rpx; height: 40rpx;"></image>
+    </view>
+    <view class="content">
+      {{commentId < 0 ? "请先评测" : comments[commentId]}}
+    </view>
   </view>
 </view>
 
