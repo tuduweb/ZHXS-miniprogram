@@ -33,7 +33,7 @@
     <image src="/assets/images/index-bg3.jpg" mode="aspectFill"></image>
   </view>
   <view class="btn-groups front">
-    <view class="btn-item" wx:for="{{[1, 2, 3]}}" bindtap="onButtonClicked" data-id="{{index}}">
+    <view class="btn-item" wx:for="{{[1, 2, 3]}}" bindtap="onButtonClicked" data-id="{{item}}">
       <image src="/assets/images/index-btn{{item}}.png"></image>
     </view>
 

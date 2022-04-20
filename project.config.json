@@ -22,9 +22,9 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -43,7 +43,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.23.2",
-  "appid": "wx2495799aa1c0b026",
+  "appid": "wx819ee1d77ae3155c",
   "projectname": "m-mall",
   "debugOptions": {
     "hidedInDevtools": []

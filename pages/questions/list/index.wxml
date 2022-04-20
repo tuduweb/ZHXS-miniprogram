@@ -1,8 +1,9 @@
 <!--pages/questions/list/index.wxml-->
-<text>pages/questions/list/index.wxml</text>
 
-<view wx:for="{{questions.items}}">
-  <text>{{item.title}}</text>
+<view id="jingji-panel">
+  <view class="jingji-list">
+    <view class="jingji-item" wx:for="{{[1,2,3,4]}}" bindtap="onJingjiClicked">
+      <image src="/assets/images/jingji-btn{{item}}.png"></image>
+    </view>
+  </view>
 </view>
-
-<button bindtap="goToScore">点击跳转分数</button>

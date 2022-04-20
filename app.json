@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/questions/list/index",
+
     "pages/learning/list/index",
     "pages/learning/detail/index",
 
@@ -21,7 +23,6 @@
 
 
 
-    "pages/questions/list/index",
     "pages/questions/result/score",
     "pages/questions/detail/index",
 
@@ -61,13 +62,13 @@
         "text": "练习"
       },
       {
-        "pagePath": "pages/rank/rank",
+        "pagePath": "pages/questions/list/index",
         "iconPath": "assets/images/bottom-btn2.png",
         "selectedIconPath": "assets/images/bottom-btn2-active.png",
         "text": "竞技"
       },
       {
-        "pagePath": "pages/questions/start/index",
+        "pagePath": "pages/rank/rank",
         "iconPath": "assets/images/bottom-btn3.png",
         "selectedIconPath": "assets/images/bottom-btn3-active.png",
         "text": "榜单"

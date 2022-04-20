@@ -16,6 +16,7 @@ Page({
        */
       data: {
         studyId: 1,
+        titleName: "快板式唱腔",
         currentSegmentIndex: 0,
         segments: [{
             "speaker": "董亚兴",
@@ -125,8 +126,9 @@ Page({
 
         records: [],
 
-        grade: 80,
-        commentId: -1
+        grade: 0,
+        commentId: -1,
+        logtxt: 'loglog'
 
       },
 
@@ -138,15 +140,15 @@ Page({
     //获取study_id
     console.log(options.query)
 
-    const id = this.data.studyId
-    App.HttpService.getStudyDetail(id)
-    .then(res => {
-        const data = res.data
-        console.log("studyDetail", data)
-        if (data.meta.code == 0) {
-            //
-        }
-    })
+    // const id = this.data.studyId
+    // App.HttpService.getStudyDetail(id)
+    // .then(res => {
+    //     const data = res.data
+    //     console.log("studyDetail", data)
+    //     if (data.meta.code == 0) {
+    //         //
+    //     }
+    // })
 
     this.initStreamRecord()
     this.initWave()
@@ -288,32 +290,71 @@ Page({
       })
 
       console.log("_records", _records)
-
+      this.setData({
+        logtxt: '正在上传'
+      })
       wx.uploadFile({
-        url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
+        //url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
+        //url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
+        url: "http://8.134.216.143:5000/upload",
         filePath: res.tempFilePath,
         name: "file",
         formData: {
-          'msg': 'voice'
+          'msg': 'voice',
+          'segId': this.data.currentSegmentIndex + 1,
+          'id' : 1
         }, // HTTP 请求中其他额外的 form data
         header: {
           'content-type' : 'application/json',
-          'Authorization': 'Bearer ' + wx.getStorageSync('token')
+          //'Authorization': 'Bearer ' + wx.getStorageSync('token')
         },
         success: res => {
+
+          this.setData({
+            logtxt: 'success'
+          })
+          // console.log("res", res)
+          // if(res.statusCode != 200) {
+          //   console.log(res.statusCode);
+          //   return;
+          // }
+          // let _data = JSON.parse(res.data).data
+          // console.log("parsed", _data)
+          // this.setData({
+          //   grade: _data.grade,
+          //   commentId: _data.commentId
+          // })
+
           console.log("res", res)
           if(res.statusCode != 200) {
             console.log(res.statusCode);
             return;
           }
-          let _data = JSON.parse(res.data).data
+          let _data = JSON.parse(res.data)
+          if(_data.status == 1)
+          {
+            console.log('err status == 1')
+            return
+          }
           console.log("parsed", _data)
+          let _grade = Math.ceil(_data.score)
+          
+          if(_grade > 99)
+            _grade = 99
+          
+          if(_grade < 0)
+            _grade = 0
+
           this.setData({
-            grade: _data.grade,
-            commentId: _data.commentId
+            commentId: _data.commentId,
+            grade: _grade
           })
+
         },
         fail: err => {
+          this.setData({
+            logtxt: err
+          })
           console.log("err", err)
         }
       })
@@ -354,8 +395,12 @@ Page({
       sampleRate: 44100,
       numberOfChannels: 1,
       encodeBitRate: 192000,
-      format: 'PCM',
+      format: 'wav',
       frameSize: 1
+    })
+
+    wx.showLoading({
+      title: '正在录制', 
     })
 
     this.setData({
@@ -379,6 +424,8 @@ Page({
           return
         }
 
+        wx.hideLoading()
+
         RecordManager.stop()
   },
 
@@ -395,6 +442,9 @@ Page({
     })
   },
   streamNext: function(e) {
+    console.log(this.data.currentSegmentIndex, this.data.segments.length)
+    if(this.data.currentSegmentIndex >= this.data.segments.length - 1)
+      return
     this.setData({
       currentSegmentIndex : this.data.currentSegmentIndex + 1
     })

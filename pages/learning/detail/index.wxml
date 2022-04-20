@@ -37,12 +37,12 @@
   </view>
 </view>
 
+{{logtxt}}
 
-
-<view id="records">
+<!-- <view id="records">
   <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">
     <text>{{index}}</text>
     <text>{{item.tempFilePath}}</text>
     <text>{{item.duration}}ms</text>
   </view>
-</view>
+</view> -->

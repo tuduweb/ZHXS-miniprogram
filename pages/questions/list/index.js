@@ -121,5 +121,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onJingjiClicked: function(e) {
+    console.log(e)
   }
 })

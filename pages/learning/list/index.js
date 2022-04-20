@@ -65,5 +65,12 @@ Page({
   },
   onButtonClicked: function(e) {
     console.log(e)
+    console.log(e.currentTarget.dataset.id)
+    wx.redirectTo({
+      url: '/pages/learning/detail/index?id='+e.currentTarget.dataset.id,
+      success: (res) => {},
+      fail: (res) => {},
+      complete: (res) => {},
+    })
   }
 })
