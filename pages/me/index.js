@@ -1,4 +1,6 @@
 // pages/me/index.js
+const App = getApp()
+
 Page({
 
   /**
@@ -31,13 +33,18 @@ Page({
 				text: '帮助和反馈',
 				path: '/pages/help/list/index',
 			},
-		]
+    ],
+    userInfo: {
+      "nickname": "大头大头",
+      "school": "国际实验学校"
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("globalData", App.globalData)
 
   },
 
@@ -52,7 +59,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    App.HttpService.userInfo()
+    .then(res => {
+      console.log(res.data)
+      let data = res.data
+      if (data.meta.code == 0) {
+        this.setData({
+          userInfo: data.data
+        })
+      }else{
+        //
+      }
+    })
   },
 
   /**

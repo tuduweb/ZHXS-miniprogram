@@ -124,5 +124,8 @@ Page({
   },
   onJingjiClicked: function(e) {
     console.log(e)
+    wx.navigateTo({
+      url: '../detail/index'
+    })
   }
 })

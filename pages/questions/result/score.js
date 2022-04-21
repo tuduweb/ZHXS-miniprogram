@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fromUserId : 0,
   },
 
   /**
@@ -23,7 +23,11 @@ Page({
       this.setData({
         id: options.matchId
       })
+    }
 
+    if(options.fromUserId != "underfined") {
+      //如果是新访问此小程序的用户 则给推广方加分
+      this.setData({fromUserId: options.fromUserId})
     }
   },
 
@@ -73,7 +77,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '成绩分享了: ' + this.data.scoreData.grade,
+      path: 'pages/questions/result/score?matchId=6235e9542921d348d1baed65&fromUserId=123'
+    }
   },
 
   getScore: function(id) {

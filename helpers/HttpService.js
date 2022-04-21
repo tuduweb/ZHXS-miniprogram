@@ -10,6 +10,7 @@ class HttpService extends WxRequest {
 			decryptData : '/user/wechat/decrypt/data',
 			signIn      : '/user/sign/in',
 			signOut     : '/user/sign/out',
+			userInfo    : '/user/info',
 			banner      : '/banner', 
 			classify    : '/classify', 
 			goods       : '/goods', 
@@ -82,6 +83,10 @@ class HttpService extends WxRequest {
 
 	signOut() {
 		return this.postRequest(this.$$path.signOut) 
+	}
+
+	userInfo() {
+		return this.getRequest(this.$$path.userInfo) 
 	}
 
 	matchStart() {

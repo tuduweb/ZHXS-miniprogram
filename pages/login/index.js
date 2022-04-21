@@ -13,9 +13,10 @@ Page({
     	token && setTimeout(this.goIndex, 1500)
     },
     login() {
-    	this.signIn(this.goIndex)
+    	this.wechatSignIn(this.goIndex)
     },
     goIndex() {
+			//callback
     	App.WxService.switchTab('/pages/me/index')
     },
 	showModal() {
@@ -30,11 +31,13 @@ Page({
 
 		App.WxService.login()
 		.then(data => {
+			console.log('wx.login data', data)
 			console.log('wechatDecryptData', data.code)
 			code = data.code
 			return App.WxService.getUserInfo()
 		})
 		.then(data => {
+			console.log("userData", data)
 			return App.HttpService.wechatDecryptData({
 				encryptedData: data.encryptedData, 
 				iv: data.iv, 
@@ -65,7 +68,7 @@ Page({
 			} else if(data.meta.code == 40029) {
 				App.showModal()
 			} else {
-				App.wechatSignUp(cb)
+				this.wechatSignUp(cb)
 			}
 		})
 	},

@@ -6,10 +6,10 @@
     </view>
     <view id="userInfo-infos">
       <view id="userInfo-userName">
-        <text>宇宙无敌大帅哥</text>
+        <text>{{userInfo.nickname}}</text>
       </view>
       <view id="userInfo-school">
-        <text>国际实验学校</text>
+        <text>{{userInfo.school}}</text>
       </view>
     </view>
   </view>
