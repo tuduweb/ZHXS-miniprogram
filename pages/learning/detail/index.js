@@ -295,8 +295,8 @@ Page({
       })
       wx.uploadFile({
         //url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
-        //url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
-        url: "http://8.134.216.143:5000/upload",
+        url: "http://172.20.144.113:3001/api/study/1/record/" + (this.data.currentSegmentIndex + 1),
+        //url: "http://8.134.216.143:5000/upload",
         filePath: res.tempFilePath,
         name: "file",
         formData: {
@@ -306,7 +306,7 @@ Page({
         }, // HTTP 请求中其他额外的 form data
         header: {
           'content-type' : 'application/json',
-          //'Authorization': 'Bearer ' + wx.getStorageSync('token')
+          'Authorization': 'Bearer ' + wx.getStorageSync('token')
         },
         success: res => {
 
@@ -331,13 +331,13 @@ Page({
             return;
           }
           let _data = JSON.parse(res.data)
-          if(_data.status == 1)
+          if(_data.meta.code == 1)
           {
             console.log('err status == 1')
             return
           }
           console.log("parsed", _data)
-          let _grade = Math.ceil(_data.score)
+          let _grade = Math.ceil(_data.data.score)
           
           if(_grade > 99)
             _grade = 99
@@ -346,7 +346,7 @@ Page({
             _grade = 0
 
           this.setData({
-            commentId: _data.commentId,
+            commentId: _data.data.commentId,
             grade: _grade
           })
 

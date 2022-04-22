@@ -58,6 +58,8 @@ class HttpService extends WxRequest {
 	}
 
 	wechatSignUp(params) {
+		/** 注册 **/
+		//查询推荐信息
 		return this.postRequest(this.$$path.wechatSignUp, {
 			data: params,
 		})

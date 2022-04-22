@@ -9,6 +9,7 @@
 
     "pages/rank/rank",
 
+    "pages/admin/index",
 
 
 
@@ -55,6 +56,12 @@
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
+      {
+        "pagePath": "pages/admin/index",
+        "iconPath": "assets/images/bottom-btn4.png",
+        "selectedIconPath": "assets/images/bottom-btn4-active.png",
+        "text": "管理"
+      },
       {
         "pagePath": "pages/learning/list/index",
         "iconPath": "assets/images/bottom-btn1.png",

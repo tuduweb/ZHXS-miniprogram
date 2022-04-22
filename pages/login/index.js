@@ -76,8 +76,12 @@ Page({
 		App.WxService.login()
 		.then(data => {
 			console.log('wechatSignUp', data.code)
+
+			let refInfo = App.WxService.getStorageSync('refInfo')
+
 			return App.HttpService.wechatSignUp({
-				code: data.code
+				code: data.code,
+				refInfo: refInfo
 			})
 		})
 		.then(res => {

@@ -45,7 +45,6 @@ Page({
    */
   onLoad: function (options) {
     console.log("globalData", App.globalData)
-
   },
 
   /**
@@ -59,6 +58,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //console.log(getCurrentPages()[0]["route"])
+
+
     App.HttpService.userInfo()
     .then(res => {
       console.log(res.data)
