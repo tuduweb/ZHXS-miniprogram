@@ -153,6 +153,8 @@ Page({
     this.initStreamRecord()
     this.initWave()
 
+
+
     //this.DrawCanvas()
 
 
@@ -162,7 +164,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.parseUrlAudio("http://172.20.144.113:8080/example/media/lc_3.wav")
   },
 
   /**
@@ -465,6 +467,7 @@ Page({
           height:100,
           scale: 1
         });
+        console.log(waveView)
         _this.setData({
           waveView: waveView
         });
@@ -488,6 +491,51 @@ Page({
         //ctx.clearRect(0, 0, width, height);
 
       })
+  },
+
+  parseUrlAudio: function(url) {
+    console.log("start parse:", url)
+    wx.request({
+      url: url, // 音频 url
+      responseType: 'arraybuffer',
+      success: res => {
+        audioCtx.decodeAudioData(res.data, buffer => {
+          console.log("buffer", buffer)
+          //var chan = audioCtx.getChannelData(0);
+          //console.log("chan", chan)
+        
+          // const source = audioCtx.createBufferSource()
+
+          // source.buffer = buffer
+          // console.log(source)
+          // source.connect(audioCtx.destination)
+          // source.start()
+
+          const myArrayBuffer = audioCtx.createBuffer(2, buffer.length, audioCtx.sampleRate);
+
+          console.log(myArrayBuffer)
+
+          var chan = buffer.getChannelData(0);
+          console.log("chan", chan)
+
+          let sum = 0.0;
+          console.log("sum", sum);
+
+          for (let index = 0; index < chan.length / 5; index++) {
+            sum += chan[index];
+          }
+          console.log("sum", sum);
+
+          this.data.waveView.demoBuffer(buffer);
+
+        }, err => {
+          console.error('decodeAudioData fail', err)
+        })
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
 })

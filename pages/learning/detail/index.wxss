@@ -72,11 +72,14 @@ page{
   top: 0;
   z-index: 9999; */
   /* width: 100vw; */
+  width: 432rpx;
+
   height: 206rpx;
   overflow: hidden;
 }
 .canvas {
   /* width: 100vw; */
+  width: 100%;
   height: 206rpx;
   background-color: #ccc;
 }
@@ -88,7 +91,7 @@ page{
 
 #result-suggestion{
   width: 660rpx;
-  height: 200rpx;
+  height: 220rpx;
   background-color: #e9eef5;
   margin: 0 20rpx;
 }

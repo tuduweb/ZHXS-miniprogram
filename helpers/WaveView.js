@@ -110,9 +110,14 @@ export class WaveView {
         ctx.stroke();
     }
     fillRect(x, y, width, height, radius, channelIndex) {
-        var This = this,
-        set = This.set;
+        var This = this;
+        var set = This.set;
         var ctx = This.ctx;
+        // var scale = 1.0;
+        // var width = set.width * scale;
+        // var height = set.height * scale; //set.height * scale
+        // ctx.clearRect(0, 0, width, height);
+
         ctx.fillStyle = "#FF0000"; 　
         ctx.fillRect( x, y, width, height);
     }
@@ -120,7 +125,17 @@ export class WaveView {
     demoBuffer(buffer) {
         console.log("demoBuffer", buffer);
 
-        var width = 300;
+        var width = 200;
+
+        var This = this;
+        var set = This.set;
+        var ctx = This.ctx;
+        var scale = 1.0;
+        var width = set.width * scale;
+        var height = set.height * scale; //set.height * scale //// 控制着最高的柱子的高度
+        console.log("width, height", width, height);
+        This.set.h = height;
+        ctx.clearRect(0, 0, width, height);
 
         var start = 0;
         var end = width;
@@ -143,8 +158,7 @@ export class WaveView {
         //   }));
 
         this.drawBars(peaks, width, start, end);
-
-        console.log( util.absMax([0, 1, 2, 3]) )
+        //console.log( util.absMax([0, 1, 2, 3]) )
     }
     
     getPeaks(length, first, last) {
@@ -228,13 +242,13 @@ export class WaveView {
         var bar = 4; //2pixel
         var gap = 2; //1pixel
         var step = bar + gap;
-        var length = 300;//var length = peaks.length / peakIndexScale;
+        var length = peaks.length / peakIndexScale;
         var scale = 1.0;
         var peakIndexScale = 2;
 
         var absmax = util.absMax(peaks);
 
-        var halfH = 10;
+        var halfH = this.set.h / 2;
 
         for (peakIndex; peakIndex < last; peakIndex += step) {
             var peak = 0;
@@ -253,15 +267,17 @@ export class WaveView {
             } while (peakIndexRange < peakIndexEnd); // calculate the height of this bar according to the highest peak found
             //得出区块中的peaks
 
+            //这里控制着最高的高度..把所有的缩小n倍可以正常缩小
             var h = Math.round(peak / absmax * halfH); // in case of silences, allow the user to specify that we
 
+            //控制着最小的柱体的高度
             // if (h == 0 && _this4.params.barMinHeight) {
             //     h = _this4.params.barMinHeight;
             // }
 
             /* draw */
             //console.log("Draw", peakIndex, h);
-            var offsetY = 30;
+            var offsetY = 0;//this.set.h
             var halfPixel = 1;
             this.fillRect(peakIndex + halfPixel, halfH - h + offsetY, bar + halfPixel, h * 2);
         }

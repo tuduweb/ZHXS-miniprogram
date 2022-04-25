@@ -1,5 +1,9 @@
 {
   "pages": [
+
+    "pages/admin/index",
+    "pages/wave/index",
+
     "pages/questions/list/index",
 
     "pages/learning/list/index",
@@ -8,8 +12,6 @@
     "pages/me/index",
 
     "pages/rank/rank",
-
-    "pages/admin/index",
 
 
 
