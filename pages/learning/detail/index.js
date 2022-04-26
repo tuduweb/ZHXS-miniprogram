@@ -8,6 +8,12 @@ const audioCtx = wx.createWebAudioContext()
 
 let stopFlag = false
 
+//这里可以封装成全局函数..作为一种服务
+//在视频时间戳更新时计时,
+let recordInfo = {
+  'studyTime' : 0,
+  'timeUpdateCnt': 0
+}
 
 Page({
 
@@ -128,8 +134,11 @@ Page({
 
         grade: 0,
         commentId: -1,
-        logtxt: 'loglog'
+        logtxt: 'loglog',
 
+        userInfo: {
+          studyTimeCnt: 0
+        }
       },
 
   /**
@@ -225,9 +234,14 @@ Page({
   },
 
   onVideoTimeUpdate: function(e) {
+    //播放进度变化时触发，event.detail = {currentTime, duration} 。触发频率 250ms 一次
+    recordInfo.timeUpdateCnt += 1
+    this.setData({'userInfo.studyTimeCnt' : this.data.userInfo.studyTimeCnt + 1})
+  
     let videoContext = wx.createVideoContext('study-video', this);
     //console.log(e.detail.currentTime)
     var currentTime = parseInt(e.detail.currentTime)
+    //recordInfo
     if(currentTime >= this.data.segments[this.data.currentSegmentIndex].end / 1000) {
       videoContext.pause()
       //console.log(e.detail.currentTime)

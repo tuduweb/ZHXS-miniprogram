@@ -38,7 +38,9 @@
 </view>
 
 {{logtxt}}
-
+<view>
+{{userInfo.studyTimeCnt}}
+</view>
 <!-- <view id="records">
   <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">
     <text>{{index}}</text>
