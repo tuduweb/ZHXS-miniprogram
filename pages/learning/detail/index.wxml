@@ -2,7 +2,7 @@
 
 <view id="video-panel">
   <view id="video">
-  <video id="study-video" src="http://172.20.144.113:8080/video2.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="false" bindtimeupdate="onVideoTimeUpdate"></video>
+  <video id="study-video" src="http://172.20.144.113:8080/video2.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="false" bindtimeupdate="onVideoTimeUpdate" binderror="onVideoError"></video>
 </view>
 
 <view id="video-sub">
