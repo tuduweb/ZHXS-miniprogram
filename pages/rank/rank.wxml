@@ -1,6 +1,4 @@
 <!--pages/rank/rank.wxml-->
-<text>pages/rank/rank.wxml</text>
-
 <view id="top-nav">
   <view>周榜</view>
   <view>月榜</view>

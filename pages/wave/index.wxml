@@ -1,0 +1,21 @@
+<!--pages/wave/index.wxml-->
+<text>pages/wave/index.wxml</text>
+<button class="btn2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
+
+<view id="records">
+  <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">
+    <text>{{index}}</text>
+    <text>{{item.tempFilePath}}</text>
+    <text>{{item.duration}}ms</text>
+  </view>
+</view>
+
+<view>
+  <canvas id="waves" type="2d"></canvas>
+  </view>
+
+  <view id="result-wave">
+    <view class="wave" id="wave_parent">
+      <canvas id="wave" type="2d" class="canvas"></canvas>
+    </view>
+  </view>

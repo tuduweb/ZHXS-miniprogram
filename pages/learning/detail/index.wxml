@@ -1,21 +1,26 @@
 <!--pages/learning/detail/index.wxml-->
-<text>pages/learning/detail/index.wxml</text>
 
 <view id="video-panel">
   <view id="video">
-  <video id="study-video" src="http://vjs.zencdn.net/v/oceans.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="true" bindtimeupdate="onVideoTimeUpdate"></video>
+  <video id="study-video" src="http://172.20.144.113:8080/video2.mp4" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="false" bindtimeupdate="onVideoTimeUpdate" binderror="onVideoError"></video>
+</view>
+
+<view id="video-sub">
+  <text>{{segments[currentSegmentIndex].speaker}} : {{segments[currentSegmentIndex].txt}}</text>
 </view>
 
 <view id="button-list">
-  <button>播放</button>
-  <button catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
-  <button>重来</button>
+  <button class="btn1" bindtap="streamNext">播放</button>
+  <button class="btn2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
+  <button class="btn3">重来</button>
 </view>
 </view>
 
+<!-- <canvas id="wave2" type="2d"></canvas> -->
+
 <view id="result-panel">
   <view id="result-score">
-    <text>80</text>
+    <text>{{grade}}</text>
   </view>
   <view id="result-wave">
     <view class="wave" id="wave_parent">
@@ -23,16 +28,23 @@
     </view>
   </view>
   <view id="result-suggestion">
-    发音不够清晰
+    <view class="title">
+      <image src="/assets/images/title_yjfk@2x.png" style="margin-top: 10rpx;margin-left: 20rpx;vertical-align: middle;width:200rpx; height: 40rpx;"></image>
+    </view>
+    <view class="content">
+      {{commentId < 0 ? "请先评测" : comments[commentId]}}
+    </view>
   </view>
 </view>
 
-
-
-<view id="records">
+{{logtxt}}
+<view>
+{{userInfo.studyTimeCnt}}
+</view>
+<!-- <view id="records">
   <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">
     <text>{{index}}</text>
     <text>{{item.tempFilePath}}</text>
     <text>{{item.duration}}ms</text>
   </view>
-</view>
+</view> -->

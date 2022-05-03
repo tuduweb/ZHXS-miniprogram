@@ -10,7 +10,8 @@ page{
 
 #userInfo-panel{
   height: 25vh;
-  border-radius: 25rpx;
+  border-top-left-radius: 25rpx;
+  border-top-right-radius: 25rpx;
   margin-top: 5vh;
   padding-top: 5vh;
 }
@@ -69,7 +70,7 @@ page{
 }
 
 #moreInfo-panel{
-  margin-top: 5vh;
+  margin-top: 20rpx;
   border-bottom-left-radius: 25rpx;
   border-bottom-right-radius: 25rpx;
 }
@@ -96,6 +97,10 @@ page{
   -webkit-transform:scaleY(0.5);
           transform:scaleY(0.5);
   z-index:2;
+}
+
+#moreInfo-panel>.info-item>.item-icon{
+  margin-right: 20rpx;
 }
 
 #moreInfo-panel>.info-item>.item-title{

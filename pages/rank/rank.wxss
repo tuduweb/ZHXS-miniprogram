@@ -21,6 +21,7 @@ page{
 }
 
 #top-nav{
+  text-align: center;
   display: flex;
   margin-top: 45rpx;
 }

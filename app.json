@@ -1,89 +1,71 @@
 {
   "pages": [
+
+    "pages/admin/index",
+    "pages/wave/index",
+
+    "pages/questions/list/index",
+
+    "pages/learning/list/index",
+    "pages/learning/detail/index",
+
     "pages/me/index",
 
     "pages/rank/rank",
 
-
-
-
     "pages/questions/detail",
-
-    "pages/learning/detail/index",
-
 
     "pages/questions/start/index",
 
     "pages/start/index",
     "pages/index/index",
-    "pages/classify/index",
-    "pages/cart/index",
 
-
-
-    "pages/questions/list/index",
     "pages/questions/result/score",
     "pages/questions/detail/index",
-
-    "pages/learning/list/index",
-
-    "pages/address/list/index",
-    "pages/address/add/index",
-    "pages/address/edit/index",
-    "pages/address/confirm/index",
-    "pages/order/list/index",
-    "pages/order/confirm/index",
-    "pages/order/detail/index",
-    "pages/goods/list/index",
-    "pages/goods/detail/index",
-    "pages/help/list/index",
-    "pages/help/detail/index",
-    "pages/search/index",
-    "pages/about/index",
     "pages/login/index",
     "pages/user/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#479de6",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "小商城",
-    "backgroundColor": "#f8f8f8",
+    "navigationBarBackgroundColor": "#f5eee6",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "朝花戏拾",
+    "backgroundColor": "#000",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#479de6",
+    "selectedColor": "#e60000",
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "assets/images/iconfont-home.png",
-        "selectedIconPath": "assets/images/iconfont-home-active.png",
-        "text": "主页"
+        "pagePath": "pages/admin/index",
+        "iconPath": "assets/images/bottom-btn4.png",
+        "selectedIconPath": "assets/images/bottom-btn4-active.png",
+        "text": "管理"
+      },
+      {
+        "pagePath": "pages/learning/list/index",
+        "iconPath": "assets/images/bottom-btn1.png",
+        "selectedIconPath": "assets/images/bottom-btn1-active.png",
+        "text": "练习"
+      },
+      {
+        "pagePath": "pages/questions/list/index",
+        "iconPath": "assets/images/bottom-btn2.png",
+        "selectedIconPath": "assets/images/bottom-btn2-active.png",
+        "text": "竞技"
       },
       {
         "pagePath": "pages/rank/rank",
-        "iconPath": "assets/images/iconfont-list.png",
-        "selectedIconPath": "assets/images/iconfont-list-active.png",
-        "text": "排行"
+        "iconPath": "assets/images/bottom-btn3.png",
+        "selectedIconPath": "assets/images/bottom-btn3-active.png",
+        "text": "榜单"
       },
       {
-        "pagePath": "pages/learning/detail/index",
-        "iconPath": "assets/images/iconfont-cart.png",
-        "selectedIconPath": "assets/images/iconfont-cart-active.png",
-        "text": "语音学习"
-      },
-      {
-        "pagePath": "pages/questions/start/index",
-        "iconPath": "assets/images/iconfont-user.png",
-        "selectedIconPath": "assets/images/iconfont-user-active.png",
-        "text": "问题"
-      },
-      {
-        "pagePath": "pages/user/index",
-        "iconPath": "assets/images/iconfont-user.png",
-        "selectedIconPath": "assets/images/iconfont-user-active.png",
+        "pagePath": "pages/me/index",
+        "iconPath": "assets/images/bottom-btn4.png",
+        "selectedIconPath": "assets/images/bottom-btn4-active.png",
         "text": "我的"
       }
     ]

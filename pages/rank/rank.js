@@ -37,7 +37,7 @@ Page({
         point: "7654"
       },
       {
-        userName: "名字很长很炫酷的人们",
+        userName: "名字很长很炫酷的",
         avatar: "avtar",
         school: "湘潭市十中",
         point: "3200"

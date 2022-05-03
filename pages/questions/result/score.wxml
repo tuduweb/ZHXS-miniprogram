@@ -4,4 +4,5 @@
 <view>
   <text id="score-num">{{scoreData.grade}}</text>分
 </view>
-<button>分享给好友123</button>
+<view><text>来源：{{fromUserId}}</text></view>
+<button open-type="share">分享给好友123</button>

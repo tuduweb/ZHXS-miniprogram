@@ -10,6 +10,7 @@ class HttpService extends WxRequest {
 			decryptData : '/user/wechat/decrypt/data',
 			signIn      : '/user/sign/in',
 			signOut     : '/user/sign/out',
+			userInfo    : '/user/info',
 			banner      : '/banner', 
 			classify    : '/classify', 
 			goods       : '/goods', 
@@ -20,7 +21,8 @@ class HttpService extends WxRequest {
 			questions   : '/questions',
 			matchStart  : '/match/start',
 			matchSubmit : '/match/submit',
-			matchScore : '/match/score'
+			matchScore  : '/match/score',
+			studyDetail : '/study',
 			}
         this.interceptors.use({
             request(request) {
@@ -56,6 +58,8 @@ class HttpService extends WxRequest {
 	}
 
 	wechatSignUp(params) {
+		/** 注册 **/
+		//查询推荐信息
 		return this.postRequest(this.$$path.wechatSignUp, {
 			data: params,
 		})
@@ -83,6 +87,10 @@ class HttpService extends WxRequest {
 		return this.postRequest(this.$$path.signOut) 
 	}
 
+	userInfo() {
+		return this.getRequest(this.$$path.userInfo) 
+	}
+
 	matchStart() {
 		return this.getRequest(this.$$path.matchStart)
 	}
@@ -97,6 +105,10 @@ class HttpService extends WxRequest {
 		return this.postRequest(this.$$path.matchScore, {
 			data: params
 		})
+	}
+
+	getStudyDetail(id) {
+		return this.getRequest(`${this.$$path.studyDetail}/${id}`)
 	}
 
 	getBanners(params) {

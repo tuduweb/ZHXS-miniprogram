@@ -1,0 +1,20 @@
+/* pages/wave/index.wxss */
+
+#result-wave{
+  width: 450rpx;
+}
+
+.wave{
+  position: absolute;
+  left: 0;
+  top: 300;
+  z-index: 9999;
+  width: 100vw;
+  height: 206rpx;
+  overflow: hidden;
+}
+.canvas {
+  /* width: 100vw; */
+  height: 206rpx;
+  background-color: #ccc;
+}

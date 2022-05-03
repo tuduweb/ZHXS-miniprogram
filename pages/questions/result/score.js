@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fromUserId : 0,
   },
 
   /**
@@ -23,7 +23,13 @@ Page({
       this.setData({
         id: options.matchId
       })
+    }
 
+    //推广相关, 推广相关
+    if(options.fromUserId != "undefined") {
+      //如果是新访问此小程序的用户 则给推广方加分
+      this.setData({fromUserId: options.fromUserId})
+      this.userSharedRef(options.fromUserId, getCurrentPages()[0]["route"])
     }
   },
 
@@ -73,7 +79,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '成绩分享了: ' + this.data.scoreData.grade,
+      path: 'pages/questions/result/score?matchId=6235e9542921d348d1baed65&fromUserId=6235e2388940b13a7a629dc1'
+    }
   },
 
   getScore: function(id) {
@@ -87,5 +96,20 @@ Page({
       }
 
     })
-  } 
+  },
+
+  userSharedRef: function(userId, refPath) {
+    console.log("from share:", refPath, "user:", userId)
+    //将信息处理后, 加入到global中?
+
+    //记录当前的时间等其它信息
+
+    let refInfo = {
+      "userId"    : userId,
+      "path"      : refPath,
+      "firstTime" : Date.now()
+    }
+    App.WxService.setStorageSync('refInfo', refInfo)
+  }
+
 })

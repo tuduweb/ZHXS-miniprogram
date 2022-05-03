@@ -121,5 +121,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onJingjiClicked: function(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../detail/index'
+    })
   }
 })
