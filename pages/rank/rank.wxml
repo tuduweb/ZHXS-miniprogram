@@ -1,8 +1,8 @@
 <!--pages/rank/rank.wxml-->
-<view id="top-nav">
+<!-- <view id="top-nav">
   <view>周榜</view>
   <view>月榜</view>
-</view>
+</view> -->
 
 <view id="top-msg-panel">
   <view id="msg-total">

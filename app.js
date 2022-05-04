@@ -19,7 +19,7 @@ App({
 		return this.WxService.login()
 			.then(data => {
 				console.log(data)
-				return this.WxService.getUserInfo()
+				return this.WxService.getUserInfo() //getUserInfo
 			})
 			.then(data => {
 				console.log(data)
@@ -28,8 +28,105 @@ App({
 			})
 	},
 	globalData: {
-		userInfo: null
+		userInfo: null,
+		isUserLogin: false
 	},
+
+	checkLogin: function() {
+		return false
+	},
+
+	login: function(cb) {
+		this.wechatSignIn(cb)
+	},
+
+	wechatDecryptData() {
+		let code
+
+		this.WxService.login()
+		.then(data => {
+			console.log('wx.login data', data)
+			console.log('wechatDecryptData', data.code)
+			code = data.code
+			return this.WxService.getUserInfo() //getUserInfo //getUserProfile
+		})
+		.then(data => {
+			console.log("userData", data)
+			return this.HttpService.wechatDecryptData({
+				encryptedData: data.encryptedData, 
+				iv: data.iv, 
+				rawData: data.rawData, 
+				signature: data.signature, 
+				code: code, 
+			})
+		})
+		.then(data => {
+			console.log(data)
+		})
+	},
+
+	wechatSignIn(cb) {
+		//已经登
+		if (this.WxService.getStorageSync('token')) return
+		this.WxService.login()
+		.then(data => {
+			console.log('wechatSignIn', data.code)
+			return this.HttpService.wechatSignIn({
+				code: data.code
+			})
+		})
+		.then(res => {
+			const data = res.data
+			console.log('wechatSignIn', data)
+			if (data.meta.code == 0) {
+				this.WxService.setStorageSync('token', data.data.token)
+				cb()
+			} else if(data.meta.code == 40029) {
+				this.showModal()
+			} else {
+				this.wechatSignUp(cb)
+			}
+		})
+	},
+	wechatSignUp(cb) {
+		this.WxService.login()
+		.then(data => {
+			console.log('wechatSignUp', data.code)
+
+			let refInfo = this.WxService.getStorageSync('refInfo')
+
+			return this.HttpService.wechatSignUp({
+				code: data.code,
+				refInfo: refInfo
+			})
+		})
+		.then(res => {
+			const data = res.data
+			console.log('wechatSignUp', data)
+			if (data.meta.code == 0) {
+				this.WxService.setStorageSync('token', data.data.token)
+				cb()
+			} else if(data.meta.code == 40029) {
+				this.showModal()
+			}
+		})
+	},
+	signIn(cb) {
+		if (this.WxService.getStorageSync('token')) return
+		this.HttpService.signIn({
+			username: 'admin', 
+			password: '123456', 
+		})
+		.then(res => {
+            const data = res.data
+            console.log(data)
+			if (data.meta.code == 0) {
+				this.WxService.setStorageSync('token', data.data.token)
+				cb()
+			}
+		})
+	},
+
 	renderImage(path) {
 		if (!path) return ''
 		if (path.indexOf('http') !== -1) return path

@@ -1,5 +1,6 @@
 <!--pages/me/index.wxml-->
-<view id="userInfo-panel" class="panel" wx:if="{{isUserLogin}}">
+<block wx:if="{{isUserLogin}}">
+<view id="userInfo-panel" class="panel">
   <view id="top-info-panel">
     <view id="userInfo-avatar">
       <image src="/assets/images/faces/face1.jpeg"></image>
@@ -30,11 +31,10 @@
   </view>
 
 </view>
-<view wx:else>请先登录</view>
 
 <view id="moreInfo-panel" class="panel">
 
-  <view class="info-item" wx:for="{{items}}">
+  <view class="info-item" wx:for="{{items}}" bindtap="handleItemClicked" data-path="{{item.path}}">
     <view class="item-icon">
       <image src="{{ item.icon }}" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
     </view>
@@ -46,7 +46,27 @@
 
 </view>
 
-<button bindtap="handleClick">点我显示弹窗{{isShow}}</button>
+<button class="me-width" style="margin-top: 10rpx;" bindtap="logout" wx:if="{{isUserLogin}}">退出登录</button>
+
+</block>
+<block wx:else>
+<view id="login-prompt">
+  <text class="prompt-text">请先登录，获取更多精彩</text>
+  <button class="login-button" bindtap="login">点击登录</button>
+  
+  <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取openid </button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+
+</view>
+</block>
+
+<!-- <button bindtap="handleClick">点我显示弹窗{{isShow}}</button> -->
 <dialog isShow="{{isShow}}" bind:cancle="handleClick"/>
 
 <!--pages/usercenter/usercenter.wxml-->

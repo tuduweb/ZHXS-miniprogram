@@ -124,3 +124,27 @@ page{
   margin-top: -4px;
   right: 2px;
 }
+
+.me-width{
+  width: 700rpx;
+}
+
+
+#login-prompt{
+  height: 90vh;
+  width: 700rpx;
+  margin: 0 25rpx;
+  background-color: #FFF;
+  border-radius: 25rpx;
+  margin-top: 5vh;
+}
+
+.prompt-text{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.login-button{
+  margin: 25rpx;
+}

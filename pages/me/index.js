@@ -12,33 +12,39 @@ Page({
 			{
 				icon: '../../assets/images/more_icon1@2x.png',
 				text: '学习记录',
-				path: '/pages/order/list/index'
+				path: '/pages/me/studyRecord/index'
 			}, 
-			{
-				icon: '../../assets/images/more_icon2@2x.png',
-				text: '趣味拼图',
-				path: '/pages/address/list/index'
-			}, 
-			{
-				icon: '../../assets/images/more_icon3@2x.png',
-				text: '我的分享',
-				path: '18521708248',
-			}, 
-			{
-				icon: '../../assets/images/more_icon4@2x.png',
-				text: '邀请好友',
-				path: '/pages/help/list/index',
-      },
+			// {
+			// 	icon: '../../assets/images/more_icon2@2x.png',
+			// 	text: '趣味拼图',
+			// 	path: '/pages/address/list/index'
+			// }, 
+			// {
+			// 	icon: '../../assets/images/more_icon3@2x.png',
+			// 	text: '我的分享',
+			// 	path: '18521708248',
+			// }, 
+			// {
+			// 	icon: '../../assets/images/more_icon4@2x.png',
+			// 	text: '邀请好友',
+			// 	path: '/pages/help/list/index',
+      // },
       {
 				icon: '../../assets/images/more_icon5@2x.png',
 				text: '帮助和反馈',
 				path: '/pages/help/list/index',
 			},
     ],
-    userInfo: {
-      "nickname": "用户昵称",
-      "school": "用户学校"
-    }
+    // userInfo: {
+    //   "nickname": "用户昵称",
+    //   "school": "用户学校"
+    // },
+
+    userInfo: {},
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
+
+    isUserLogin: false
   },
 
   /**
@@ -60,8 +66,31 @@ Page({
    */
   onShow: function () {
     //console.log(getCurrentPages()[0]["route"])
-    this.initUserInfo()
+    this.refreshUserState()
+    
   },
+
+  refreshUserState: function() {
+    if(wx.getStorageSync('token')) {
+      this.setData({
+        isUserLogin: true
+      })
+    }else{
+      this.setData({
+        isUserLogin: false
+      })
+    }
+    if(this.data.isUserLogin) {
+      this.initUserInfo()
+    }else{
+      if (wx.getUserProfile) {
+        this.setData({
+          canIUseGetUserProfile: false
+        })
+      }
+    }
+  },
+
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -118,9 +147,67 @@ Page({
   },
 
   handleClick() {
-    console.log("什么情况?")
     this.setData({
       isShow: !this.data.isShow
     })
-  }
+  },
+  handleItemClicked: function(e) {
+    console.log(e.currentTarget.dataset.path)
+    wx.navigateTo({
+      url: e.currentTarget.dataset.path,
+    })
+  },
+
+  login() {
+    // wx.redirectTo({
+    //   url: '/pages/login/index'
+    // })
+  
+    App.login(() => {
+      this.initUserInfo()
+    })
+  
+  },
+
+  logout() {
+    App.WxService.showModal({
+          title: '友情提示', 
+          content: '确定要登出吗？', 
+      })
+      .then(data => data.confirm == 1 && this.signOut())
+  },
+  signOut() {
+    App.HttpService.signOut()
+    .then(res => {
+      const data = res.data
+      console.log(data)
+      if (data.meta.code == 0) {
+        App.WxService.removeStorageSync('token')
+        this.refreshUserState()
+        //App.WxService.redirectTo('/pages/login/index')
+      }
+    })
+  },
+
+  getUserProfile(e) {
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
+  },
+  getUserInfo(e) {
+    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
+
 })

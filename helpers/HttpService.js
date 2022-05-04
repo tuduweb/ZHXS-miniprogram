@@ -44,7 +44,8 @@ class HttpService extends WxRequest {
       },
       response(response) {
         wx.hideLoading()
-        if (response.statusCode === 401) {
+        console.log("response.data", response.data)
+        if (response.statusCode === 401 || response.data && response.data && response.data.meta && response.data.meta.code === 401) {
           wx.removeStorageSync('token')
           wx.redirectTo({
             url: '/pages/login/index'
