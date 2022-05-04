@@ -2,8 +2,12 @@
 
 <view id="jingji-panel">
   <view class="jingji-list">
-    <view class="jingji-item" wx:for="{{[1,2,3,4]}}" bindtap="onJingjiClicked">
-      <image src="/assets/images/jingji-btn{{item}}.png"></image>
+    <view class="jingji-item" wx:for='{{["故事剧情", "妆容服饰", "表演艺术", "强调技巧"]}}' bindtap="onJingjiClicked" data-title="{{item}}" data-id="{{index+1}}">
+      <image src="/assets/images/jingji-btn{{index + 1}}.png" alt="{{item}}"></image>
     </view>
   </view>
+</view>
+
+<view>
+<text bindtap="onGenerateClicked">生成套题</text>
 </view>
