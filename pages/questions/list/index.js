@@ -77,7 +77,9 @@ Page({
     })
 },
   goToScore: function(){
-    wx.redirectTo({url:'../result/score'})
+    wx.redirectTo({
+      url:'../result/score'
+    })
   },
 
   /**
@@ -123,9 +125,18 @@ Page({
 
   },
   onJingjiClicked: function(e) {
-    console.log("e", e.currentTarget.dataset)
+    console.log(e.currentTarget.dataset)
+    //生成题目
+    App.HttpService.matchStart()
+    .then(res => console.log)
+    .catch(err => console.log)
     // wx.navigateTo({
     //   url: '../detail/index'
     // })
+  },
+  onGenerateClicked: function(e) {
+    App.HttpService.matchGenerate()
+    .then(res => console.log)
+    .catch(err => console.log)
   }
 })

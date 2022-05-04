@@ -7,3 +7,7 @@
     </view>
   </view>
 </view>
+
+<view>
+<text bindtap="onGenerateClicked">生成套题</text>
+</view>
