@@ -19,7 +19,7 @@ Component({
    */
   data: {
     title: "学校",
-    salaryList: [{
+    dataList: [{
       key: '湘潭大学',
       value: 1
     },{
@@ -35,7 +35,7 @@ Component({
       key: '其他',
       value: 5
     }],
-    currentIndex: -1
+    currentIndex: 0
   },
 
   /**
@@ -44,13 +44,19 @@ Component({
   methods: {
     handleClose(e) {
       //通过事件传递的方式, 由子组件给父组件传递数据
-      this.triggerEvent('cancle', e, this.data.currentIndex)
+      console.log(e.currentTarget.dataset.type, this.data.dataList[this.data.currentIndex])
+      if(e.currentTarget.dataset.type == "submit") {
+        this.triggerEvent('cancle', this.data.dataList[this.data.currentIndex])
+      }else{
+        this.triggerEvent('cancle', {})
+      }
     },
-    handleSalaryChange(e) {
-      console.log(this.data.salaryList[e.detail.value[0]])
+    handleDataChange(e) {
+
       this.setData({
         currentIndex: e.detail.value[0]
       })
+
     }
   }
 })

@@ -40,7 +40,11 @@ Page({
     //   "school": "用户学校"
     // },
 
-    userInfo: {},
+    userInfo: {
+      "nickname": "用户昵称",
+      "school": "用户学校"
+    },
+
     hasUserInfo: false,
     canIUseGetUserProfile: false,
 
@@ -147,10 +151,31 @@ Page({
   },
 
   handleClick(e) {
-    if(e.type="cancle" && e.detail && e.detail.currentTarget && e.detail.currentTarget.dataset && e.detail.currentTarget.dataset.type) {
-      if(e.detail.currentTarget.dataset.type == "submit") {
-        //
+    if(e.detail && e.detail.key) {
+      
+      console.log(e.detail.key)
+
+      const originSchool = this.data.userInfo.school
+      if(e.detail.key == originSchool) {
+
+      }else{
+
+        this.setData({
+          "userInfo.school": e.detail.key
+        })
+
+        //更新结果到远程服务器
+        App.HttpService.profileUpdate({
+          school: e.detail.key
+        })
+
       }
+
+      
+      //
+    
+    }else{
+
     }
     this.setData({
       isShow: !this.data.isShow

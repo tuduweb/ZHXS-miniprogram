@@ -9,9 +9,9 @@
         <text bindtap="handleClose" data-type="submit">确定</text>
       </view>
     </view>
-    <picker-view bindchange="handleSalaryChange" class="my-picker">
+    <picker-view bindchange="handleDataChange" class="my-picker">
       <picker-view-column>
-        <view wx:for="{{salaryList}}" wx:key="*this" style="text-align: center;">{{item.key}}</view>
+        <view wx:for="{{dataList}}" wx:key="*this" style="text-align: center;">{{item.key}}</view>
       </picker-view-column>
     </picker-view>
   </view>
