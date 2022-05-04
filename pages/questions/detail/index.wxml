@@ -1,17 +1,37 @@
 <view>第<text>{{currentIndex}}</text>题</view>
 
-<view>题目：<text>{{questions[currentIndex%3].title}}</text></view>
-<view id="content">{{questions[currentIndex%3].content}}</view>
+<wxs module="fn">
+    module.exports = {
+      reverse: function(str) {
+        return str.reverse()
+      },
+      arr2Str: function(arr) {
+        return arr.join('、')
+      },
+      indexOf: function(str, val) {
+        if(str.indexOf(val) != -1) {
+          return true
+        } else {
+          return false
+        }
+      }
+    }
+  </wxs>
+
+<view>题目：答案个数：{{questions[currentIndex].answerCnt}}<text style="font-weight: bold;" wx:if="{{questions[currentIndex].answerCnt > 1}}">多选题</text></view>
+<view id="content">
+<text>{{questions[currentIndex].content ? questions[currentIndex].content : questions[currentIndex].title}}</text>
+</view>
 
 <view id="options">
   <block wx:for="{{questions[currentIndex].options}}">
-  <view data-option="{{index}}" bindtap="btn_choose" class="{{ choices[currentIndex] == index ? 'checked' : '' }}">选项{{index}} - {{item}}</view>
+  <view data-option="{{index}}" bindtap="btn_choose" class="{{ fn.indexOf(choices[currentIndex], index) ? 'checked' : '' }}"> {{choices[currentIndex].indexOf(index) }}   选项{{index}} - {{item}}</view>
 </block>
 </view>
 
 <view id="detail-choices">
-  <view wx:for="{{choices}}" bindtap="btn_goto" data-index="{{index}}" class="{{ choices[index] >= 0 ? 'checked' : '' }}">
-    {{index}}
+  <view wx:for="{{choices}}" bindtap="btn_goto" data-index="{{index}}" class="{{ choices[index].length > 0 ? 'checked' : '' }}">
+    {{index + 1}}
   </view>
 </view>
 

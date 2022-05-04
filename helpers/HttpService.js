@@ -23,6 +23,7 @@ class HttpService extends WxRequest {
       matchGenerate: '/match/generate',
       matchSubmit: '/match/submit',
       matchScore: '/match/score',
+      matchDetail: '/match/detail',
       studyDetail: '/study',
     }
     this.interceptors.use({
@@ -124,6 +125,9 @@ class HttpService extends WxRequest {
     })
   }
 
+  matchDetail(id) {
+    return this.getRequest(`${this.$$path.matchDetail}/${id}`)
+  }
   getStudyDetail(id) {
     return this.getRequest(`${this.$$path.studyDetail}/${id}`)
   }

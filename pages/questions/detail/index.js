@@ -167,19 +167,39 @@ Page({
     onLoad: function (options) {
         this.setData({
             questions: mockData.data.questions.datas,
-            choices: new Array(mockData.data.questions.questions.length).fill(-1)
+            choices: new Array(mockData.data.questions.questions.length).fill([])
         })
 
-        console.log(this.data.choices)
-        console.log(mockData.data.questions.datas)
+        if(options.id != "undefined")
+            this.matchDetail(options.id)
 
     },
     btn_choose: function (e) {
-        console.log(this.data.currentIndex, e.target.dataset.option)
+        //根据题目类型判断
+        let duoxuan = this.data.questions[this.data.currentIndex].answerCnt > 1
         let _key = 'choices[' + this.data.currentIndex + ']'
+        //深拷贝一个数组, 防止出现共用数组后使用push带来的非正常结果；或者在fill数据时做处理..使之不共享数组
+        let _choices = this.data.choices[this.data.currentIndex].concat()
+
+        if(duoxuan) {
+            let pos = this.data.choices[this.data.currentIndex].indexOf(e.target.dataset.option)
+            if(pos > -1) {
+                _choices.splice(pos, 1)
+            }else{
+                _choices.push(e.target.dataset.option)
+            }
+        }else{
+            _choices = [e.target.dataset.option]
+        }
+
+        console.log("index - choices", this.data.currentIndex, _choices)
+
         this.setData({
-            [_key]: e.target.dataset.option
+            [_key]: _choices
         })
+    },
+    goToScore: function (e) {
+        console.log("index - choices", this.data.currentIndex, this.data.choices, this.data.choices[this.data.currentIndex])
     },
     btn_goto: function (e) {
         //this.data.currentIndex = e.target.dataset.index
@@ -204,7 +224,7 @@ Page({
         this.matchSubmit(e)
 
         App.HttpService.matchSubmit({
-            id: '6235e9542921d348d1baed65',
+            id: this.data.id,
             choices: this.data.choices
         }).then(res => {
             console.log(res)
@@ -213,6 +233,22 @@ Page({
             })
         })
 
+    },
+    matchDetail: function(_id) {
+        App.HttpService.matchDetail(_id)
+        .then(res => {
+            //if(res.meta)
+            console.log(res)
+            if(res.statusCode == 200) {
+                this.setData({
+                    'questions': res.data.data.questionsData,
+                    'id': _id
+                })
+            }
+
+        }
+        )
+        .catch(err => console.log(err))
     },
     matchSubmit: function (e) {
 

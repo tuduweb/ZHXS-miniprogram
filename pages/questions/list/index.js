@@ -128,7 +128,23 @@ Page({
     console.log(e.currentTarget.dataset)
     //生成题目
     App.HttpService.matchStart()
-    .then(res => console.log)
+    .then(res => {
+      console.log("res", res)
+      if(res.statusCode == 200) {
+        // navigateTo res.data.data._id
+        return res.data.data._id
+      }
+      return -1
+    })
+    .then(_id => {
+      if(_id == -1) {
+        //发生错误
+        return
+      }
+      wx.navigateTo({
+        url: '../detail/index?id=' + _id
+      })
+    })
     .catch(err => console.log)
     // wx.navigateTo({
     //   url: '../detail/index'
