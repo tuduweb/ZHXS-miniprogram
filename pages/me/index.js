@@ -146,7 +146,12 @@ Page({
 
   },
 
-  handleClick() {
+  handleClick(e) {
+    if(e.type="cancle" && e.detail && e.detail.currentTarget && e.detail.currentTarget.dataset && e.detail.currentTarget.dataset.type) {
+      if(e.detail.currentTarget.dataset.type == "submit") {
+        //
+      }
+    }
     this.setData({
       isShow: !this.data.isShow
     })
@@ -195,10 +200,19 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
+        console.log("success", res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        //用户没有头像时该项为空。若用户更换头像，原有头像 URL 将失效。
+        App.HttpService.profileUpdate({
+          nickname: res.userInfo.nickName,
+          avatar: res.userInfo.avatarUrl
+        })
+      },
+      complete: res => {
+        //
       }
     })
   },

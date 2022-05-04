@@ -1,5 +1,4 @@
 <!--pages/questions/result/score.wxml-->
-<text>pages/questions/result/score.wxml</text>
 
 <view>
   <text id="score-num">{{scoreData.grade}}</text>分

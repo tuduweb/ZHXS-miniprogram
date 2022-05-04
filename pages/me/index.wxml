@@ -7,10 +7,11 @@
     </view>
     <view id="userInfo-infos">
       <view id="userInfo-userName">
-        <text>{{userInfo.nickname}}</text>
+        <text>{{userInfo.nickname ? userInfo.nickname : ""}}</text>
+        <text bindtap="getUserProfile" wx:if="{{!userInfo.nickname}}">获取用户信息</text>
       </view>
       <view id="userInfo-school">
-        <text>{{userInfo.school}}</text>
+        <text bindtap="handleClick">{{userInfo.school ? userInfo.school : "点击设置学校"}}</text>
       </view>
     </view>
   </view>
@@ -18,15 +19,15 @@
   <view id="top-msg-panel">
     <view id="msg-lowCase">
       <view class="title">低分集</view>
-      <view class="value"><text>10</text></view>
+      <view class="value"><text>{{userInfo.difenSet}}</text></view>
     </view>
     <view id="msg-average">
       <view class="title">选段平均分</view>
-      <view class="value"><text>70</text></view>
+      <view class="value"><text>{{userInfo.avgGrade}}</text></view>
     </view>
     <view id="msg-minutes">
       <view class="title">学习（分钟）</view>
-      <view class="value"><text>120</text>%</view>
+      <view class="value"><text>{{userInfo.studyTime}}</text>#</view>
     </view>
   </view>
 
@@ -53,21 +54,22 @@
 <view id="login-prompt">
   <text class="prompt-text">请先登录，获取更多精彩</text>
   <button class="login-button" bindtap="login">点击登录</button>
+  <button bindtap="getUserProfile"> 获取头像昵称 </button>
   
-  <block wx:if="{{!hasUserInfo}}">
+  <!-- <block wx:if="{{!hasUserInfo}}">
       <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
       <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取openid </button>
     </block>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+    </block> -->
 
 </view>
 </block>
 
 <!-- <button bindtap="handleClick">点我显示弹窗{{isShow}}</button> -->
-<dialog isShow="{{isShow}}" bind:cancle="handleClick"/>
+<dialog isShow="{{isShow}}" title="设置学校" bind:cancle="handleClick"/>
 
 <!--pages/usercenter/usercenter.wxml-->
 <!-- <view class="weui-cells__title">

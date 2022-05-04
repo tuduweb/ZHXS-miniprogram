@@ -7,6 +7,7 @@ class HttpService extends WxRequest {
     this.$$path = {
       wechatSignUp: '/user/wechat/sign/up',
       wechatSignIn: '/user/wechat/sign/in',
+      profileUpdate: '/user/info',
       decryptData: '/user/wechat/decrypt/data',
       signIn: '/user/sign/in',
       signOut: '/user/sign/out',
@@ -83,6 +84,12 @@ class HttpService extends WxRequest {
 
   wechatDecryptData(params) {
     return this.postRequest(this.$$path.decryptData, {
+      data: params,
+    })
+  }
+
+  profileUpdate(params) {
+    return this.postRequest(this.$$path.profileUpdate, {
       data: params,
     })
   }

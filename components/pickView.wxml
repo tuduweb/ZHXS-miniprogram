@@ -3,10 +3,10 @@
   <view class="salary-back {{isShow? 'active' : ''}}"></view>
   <view class="salary-content {{isShow ? 'active' : ''}}">
     <view class="salary-modal-title">
-      <view class="salary-list-title">薪资单位</view>
+      <view class="salary-list-title">{{title}}</view>
       <view class="salary-btns">
-        <text bindtap="handleClose">取消</text>
-        <text bindtap="handleClose">确定</text>
+        <text bindtap="handleClose" data-type="cancel">取消</text>
+        <text bindtap="handleClose" data-type="submit">确定</text>
       </view>
     </view>
     <picker-view bindchange="handleSalaryChange" class="my-picker">

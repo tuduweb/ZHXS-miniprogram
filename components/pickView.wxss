@@ -62,7 +62,7 @@ picker-view-column {
 }
 
 .salary-btns {
-  width: 100%;
+  width: 686rpx;
   position: absolute;
   height: 110rpx;
   display: flex;
