@@ -2,8 +2,8 @@
 
 <view id="jingji-panel">
   <view class="jingji-list">
-    <view class="jingji-item" wx:for="{{[1,2,3,4]}}" bindtap="onJingjiClicked">
-      <image src="/assets/images/jingji-btn{{item}}.png"></image>
+    <view class="jingji-item" wx:for="{{['故事剧情', '妆容服饰', '表演艺术', '强调技巧']}}" bindtap="onJingjiClicked" data-classtype="{{index + 1}}" data-title="{{item}}">
+      <image src="/assets/images/jingji-btn{{index + 1}}.png"></image>
     </view>
   </view>
 </view>

@@ -1,5 +1,5 @@
 <!--pages/me/index.wxml-->
-<view id="userInfo-panel" class="panel">
+<view id="userInfo-panel" class="panel" wx:if="{{isUserLogin}}">
   <view id="top-info-panel">
     <view id="userInfo-avatar">
       <image src="/assets/images/faces/face1.jpeg"></image>
@@ -30,6 +30,7 @@
   </view>
 
 </view>
+<view wx:else>请先登录</view>
 
 <view id="moreInfo-panel" class="panel">
 
@@ -44,6 +45,9 @@
   </view>
 
 </view>
+
+<button bindtap="handleClick">点我显示弹窗{{isShow}}</button>
+<dialog isShow="{{isShow}}" bind:cancle="handleClick"/>
 
 <!--pages/usercenter/usercenter.wxml-->
 <!-- <view class="weui-cells__title">

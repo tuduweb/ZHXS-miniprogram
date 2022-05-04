@@ -22,8 +22,7 @@
 
     "pages/questions/result/score",
     "pages/questions/detail/index",
-    "pages/login/index",
-    "pages/user/index"
+    "pages/login/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f5eee6",

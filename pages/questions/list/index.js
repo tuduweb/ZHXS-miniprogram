@@ -123,9 +123,9 @@ Page({
 
   },
   onJingjiClicked: function(e) {
-    console.log(e)
-    wx.navigateTo({
-      url: '../detail/index'
-    })
+    console.log("e", e.currentTarget.dataset)
+    // wx.navigateTo({
+    //   url: '../detail/index'
+    // })
   }
 })

@@ -1,4 +1,11 @@
 // pages/learning/list/index.js
+const App = getApp()
+const idLists = [
+  '6266a1cae81e8e1e538bd4f6',
+  '6266a1e5e81e8e1e538bd4f7',
+  '6266a0cce81e8e1e538bd4f5'
+]
+
 Page({
 
   /**
@@ -66,8 +73,12 @@ Page({
   onButtonClicked: function(e) {
     console.log(e)
     console.log(e.currentTarget.dataset.id)
+    //页面需要权限，故判断用户是否登录, 并执行登录等..
+
+    //跳转到页面
+    let _studyId = idLists[e.currentTarget.dataset.id - 1]
     wx.navigateTo({
-      url: '/pages/learning/detail/index?id='+e.currentTarget.dataset.id,
+      url: '/pages/learning/detail/index?id='+_studyId,
       success: (res) => {},
       fail: (res) => {},
       complete: (res) => {},

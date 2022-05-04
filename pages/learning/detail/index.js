@@ -140,7 +140,8 @@ Page({
     logtxt: 'loglog',
 
     userInfo: {
-      studyTimeCnt: 0
+      studyTimeCnt: 0,
+      studyData: []
     }
   },
 
@@ -148,27 +149,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    'http://172.20.144.113:8080/video1.mp4';
+    
     //获取study_id
-    console.log(options.query)
+    console.log("options", options)
+    if(options.id) {
+      console.log("设置了id")
+    }
+    this.setData({
+      studyId: options.id
+    })
+    const id = this.data.studyId
+    App.HttpService.getStudyDetail(id)
+    .then(res => {
+        const data = res.data
+        console.log("studyDetail", data)
+        if (data.meta.code == 0) {
+          //调用成功
+          this.setData({
+            videoUrl: data.data.videoUrl,
+            comments: data.data.coments,
+            segments: data.data.segments
+          })
+        } else {
+          //发生错误
+        }
+    })
 
-    // const id = this.data.studyId
-    // App.HttpService.getStudyDetail(id)
-    // .then(res => {
-    //     const data = res.data
-    //     console.log("studyDetail", data)
-    //     if (data.meta.code == 0) {
-    //         //
-    //     }
-    // })
-
+    this.initStudySystem()
     this.initStreamRecord()
     this.initWave()
-
-
-
-    //this.DrawCanvas()
-
 
   },
 
@@ -176,7 +186,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.parseUrlAudio("http://172.20.144.113:8080/example/media/lc_3.wav")
+    //this.parseUrlAudio("http://172.20.144.113:8080/example/media/lc_3.wav")
   },
 
   /**
@@ -492,7 +502,15 @@ Page({
     let videoContext = wx.createVideoContext('study-video');
     videoContext.play()
   },
+  streamSegmentReplay: function(e) {
+    let detail = e.detail || {} // 自定义组件触发事件时提供的detail对象
+    let buttonItem = detail.buttonItem || {}
 
+    //可能要加入, 在播放时?禁止按重来
+    let videoContext = wx.createVideoContext('study-video');
+    videoContext.seek(this.data.segments[this.data.currentSegmentIndex].start)
+    videoContext.play()
+  },
   initWave() {
     const _this = this;
     const query = this.createSelectorQuery();
@@ -592,6 +610,15 @@ Page({
         })
       }
     })
+  },
+
+
+  //userSystem
+  initStudySystem: function() {
+    //
+    console.log("init study system")
+
+
   }
 
 })

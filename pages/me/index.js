@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isShow: false, 
 		items: [
 			{
 				icon: '../../assets/images/more_icon1@2x.png',
@@ -15,7 +16,7 @@ Page({
 			}, 
 			{
 				icon: '../../assets/images/more_icon2@2x.png',
-				text: '笔记本',
+				text: '趣味拼图',
 				path: '/pages/address/list/index'
 			}, 
 			{
@@ -35,8 +36,8 @@ Page({
 			},
     ],
     userInfo: {
-      "nickname": "大头大头",
-      "school": "国际实验学校"
+      "nickname": "用户昵称",
+      "school": "用户学校"
     }
   },
 
@@ -59,20 +60,7 @@ Page({
    */
   onShow: function () {
     //console.log(getCurrentPages()[0]["route"])
-
-
-    App.HttpService.userInfo()
-    .then(res => {
-      console.log(res.data)
-      let data = res.data
-      if (data.meta.code == 0) {
-        this.setData({
-          userInfo: data.data
-        })
-      }else{
-        //
-      }
-    })
+    this.initUserInfo()
   },
 
   /**
@@ -108,5 +96,31 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  initUserInfo: function() {
+
+    App.HttpService.userInfo()
+    .then(res => {
+      console.log(res.data)
+      let data = res.data
+      if (data.meta.code == 0) {
+        this.setData({
+          userInfo: data.data,
+          isUserLogin: true
+        })
+      }else{
+        //
+      }
+    })
+    .catch(err => console.log)
+
+  },
+
+  handleClick() {
+    console.log("什么情况?")
+    this.setData({
+      isShow: !this.data.isShow
+    })
   }
 })
