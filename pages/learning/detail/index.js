@@ -1,4 +1,7 @@
 // pages/learning/detail/index.js
+
+import __config from '../../../etc/config'
+
 import {
   WaveView
 } from '../../../helpers/WaveView';
@@ -351,7 +354,7 @@ Page({
       })
       wx.uploadFile({
         //url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
-        url: "http://172.20.144.113:3001/api/study/1/record/" + (this.data.currentSegmentIndex + 1),
+        url: __config.domain + "api/study/1/record/" + (this.data.currentSegmentIndex + 1),
         //url: "http://8.134.216.143:5000/upload",
         filePath: res.tempFilePath,
         name: "file",

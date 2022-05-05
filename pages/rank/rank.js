@@ -1,4 +1,6 @@
 // pages/rank/rank.js
+const App = getApp()
+
 Page({
 
   /**
@@ -12,52 +14,57 @@ Page({
         school: "湘潭市一中",
         point: "12300"
       },
-      {
-        userName: "名字很长很炫酷",
-        avatar: "avtar",
-        school: "湘潭市二中",
-        point: "10000"
-      },
-      {
-        userName: "可爱的哥哥",
-        avatar: "avtar",
-        school: "湘潭大学附属中学",
-        point: "9876"
-      },
-      {
-        userName: "呆呆的西瓜",
-        avatar: "avtar",
-        school: "湘潭市一中",
-        point: "8000"
-      },
-      {
-        userName: "离谱的儿子",
-        avatar: "avtar",
-        school: "湘钢一中",
-        point: "7654"
-      },
-      {
-        userName: "名字很长很炫酷的",
-        avatar: "avtar",
-        school: "湘潭市十中",
-        point: "3200"
-      },
-      {
-        userName: "爱情的眼泪",
-        avatar: "avtar",
-        school: "湘潭市四中",
-        point: "189"
-      }
-    ]
+      // {
+      //   userName: "名字很长很炫酷",
+      //   avatar: "avtar",
+      //   school: "湘潭市二中",
+      //   point: "10000"
+      // },
+      // {
+      //   userName: "可爱的哥哥",
+      //   avatar: "avtar",
+      //   school: "湘潭大学附属中学",
+      //   point: "9876"
+      // },
+      // {
+      //   userName: "呆呆的西瓜",
+      //   avatar: "avtar",
+      //   school: "湘潭市一中",
+      //   point: "8000"
+      // },
+      // {
+      //   userName: "离谱的儿子",
+      //   avatar: "avtar",
+      //   school: "湘钢一中",
+      //   point: "7654"
+      // },
+      // {
+      //   userName: "名字很长很炫酷的",
+      //   avatar: "avtar",
+      //   school: "湘潭市十中",
+      //   point: "3200"
+      // },
+      // {
+      //   userName: "爱情的眼泪",
+      //   avatar: "avtar",
+      //   school: "湘潭市四中",
+      //   point: "189"
+      // }
+    ],
+    statistic: {
+      "sum": 0,
+      "highest": 0,
+      "accuracy": 0
+    }
   },
+
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      top3: this.data.ranks.slice(0, 3)
-    })
+    this.getRank()
   },
 
   /**
@@ -71,6 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getRank()
 
   },
 
@@ -107,5 +115,26 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getRank: function() {
+    App.HttpService.getRank()
+    .then(res => {
+      let data = res.data
+      if (data.meta.code == 0) {
+        this.setData({
+          ranks: data.data.week.rank,
+          top3: data.data.week.rank.slice(0, 3),
+          otherRank: data.data.week.rank.slice(3),
+          statistic: data.data.week.statistic
+        })
+
+        // this.setData({
+        //   top3: this.data.ranks.slice(0, 3),
+        //   otherRank: this.data.ranks.slice(3, -1),
+        // })
+      }
+    })
+    .catch(err => console.log(err))
   }
 })

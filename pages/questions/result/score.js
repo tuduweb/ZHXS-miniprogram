@@ -80,8 +80,8 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '成绩分享了: ' + this.data.scoreData.grade,
-      path: 'pages/questions/result/score?matchId=6235e9542921d348d1baed65&fromUserId=6235e2388940b13a7a629dc1'
+      title: '在朝花戏拾取得了好成绩: ' + this.data.scoreData.grade,
+      path: 'pages/questions/result/score?matchId='+this.data.id+'&fromUserId='+this.data.fromUserId
     }
   },
 

@@ -226,8 +226,13 @@ Page({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
         console.log("success", res)
+        let userInfo = {}
+        userInfo = this.data.userInfo
+        userInfo.nickname = res.userInfo.nickName
+        userInfo.avatar = res.userInfo.avatarUrl
+        console.log(userInfo)
         this.setData({
-          userInfo: res.userInfo,
+          userInfo: userInfo,
           hasUserInfo: true
         })
         //用户没有头像时该项为空。若用户更换头像，原有头像 URL 将失效。

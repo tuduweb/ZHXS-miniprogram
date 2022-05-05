@@ -3,7 +3,7 @@
   <view class="bg">
     <image src="/assets/images/index-bg1.jpg" mode="aspectFill"></image>
   </view>
-  <view class="topbar front">
+  <!-- <view class="topbar front">
     <view class="sign-icon">
       <image src="/assets/images/signIn.png"></image>
     </view>
@@ -16,7 +16,7 @@
       </view>
     </view>
     <view class="voice-icon"><image src="/assets/images/voice-icon@2x.png"></image></view>
-  </view>
+  </view> -->
 
   <view class="desc-panel front">
     <view class="left-img">

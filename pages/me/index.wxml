@@ -3,7 +3,7 @@
 <view id="userInfo-panel" class="panel">
   <view id="top-info-panel">
     <view id="userInfo-avatar">
-      <image src="/assets/images/faces/face1.jpeg"></image>
+      <image src="{{userInfo.avatar ? userInfo.avatar : '/assets/images/faces/face1.jpeg'}}"></image>
     </view>
     <view id="userInfo-infos">
       <view id="userInfo-userName">
@@ -54,7 +54,7 @@
 <view id="login-prompt">
   <text class="prompt-text">请先登录，获取更多精彩</text>
   <button class="login-button" bindtap="login">点击登录</button>
-  <button bindtap="getUserProfile"> 获取头像昵称 </button>
+  <!-- <button bindtap="getUserProfile"> 获取头像昵称 </button> -->
   
   <!-- <block wx:if="{{!hasUserInfo}}">
       <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>

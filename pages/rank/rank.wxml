@@ -7,15 +7,15 @@
 <view id="top-msg-panel">
   <view id="msg-total">
     <view class="title">答题总数</view>
-    <view class="value"><text>58</text></view>
+    <view class="value"><text>{{statistic.sum}}</text></view>
   </view>
   <view id="msg-maxPoint">
     <view class="title">最高分数</view>
-    <view class="value"><text>58</text></view>
+    <view class="value"><text>{{statistic.highest}}</text></view>
   </view>
   <view id="msg-accuracy">
     <view class="title">正确率</view>
-    <view class="value"><text>58</text>%</view>
+    <view class="value"><text>{{statistic.accuracy}}</text>%</view>
   </view>
 </view>
 
@@ -38,9 +38,9 @@
   </view>
 </view>
 
-<view class="item" wx:for="{{ranks}}">
+<view class="item" wx:for="{{otherRank}}">
   <view class="item-index">
-    <text>{{index + 1}}</text>
+    <text>{{index + 4}}</text>
   </view>
   <view class="item-avatar">
     <image src="/assets/images/faces/face1.jpeg"></image>

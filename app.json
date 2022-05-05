@@ -1,15 +1,15 @@
 {
   "pages": [
+    "pages/learning/list/index",
+    "pages/learning/detail/index",
 
-
-    "pages/admin/index",
     "pages/wave/index",
+
+    "pages/help/list/index",
 
 
     "pages/questions/list/index",
 
-    "pages/learning/list/index",
-    "pages/learning/detail/index",
 
     "pages/me/index",
     "pages/me/studyRecord/index",
@@ -38,12 +38,6 @@
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [
-      {
-        "pagePath": "pages/admin/index",
-        "iconPath": "assets/images/bottom-btn4.png",
-        "selectedIconPath": "assets/images/bottom-btn4-active.png",
-        "text": "管理"
-      },
       {
         "pagePath": "pages/learning/list/index",
         "iconPath": "assets/images/bottom-btn1.png",
