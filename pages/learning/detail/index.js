@@ -135,6 +135,8 @@ Page({
 
     records: [],
 
+    isAuthRecord: false,
+
     grade: 0,
     commentId: -1,
     logtxt: 'loglog',
@@ -208,6 +210,8 @@ Page({
     const videoObj = wx.createVideoContext('study-video')
     console.log(videoObj)
     //videoObj.pause()
+
+    this.allocAuthorize()
 
   },
 
@@ -612,12 +616,39 @@ Page({
     })
   },
 
+  allocAuthorize: function() {
+    //申请授权
+    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
+    var that = this
+    wx.getSetting({
+      success(res) {
+        console.log("权限", res)
+        if (!res.authSetting['scope.record']) {
+          wx.authorize({
+            scope: 'scope.record',
+            success () {
+              // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+              that.setData({
+                isAuthRecord: true
+              })
+              console.log("授权成功")
+            }
+          })
+        }else{
+          that.setData({
+            isAuthRecord: true
+          })
+        }
+      }
+    })
+
+  },
+
 
   //userSystem
   initStudySystem: function() {
     //
     console.log("init study system")
-
 
   }
 

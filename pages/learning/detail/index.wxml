@@ -11,14 +11,16 @@
 
 <view id="button-list">
   <button class="btn1" bindtap="streamNext">播放</button>
-  <button class="btn2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd">尝试</button>
+  <button class="btn2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd" disabled="{{!isAuthRecord}}">尝试</button>
   <button class="btn3" bindtap="streamSegmentReplay">重来</button>
 </view>
 </view>
 
 <!-- <canvas id="wave2" type="2d"></canvas> -->
-
-<view id="result-panel">
+<view id="allocAuth" wx:if="{{!isAuthRecord}}">
+  <button bindtap="allocAuthorize">暂无录音权限，立即申请权限体验功能</button>
+</view>
+<view id="result-panel" hidden="{{!isAuthRecord}}">
   <view id="result-score">
     <text>{{grade ? grade : "#"}}</text>
   </view>
