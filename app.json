@@ -1,7 +1,12 @@
 {
   "pages": [
+
+    "pages/pintu/list/index",
+
     "pages/learning/list/index",
     "pages/learning/detail/index",
+
+    "pages/pintu/game/index",
 
     "pages/wave/index",
 

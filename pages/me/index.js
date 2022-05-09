@@ -14,11 +14,11 @@ Page({
 				text: '学习记录',
 				path: '/pages/me/studyRecord/index'
 			}, 
-			// {
-			// 	icon: '../../assets/images/more_icon2@2x.png',
-			// 	text: '趣味拼图',
-			// 	path: '/pages/address/list/index'
-			// }, 
+			{
+				icon: '../../assets/images/more_icon2@2x.png',
+				text: '趣味拼图',
+				path: '/pages/pintu/list/index'
+			}, 
 			// {
 			// 	icon: '../../assets/images/more_icon3@2x.png',
 			// 	text: '我的分享',
