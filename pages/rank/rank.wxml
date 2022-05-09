@@ -1,8 +1,12 @@
 <!--pages/rank/rank.wxml-->
-<!-- <view id="top-nav">
-  <view>周榜</view>
-  <view>月榜</view>
-</view> -->
+<view id="top-nav">
+  <view class="{{currentType == 'day' ? 'hover' : ''}}" bindtap="navClicked" data-type="day">
+    <text>日榜</text>
+  </view>
+  <view class="{{currentType == 'week' ? 'hover' : ''}}" bindtap="navClicked" data-type="week"> 
+    <text>周榜</text>
+  </view>
+</view>
 
 <view id="top-msg-panel">
   <view id="msg-total">

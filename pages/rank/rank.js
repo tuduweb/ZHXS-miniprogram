@@ -7,55 +7,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ranks: [
-      {
-        userName: "恋爱的犀牛",
-        avatar: "avtar",
-        school: "湘潭市一中",
-        point: "12300"
-      },
-      // {
-      //   userName: "名字很长很炫酷",
-      //   avatar: "avtar",
-      //   school: "湘潭市二中",
-      //   point: "10000"
-      // },
-      // {
-      //   userName: "可爱的哥哥",
-      //   avatar: "avtar",
-      //   school: "湘潭大学附属中学",
-      //   point: "9876"
-      // },
-      // {
-      //   userName: "呆呆的西瓜",
-      //   avatar: "avtar",
-      //   school: "湘潭市一中",
-      //   point: "8000"
-      // },
-      // {
-      //   userName: "离谱的儿子",
-      //   avatar: "avtar",
-      //   school: "湘钢一中",
-      //   point: "7654"
-      // },
-      // {
-      //   userName: "名字很长很炫酷的",
-      //   avatar: "avtar",
-      //   school: "湘潭市十中",
-      //   point: "3200"
-      // },
-      // {
-      //   userName: "爱情的眼泪",
-      //   avatar: "avtar",
-      //   school: "湘潭市四中",
-      //   point: "189"
-      // }
-    ],
-    statistic: {
-      "sum": 0,
-      "highest": 0,
-      "accuracy": 0
-    }
+    day: {
+      ranks: [
+        {
+          userName: "恋爱的犀牛",
+          avatar: "avtar",
+          school: "湘潭市一中",
+          point: "12300"
+        },
+      ],
+      statistic: {
+        "sum": 0,
+        "highest": 0,
+        "accuracy": 0
+      }
+    },
+
+    week: {
+      ranks: [
+        {
+          userName: "恋爱的犀牛",
+          avatar: "avtar",
+          school: "湘潭市一中",
+          point: "12300"
+        },
+      ],
+      statistic: {
+        "sum": 0,
+        "highest": 0,
+        "accuracy": 0
+      }
+    },
+
+    currentType: 'week'
   },
 
 
@@ -122,12 +106,26 @@ Page({
     .then(res => {
       let data = res.data
       if (data.meta.code == 0) {
-        this.setData({
+
+        let week = {
           ranks: data.data.week.rank,
           top3: data.data.week.rank.slice(0, 3),
           otherRank: data.data.week.rank.slice(3),
           statistic: data.data.week.statistic
+        }
+        let day = {
+          ranks: data.data.day.rank,
+          top3: data.data.day.rank.slice(0, 3),
+          otherRank: data.data.day.rank.slice(3),
+          statistic: data.data.day.statistic
+        }
+        this.setData({
+          week: week,
+          day: day
         })
+
+        this.navClicked()
+
 
         // this.setData({
         //   top3: this.data.ranks.slice(0, 3),
@@ -136,5 +134,24 @@ Page({
       }
     })
     .catch(err => console.log(err))
+  },
+  navClicked: function(e) {
+    if(e && e.currentTarget.dataset.type == 'week') {
+      this.setData({
+        currentType: 'week',
+        ranks: this.data.week.ranks,
+        statistic: this.data.week.statistic,
+        top3: this.data.week.top3,
+        otherRank: this.data.week.otherRank
+      })
+    }else{
+      this.setData({
+        currentType: 'day',
+        ranks: this.data.day.ranks,
+        statistic: this.data.day.statistic,
+        top3: this.data.day.top3,
+        otherRank: this.data.day.otherRank
+      })
+    }
   }
 })

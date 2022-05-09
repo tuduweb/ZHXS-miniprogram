@@ -5,11 +5,22 @@
 #top-nav{
   text-align: center;
   display: flex;
+  width: 500rpx;
+  margin: 0 125rpx;
   margin-top: 45rpx;
 }
 
 #top-nav>view{
   width: 50%;
+}
+#top-nav>view[class="hover"]>text {
+  color: #ccc;
+  font-weight: bold;
+}
+#top-nav>view>text{
+  display: block;
+  color: #FFF;
+  font-size: 1.2em;
 }
 
 #rank{
