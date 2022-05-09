@@ -1,0 +1,11 @@
+<!--pages/learning/start/index.wxml-->
+<view id="index-start">
+  <view id="start-block">
+    <image src="http://localhost:8082/start-block.png"></image>
+  </view>
+  <view id="start-list">
+    <view class="list-item" wx:for="{{[1, 2, 3]}}" bindtap="onButtonClicked" data-id="{{item}}">
+      <image src="/assets/images/btn-{{item}}.png"></image>
+    </view>
+  </view>
+</view>

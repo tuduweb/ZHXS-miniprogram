@@ -1,26 +1,38 @@
 <!--pages/learning/detail/index.wxml-->
 
-<view id="video-panel">
+<view id="video-panel" class="wenli-bg">
   <view id="video">
-  <video id="study-video" src="{{videoUrl}}" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="false" bindtimeupdate="onVideoTimeUpdate" binderror="onVideoError"></video>
-</view>
+    <video id="study-video" src="{{videoUrl}}" controls="false" show-fullscreen-btn="false" show-center-play-btn="false" autoplay="false" bindtimeupdate="onVideoTimeUpdate" binderror="onVideoError"></video>
+  </view>
 
-<view id="video-sub">
-  <text>{{segments[currentSegmentIndex].speaker}} : {{segments[currentSegmentIndex].txt}}</text>
-</view>
+  <view id="video-sub">
+    <text>{{segments[currentSegmentIndex].speaker}} : {{segments[currentSegmentIndex].txt}}</text>
+  </view>
 
-<view id="button-list">
-  <button class="btn1" bindtap="streamNext">播放</button>
+  <view id="button-list">
+    <!-- <button class="btn1" bindtap="streamNext">播放</button>
   <button class="btn2" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd" disabled="{{!isAuthRecord}}">尝试</button>
-  <button class="btn3" bindtap="streamSegmentReplay">重来</button>
-</view>
+  <button class="btn3" bindtap="streamSegmentReplay">重来</button> -->
+
+    <view class="button" bindtap="streamNext">
+      <image src="/assets/images/study-btn-start.png"></image>
+    </view>
+    <view class="button" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd" disabled="{{!isAuthRecord}}">
+      <image src="/assets/images/study-btn-record.png"></image>
+    </view>
+    <view class="button" bindtap="streamSegmentReplay">
+      <image src="/assets/images/study-btn-replay.png"></image>
+    </view>
+
+
+  </view>
 </view>
 
 <!-- <canvas id="wave2" type="2d"></canvas> -->
 <view id="allocAuth" wx:if="{{!isAuthRecord}}">
   <button bindtap="allocAuthorize">暂无录音权限，立即申请权限体验功能</button>
 </view>
-<view id="result-panel" hidden="{{!isAuthRecord}}">
+<view id="result-panel" class="wenli-bg" hidden="{{!isAuthRecord}}">
   <view id="result-score">
     <text>{{grade ? grade : "#"}}</text>
   </view>
@@ -34,16 +46,15 @@
       <image src="/assets/images/title_yjfk@2x.png" style="margin-top: 10rpx;margin-left: 20rpx;vertical-align: middle;width:200rpx; height: 40rpx;"></image>
     </view>
     <view class="content">
-      {{commentId < 0 ? "请先评测" : comments[commentId]}}
+      {{commentId < 0 ? "请先评测" : comments[commentId]}} </view>
     </view>
   </view>
-</view>
 
-<!-- {{logtxt}}
+  <!-- {{logtxt}}
 <view>
 {{userInfo.studyTimeCnt}}
 </view> -->
-<!-- <view id="records">
+  <!-- <view id="records">
   <view class="record-item" wx:for="{{records}}" bindtap="streamAudioPlay" data-filePath="{{item.tempFilePath}}">
     <text>{{index}}</text>
     <text>{{item.tempFilePath}}</text>

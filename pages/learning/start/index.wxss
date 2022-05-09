@@ -1,0 +1,29 @@
+/* pages/learning/start/index.wxss */
+@import '/assets/styles/background.wxss';
+page{
+  height: 90vh;
+  padding-top: 10vh;
+}
+#index-start{
+  display: flex;
+  flex-direction: row;
+  width: 710rpx;
+  margin:0 20rpx;
+}
+
+#start-block, #start-block>image{
+  width: 456rpx;
+  height: 946rpx;
+}
+
+#start-list{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.list-item{
+  margin-bottom: 180rpx;
+}
+.list-item, .list-item>image{
+  width: 262rpx;
+  height: 80rpx;
+}

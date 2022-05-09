@@ -2,6 +2,10 @@
 
 @import '/assets/styles/background.wxss';
 
+page{
+  height: 95vh;
+}
+
 #userInfo-panel{
   height: 25vh;
   border-top-left-radius: 25rpx;

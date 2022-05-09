@@ -1,12 +1,20 @@
 {
   "pages": [
+    "pages/learning/start/index",
 
-    "pages/pintu/list/index",
+    
+    "pages/questions/detail",
+
+    "pages/questions/detail/index",
+
+
 
     "pages/learning/list/index",
+  
     "pages/learning/detail/index",
 
     "pages/pintu/game/index",
+    "pages/pintu/list/index",
 
     "pages/wave/index",
 
@@ -21,13 +29,11 @@
 
     "pages/rank/rank",
 
-    "pages/questions/detail",
 
     "pages/start/index",
     "pages/index/index",
 
     "pages/questions/result/score",
-    "pages/questions/detail/index",
     "pages/login/index"
   ],
   "window": {
@@ -44,7 +50,7 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/learning/list/index",
+        "pagePath": "pages/learning/start/index",
         "iconPath": "assets/images/bottom-btn1.png",
         "selectedIconPath": "assets/images/bottom-btn1-active.png",
         "text": "练习"
