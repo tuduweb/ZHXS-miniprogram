@@ -113,7 +113,7 @@ class HttpService extends WxRequest {
   matchStart(typeId) {
     console.log("typeId", typeId, typeId == undefined)
     if (typeId) {
-      return this.getRequest(`${this.$$path.matchStart}/${typeId}`)
+      return this.getRequest(`${this.$$path.matchStart}?tid=${typeId}`)
     } else {
       return this.getRequest(this.$$path.matchStart)
     }

@@ -7,6 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    categories: [
+      {
+        'tid': 1,
+        'title': "故事剧情",
+      },
+      {
+        'tid': 2,
+        'title': "妆容服饰",
+      },
+      {
+        'tid': 3,
+        'title': "表演艺术",
+      },
+      {
+        'tid': 4,
+        'title': "腔调技巧",
+      },
+    ]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -67,11 +85,11 @@ Page({
   },
   onJingjiClicked: function(e) {
     console.log(e.currentTarget.dataset)
-    //生成题目
-    App.HttpService.matchStart()
+
+    App.HttpService.matchStart(e.currentTarget.dataset.tid)
     .then(res => {
       console.log("res", res)
-      if(res.statusCode == 200) {
+      if(res.statusCode == 200 && res.data.meta.code == 0) {
         // navigateTo res.data.data._id
         return res.data.data._id
       }
