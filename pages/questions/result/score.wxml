@@ -1,7 +1,60 @@
 <!--pages/questions/result/score.wxml-->
 
-<view>
+<!-- <view>
   <text id="score-num">{{scoreData.grade}}</text>分
 </view>
-<!-- <view><text>来源：{{fromUserId}}</text></view> -->
-<button open-type="share">分享给好友</button>
+<view><text>来源：{{fromUserId}}</text></view>
+<button open-type="share">分享给好友</button> -->
+
+
+<view id="score-page" class="wenli-bg">
+  <view class="score-top">
+    <view class="bg">
+      <image src="/assets/images/avatar-bg.png"></image>
+    </view>
+    <view class="avatar">
+      <image src="https://thirdwx.qlogo.cn/mmopen/vi_32/RP9K73sw8yM5eLVniasIYZaz7zdYew8LERWdxufd8AzqiaIYMCDepSKsI5ONUohuh0251KjrImicyBZuQXJRaicaTA/0"></image>
+    </view>
+  </view>
+
+  <view class="score-panel">
+    <view class="bg">
+      <image src="http://127.0.0.1:8082/score-main.png"></image>
+    </view>
+    <view class="score-num">
+      <text>{{scoreData.grade / 100}}</text>
+    </view>
+
+    <view class="score-list">
+      <view class="list-item">
+        <text>{{scoreData.accuracy / 100}}%</text>
+      </view>
+      <view class="list-item">
+        <text>+{{results.point}}</text>
+      </view>
+      <view class="list-item">
+        <text>{{results.trueNum}}</text>
+      </view>
+      <view class="list-item">
+        <text>{{results.finish}}</text>
+      </view>
+    </view>
+
+    <view class="btn">
+      <view class="btn-item">
+        <image src="/assets/images/learn-btn-share.png"></image>
+      </view>
+      <view class="btn-item">
+        <image src="/assets/images/learn-btn-next.png"></image>
+      </view>
+    </view>
+
+    <view class="score-bottom">
+      <button open-type="share" style="background-color: #8e2a2a; color: #FFF;">分享给好友</button>
+    </view>
+
+  </view>
+
+
+
+</view>

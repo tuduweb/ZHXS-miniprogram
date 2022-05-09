@@ -1,0 +1,80 @@
+<!--pages/questions/dati/index.wxml-->
+
+<!-- <view id="dati">
+<view id="dati-top">
+<text>第一题</text>
+</view>
+<view id="dati-main">
+<text>青衣作为旦行的一支,扮演娴淑的中、青年 女子角色。其妆容有            特点。 </text>
+</view>
+<view id="dati-bottom">
+</view>
+</view> -->
+
+<wxs module="fn">
+  module.exports = {
+    reverse: function (str) {
+      return str.reverse()
+    },
+    arr2Str: function (arr) {
+      return arr.join('、')
+    },
+    indexOf: function (str, val) {
+      if (str.indexOf(val) != -1) {
+        return true
+      } else {
+        return false
+      }
+    },
+    numToChar: function (num) {
+      var _dict = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+      return _dict[num]
+    }
+  }
+</wxs>
+
+<view id="dati-container">
+  <view class="bg">
+    <image src="http://127.0.0.1:8082/dati-bg.png"></image>
+  </view>
+  <view class="main">
+    <view class="num"><text>第{{currentIndex + 1}}题</text></view>
+    <view class="content">
+      <text>{{questions[currentIndex].content ? questions[currentIndex].content : questions[currentIndex].title}}</text>
+      <view class="image">
+        <image src="http://127.0.0.1:8082/杂丑.png"></image>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="bottom">
+  
+    <view class="options">
+      <block wx:for="{{questions[currentIndex].options}}">
+        <view data-option="{{index}}" bindtap="btn_choose" class="option-item {{ fn.indexOf(choices[currentIndex], index) ? 'checked' : '' }}"> {{fn.numToChar(index)}}. {{item}}</view>
+      </block>
+    </view>
+
+    <view class="btngroup">
+      <view class="btn-item">
+        <view class="dati-btn" bindtap="btn_last">
+          <text>上一题</text>
+        </view>
+      </view>
+      <view class="btn-item" bindtap="btn_next" hidden="{{currentIndex >= maxIndex - 1}}">
+        <view class="dati-btn">
+          <text>下一题</text>
+        </view>
+      </view>
+
+      <view class="btn-item" bindtap="btn_submit" hidden="{{currentIndex < maxIndex - 1}}">
+        <view class="dati-btn">
+          <text>提交</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+</view>

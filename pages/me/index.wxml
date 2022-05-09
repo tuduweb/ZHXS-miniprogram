@@ -51,11 +51,11 @@
 
 </view>
 
-<button class="me-width" style="margin-top: 10rpx;" bindtap="logout" wx:if="{{isUserLogin}}">退出登录</button>
+<button class="me-width" style="margin-top: 15rpx;" bindtap="logout" wx:if="{{isUserLogin}}">退出登录</button>
 
 </block>
 <block wx:else>
-<view id="login-prompt">
+<view id="login-prompt" class="wenli-bg">
   <text class="prompt-text">请先登录，获取更多精彩</text>
   <button class="login-button" bindtap="login">点击登录</button>
   <!-- <button bindtap="getUserProfile"> 获取头像昵称 </button> -->

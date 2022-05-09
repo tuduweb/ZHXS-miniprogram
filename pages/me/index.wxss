@@ -3,7 +3,8 @@
 @import '/assets/styles/background.wxss';
 
 page{
-  height: 95vh;
+  height: 90vh;
+  margin-top: 0;
 }
 
 #userInfo-panel{
@@ -134,7 +135,7 @@ page{
   margin: 0 25rpx;
   background-color: #FFF;
   border-radius: 25rpx;
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 #login-prompt>.prompt-text{
   font-size: 36rpx;

@@ -1,5 +1,121 @@
 /* pages/questions/result/score.wxss */
+@import '/assets/styles/background.wxss';
+
+page{
+  height: 95vh;
+}
 
 #score-num {
   font-size: 48px;
+}
+
+#score-page{
+  height: 90vh;
+  width: 700rpx;
+  margin: 0 25rpx;
+  border-radius: 25rpx;
+
+  margin-top: 5vh;
+
+}
+
+.score-top{
+  height: 330rpx;
+  padding-top: 20rpx;
+  padding-right: 100rpx;
+}
+
+.score-top>.bg, .score-top>.bg>image{
+  width:314rpx;
+  height:315rpx;
+}
+
+.score-top>.avatar, .score-top>.avatar>image{
+  width: 279rpx;
+  height: 279rpx;
+}
+
+.score-top>.bg, .score-top>.avatar{
+  position: absolute;
+  top: 20rpx;
+  left: 360rpx;
+}
+
+.score-top>.avatar{
+  margin-top: 35rpx;
+}
+.score-top>.avatar>image{
+  border: brown 10rpx solid;
+  border-radius: 140rpx;
+}
+
+.score-panel{
+  margin: 0 auto;
+  width: 612rpx;
+  position: relative;
+}
+
+.score-panel > .bg > image{
+  width: 612rpx;
+  height: 600rpx;
+}
+
+.score-panel > .score-num{
+  position: absolute;
+  width: 312rpx;
+  margin: 0 150rpx;
+
+  top: 10rpx;
+  font-size: 64rpx;
+  text-align: center;
+}
+
+.score-panel>.score-num>text{
+  color: #8e2a2a;
+  font-weight: bold;
+}
+.score-list{
+  position: absolute;
+  top: 200rpx;
+
+  width: 340rpx;
+  /* margin: 0 136rpx; */
+  margin-left: 148rpx;
+
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+
+}
+.score-list>.list-item>text{
+  display: block;
+  text-align: center;
+  font-size: 36rpx;
+}
+.score-list>.list-item, .score-list>.list-item>text{
+  width: 136rpx;
+}
+.score-list>.list-item{
+  margin: 0 13rpx;
+  padding-top: 70rpx;
+}
+
+.score-panel>.btn{
+  position: absolute;
+  top: 500rpx;
+  display: flex;
+  flex-direction: row;
+  margin-left: 20rpx;
+}
+.score-panel>.btn>.btn-item, .score-panel>.btn>.btn-item>image{
+  width: 93rpx;
+  height: 100rpx;
+}
+.score-panel>.btn>.btn-item{
+  margin-left: 130rpx;
+}
+
+
+.score-bottom{
+  margin-top: 20rpx;
 }

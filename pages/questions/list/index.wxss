@@ -10,8 +10,12 @@ page{
   justify-content:center;
 }
 
-#jingji-panel{
 
+
+#jingji-panel{
+  margin: 0 25rpx;
+  width: 700rpx;
+  border-radius: 25rpx;
 }
 
 .jingji-item>image{

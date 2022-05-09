@@ -8,6 +8,7 @@ Page({
    */
   data: {
     fromUserId : 0,
+    // isFirstIn: true
   },
 
   /**
@@ -91,7 +92,8 @@ Page({
       const data = res.data
       if(data.meta.code == 0) {
         this.setData({
-          scoreData: data.data
+          scoreData: data.data,
+          results: JSON.parse(data.data.results)
         })
       }
 

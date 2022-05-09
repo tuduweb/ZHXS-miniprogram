@@ -4,6 +4,13 @@ page{
   padding-top: 10vh;
   height: 90vh;
 }
+
+#pintu-panel{
+  width: 700rpx;
+  margin: 0 25rpx;
+  border-radius: 25rpx;
+}
+
 .wenli-bg {
   height: 80vh;
 }

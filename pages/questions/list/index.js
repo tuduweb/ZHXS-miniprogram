@@ -83,7 +83,7 @@ Page({
         return
       }
       wx.navigateTo({
-        url: '../detail/index?id=' + _id
+        url: '../dati/index?id=' + _id
       })
     })
     .catch(err => console.log)
