@@ -3,7 +3,7 @@
 <view id="jingji-panel" class="wenli-bg">
   <view class="jingji-list">
     <view class="jingji-item" wx:for="{{categories}}" bindtap="onJingjiClicked" data-classtype="{{index + 1}}" data-title="{{item.title}}" data-tid="{{item.tid}}">
-      <image src="/assets/images/jingji-btn{{index + 1}}.png"></image>
+      <image src="/assets/images/jingji-btn-{{index + 1}}.png"></image>
     </view>
   </view>
 </view>

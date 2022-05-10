@@ -1,11 +1,19 @@
 {
   "pages": [
+    "pages/me/index",
+
+    "pages/rank/rank",
+
+    "pages/questions/list/index",
+
+    
     "pages/learning/start/index",
 
     "pages/questions/result/score",
 
     "pages/questions/dati/index",
 
+    "pages/pintu/list/index",
 
 
 
@@ -22,20 +30,16 @@
     "pages/learning/detail/index",
 
     "pages/pintu/game/index",
-    "pages/pintu/list/index",
 
     "pages/wave/index",
 
     "pages/help/list/index",
 
 
-    "pages/questions/list/index",
 
 
-    "pages/me/index",
     "pages/me/studyRecord/index",
 
-    "pages/rank/rank",
 
 
     "pages/start/index",

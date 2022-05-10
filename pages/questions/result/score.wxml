@@ -19,7 +19,7 @@
 
   <view class="score-panel">
     <view class="bg">
-      <image src="http://127.0.0.1:8082/score-main.png"></image>
+      <image src="/assets/images/score-main.png"></image>
     </view>
     <view class="score-num">
       <text>{{scoreData.grade / 100}}</text>

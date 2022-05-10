@@ -26,6 +26,9 @@
         return false
       }
     },
+    contentToDash: function(content) {
+      return content.replace("@@@@@", "_____")
+    },
     numToChar: function (num) {
       var _dict = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
       return _dict[num]
@@ -35,14 +38,14 @@
 
 <view id="dati-container">
   <view class="bg">
-    <image src="http://127.0.0.1:8082/dati-bg.png"></image>
+    <image src="https://zhxs.tuduweb.com/static/asserts/dati-bg.png"></image>
   </view>
   <view class="main">
     <view class="num"><text>第{{currentIndex + 1}}题</text></view>
     <view class="content">
-      <text>{{questions[currentIndex].content ? questions[currentIndex].content : questions[currentIndex].title}}</text>
+      <text>{{fn.contentToDash(questions[currentIndex].content ? questions[currentIndex].content : questions[currentIndex].title)}}</text>
       <view class="image">
-        <image src="http://127.0.0.1:8082/杂丑.png"></image>
+        <image src="https://zhxs.tuduweb.com/static/asserts/杂丑.png"></image>
       </view>
     </view>
 

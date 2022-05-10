@@ -26,19 +26,18 @@
 <view id="rank">
 
 <view id="top-user">
-  <view class="top-user-item" wx:for="{{top3}}">
+  <view class="top-user-item" wx:for="{{[1, 0, 2]}}">
     <view class="item-index">
-      <text>{{index + 1}}</text>
+      <text>{{item + 1}}</text>
     </view>
     <view class="item-avatar">
       <image src="/assets/images/faces/face1.jpeg"></image>
     </view>
     <view class="detail-userName">
-      <text>{{item.userName}}</text>
+      <text>{{top3[item].userName}}</text>
     </view>
-    <view class="item-point">{{item.point}}</view>
-
-    <view class="detail-school">{{item.school}}</view>
+    <view class="item-point">{{top3[item].point}}</view>
+    <view class="detail-school">{{top3[item].school}}</view>
   </view>
 </view>
 

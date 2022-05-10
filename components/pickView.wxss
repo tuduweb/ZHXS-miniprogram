@@ -75,5 +75,5 @@ picker-view-column {
 }
 
 .salary-btns text:nth-of-type(2) {
-  color: #1ECDB9;
+  color: #8e2a2a;
 }

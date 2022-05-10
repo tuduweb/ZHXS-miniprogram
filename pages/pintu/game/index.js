@@ -36,13 +36,14 @@ Page({
      */
     onLoad: function (e) {
         if(true){
-            let left = (width - 300) / 2;
+            let left = (width - 300 - 25) / 2;
 
             let task = {
               "col" : 3,
               "rowNum": 3,
-              "img": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.name2012.com%2Fuploads%2Fallimg%2F180315%2F153R2D60-9.jpg&refer=http%3A%2F%2Fimg.name2012.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1654660771&t=224698f2d7907be7658bab0bdb4397cb",
-              "remark": "ello world",
+              "img": "https://zhxs.tuduweb.com/static/asserts/花旦.png",
+              "remark": "恭喜你，完成了挑战!",
+              "nickName": "用户"
             }
 
             let total = task.col * task.rowNum;
@@ -286,10 +287,14 @@ Page({
     },
     goIndex:function(){
         wx.switchTab({
-            url: '/pages/index/index',
+            url: '/pages/me/index',
         })
     },
-
+    goList:function(){
+      wx.switchTab({
+          url: '/pages/pintu/list/index',
+      })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

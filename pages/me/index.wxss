@@ -137,9 +137,23 @@ page{
   border-radius: 25rpx;
   margin-top: 10vh;
 }
+
+
+#login-prompt>.logo{
+  width: 300rpx;
+  margin: 0 auto;
+  padding-top: 100rpx;
+}
+
 #login-prompt>.prompt-text{
   font-size: 36rpx;
-  padding: 20vh 0 10vh 0;
+  padding: 10vh 0 5vh 0;
+}
+
+
+#login-prompt>.logo>image{
+  width: 300rpx;
+  height: 300rpx;
 }
 
 
@@ -150,5 +164,9 @@ page{
 }
 
 .login-button{
-  margin: 25rpx;
+  margin: 25rpx 50rpx;
+}
+
+.login-button{
+  background-color: #8e2a2a; color: #FFF;
 }

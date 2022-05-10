@@ -16,7 +16,7 @@ Page({
 			}, 
 			{
 				icon: '../../assets/images/more_icon2@2x.png',
-				text: '趣味拼图',
+				text: '益智拼图',
 				path: '/pages/pintu/list/index'
 			}, 
 			// {

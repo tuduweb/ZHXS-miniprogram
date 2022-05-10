@@ -1,5 +1,8 @@
 <!--pages/play/play.wxml-->
-<view class="container">
+<view class="container wenli-bg">
+    <view class="top">
+      <text>拼图游戏</text>
+    </view>
     <view class="imgView">
         <image src="{{src}}" animation="{{animationData}}" bindtap='preView' mode="aspectFit" style="left:{{left-1}}px;" wx:if="{{success}}"></image> 
         <view id="gridding" style="left:{{left-1}}px;"  wx:if="{{!success}}">
@@ -69,8 +72,27 @@
             </view>
         </view>
     </view>
+
+    <view class="showPanel">
+
+
+      <view class="shortname cate-title">
+        <image src="http://localhost:8082/cate-bg.png"></image>
+        <text>杂丑</text>
+      </view>
+
+      <view class="thumb">
+        <image src="{{src}}"></image>
+      </view>
+
+      <view class="content">
+        <text>丑行的一支\n鼻梁抹白粉块\n扮演机智幽默的好人\n奸诈刁钻的贪鄙小人\n表演滑稽诙谐</text>
+      </view>
+    </view>
+
     <view class="handleView">
         <button bindtap='goBack' wx:if="{{!success}}">取消</button>
-        <button bindtap='goIndex' wx:if="{{success}}">返回首页</button>
+        <button bindtap='goIndex' wx:if="{{success}}">返回列表</button>
+        <button bindtap='goList' wx:if="{{success}}">返回首页</button>
     </view> 
 </view>

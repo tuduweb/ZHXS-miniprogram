@@ -1,7 +1,32 @@
 /* pages/play/play.wxss */
+@import '/assets/styles/background.wxss';
+page{
+  padding-top: 5vh;
+  height: 90vh;
+}
+
 .container{
-  height: 100vh;
+  height: 90vh;
   justify-content: space-between;
+
+  width: 700rpx;
+  margin: 0 25rpx;
+  border-radius: 25rpx;
+
+  padding-top: 20rpx;
+
+}
+
+.container>.top{
+  padding: 20rpx 0;
+}
+
+.container>.top>text{
+  display: block;
+  font-size: 48rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #555;
 }
 
 .imgView{
@@ -64,8 +89,54 @@ border-radius: 50%;
 }
 
 .handleView{
- width: 100vw;
+ width: 100%;
  padding: 10px 0;
  display: flex;
  justify-content: space-around;
+}
+
+.showPanel{
+  height: 200rpx;
+  display: flex;
+  flex-direction: row-reverse;
+
+  width: 560rpx;
+  margin:auto;
+  margin-top: 25rpx;
+
+}
+
+.thumb{
+  padding: 20rpx;
+}
+.thumb, .thumb > image{
+  height: 150rpx;
+  width: 150rpx;  
+}
+.content{
+  width: 300rpx;
+}
+.content > text{
+  display: block;
+  writing-mode: vertical-rl;
+}
+
+.cate-title{
+  /* position: relative; */
+  width: 50rpx;
+}
+.cate-title > text{
+  display: block;
+  position: absolute;
+  writing-mode:vertical-lr;
+  color: #FFF;
+  padding-top: 40rpx;
+  text-align: center;
+}
+
+.cate-title > image{
+  display: block;
+  position: absolute;
+  width: 40rpx;
+  height: 180rpx;
 }

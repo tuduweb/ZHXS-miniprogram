@@ -56,6 +56,9 @@
 </block>
 <block wx:else>
 <view id="login-prompt" class="wenli-bg">
+  <view class="logo">
+    <image src="/assets/images/logo.png"></image>
+  </view>
   <text class="prompt-text">请先登录，获取更多精彩</text>
   <button class="login-button" bindtap="login">点击登录</button>
   <!-- <button bindtap="getUserProfile"> 获取头像昵称 </button> -->

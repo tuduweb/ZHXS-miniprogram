@@ -62,5 +62,15 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onItemClicked(e) {
+    console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '/pages/pintu/game/index?id='+e.currentTarget.dataset,
+      success: (res) => {},
+      fail: (res) => {},
+      complete: (res) => {},
+    })
   }
 })
