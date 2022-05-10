@@ -3,6 +3,12 @@
 
     "pages/learning/start/index",
 
+    "pages/start/index",
+
+
+    "pages/pintu/list/index",
+
+
     "pages/me/shareRecord/index",
 
     "pages/me/index",
@@ -17,7 +23,6 @@
 
     "pages/questions/dati/index",
 
-    "pages/pintu/list/index",
 
 
 
@@ -46,7 +51,6 @@
 
 
 
-    "pages/start/index",
     "pages/index/index",
 
     "pages/login/index"
