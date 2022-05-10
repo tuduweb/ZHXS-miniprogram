@@ -1,15 +1,18 @@
 <!--pages/pintu/list/index.wxml-->
 <view id="pintu-panel" class="wenli-bg">
+  <!-- <view class="top">
+      <text>拼图游戏</text>
+    </view> -->
   <view class="container">
-    <view class="pintu-cate-item" wx:for="{{[0, 1, 2]}}">
+    <view class="pintu-cate-item" wx:for="{{pintuData}}" wx:for-item="classItem">
     <view class="cate-title">
-      <image src="https://zhxs.tuduweb.com/static/asserts/cate-bg.png"></image>
-      <text>丑行</text>
+      <image src="/assets/images/cate-bg.png"></image>
+      <text>{{classItem.classname}}</text>
     </view>
     <view class="cate-list">
-      <view class="cate-list-item" wx:for="{{[0, 1, 2, 3]}}" data-id="{{index}}" bindtap="onItemClicked">
-      <image src="https://zhxs.tuduweb.com/static/asserts/%E6%9D%82%E4%B8%91.png"></image>
-      <text>杂丑</text>
+      <view class="cate-list-item" wx:for="{{classItem.data}}" data-id="{{item._id}}" bindtap="onItemClicked">
+      <image src="https://zhxs.tuduweb.com/static/pintu/thumb/{{item.thumbUrl}}"></image>
+      <text>{{item.shortname}}</text>
       </view>
     </view>
   </view>

@@ -27,7 +27,7 @@
       }
     },
     contentToDash: function(content) {
-      return content.replace("@@@@@", "_____")
+      return content.replaceAll("@@@@@", "_____")
     },
     numToChar: function (num) {
       var _dict = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']

@@ -36,6 +36,8 @@ page{
   color: #FFF;
   padding-top: 40rpx;
   text-align: center;
+  font-size: 0.8em;
+  letter-spacing: 0.4em;
 }
 
 .cate-title > image{
@@ -49,12 +51,14 @@ page{
 .pintu-cate-item{
   display: flex;
   flex-direction: row;
+  width: 650rpx;
 }
 
 .cate-list{
   display: flex;
   flex-direction: row;
   margin-bottom: 50rpx;
+  flex-wrap: wrap;
 }
 
 .cate-list-item{
@@ -75,4 +79,16 @@ page{
   width: 100rpx;
   text-align: center;
   margin: 0 auto;
+}
+
+#pintu-panel>.top{
+  padding: 20rpx 0;
+}
+
+#pintu-panel>.top>text{
+  display: block;
+  font-size: 48rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #555;
 }

@@ -114,7 +114,8 @@ border-radius: 50%;
   width: 150rpx;  
 }
 .content{
-  width: 300rpx;
+  width: 360rpx;
+  overflow: hidden;
 }
 .content > text{
   display: block;

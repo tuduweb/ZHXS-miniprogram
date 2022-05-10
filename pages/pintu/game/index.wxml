@@ -77,7 +77,7 @@
 
 
       <view class="shortname cate-title">
-        <image src="https://zhxs.tuduweb.com/static/asserts/cate-bg.png"></image>
+        <image src="/assets/images/cate-bg.png"></image>
         <text>杂丑</text>
       </view>
 
@@ -86,7 +86,7 @@
       </view>
 
       <view class="content">
-        <text>丑行的一支\n鼻梁抹白粉块\n扮演机智幽默的好人\n奸诈刁钻的贪鄙小人\n表演滑稽诙谐</text>
+        <text>{{content}}</text>
       </view>
     </view>
 

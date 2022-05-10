@@ -27,7 +27,8 @@ class HttpService extends WxRequest {
       matchDetail: '/match/detail',
       studyDetail: '/study',
 
-      rank: "/user/rank/demo"
+      rank: "/user/rank/demo",
+      pintu: "/pintu/demo"
     }
     this.interceptors.use({
       request(request) {
@@ -144,6 +145,14 @@ class HttpService extends WxRequest {
 
   getRank() {
     return this.getRequest(this.$$path.rank)
+  }
+
+  getPintuIndex() {
+    return this.getRequest(this.$$path.pintu)
+  }
+
+  getPintuDetail(id) {
+    return this.getRequest(`${this.$$path.pintu}/${id}`)
   }
 
   getBanners(params) {

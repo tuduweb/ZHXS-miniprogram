@@ -9,21 +9,19 @@
 
 <view class="table" wx:if="{{records.items.length > 0}}">
   <view class="tr bg-w">
-    <view class="th">创建时间</view>
-    <view class="th">分数</view>
-    <view class="th ">结束时间</view>
+    <view class="th">分享时间</view>
+    <view class="th">分享用户</view>
+    <view class="th">结束时间</view>
   </view>
   <block wx:for="{{records.items}}">
     <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
       <view class="td">{{item.create_at}}</view>
-      <view class="td" wx:if="{{item.state == 2}}">{{item.grade}}</view>
-      <view class="td" wx:else>未完成</view>
+      <view class="td">{{item.user}}</view>
       <view class="td">{{item.finish_at}}</view>
     </view>
     <view class="tr" wx:else>
       <view class="td">{{item.create_at}}</view>
-      <view class="td" wx:if="{{item.state == 2}}">{{item.grade}}</view>
-      <view class="td" wx:else>未完成</view>
+      <view class="td">{{item.user}}</view>
       <view class="td">{{item.finish_at}}</view>
     </view>
   </block>

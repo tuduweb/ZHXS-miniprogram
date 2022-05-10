@@ -34,91 +34,11 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (e) {
-        if(true){
-            let left = (width - 300 - 25) / 2;
+    onLoad: function (options) {
 
-            let task = {
-              "col" : 3,
-              "rowNum": 3,
-              "img": "https://zhxs.tuduweb.com/static/asserts/花旦.png",
-              "remark": "恭喜你，完成了挑战!",
-              "nickName": "用户"
-            }
+      this.getPintu(options.id)
 
-            let total = task.col * task.rowNum;
-            let mwidth = 300/task.col,
-                mheight = 300/task.rowNum;
 
-            this.setData({
-                left: left,
-                src: task.img,
-                col: task.col,
-                row: task.rowNum,
-                total: total,
-                remark: task.remark + '\n\n',
-                mwidth: mwidth,
-                mheight: mheight,
-                nickName: task.nickName,
-                avatarUrl: task.avatarUrl,
-            });
-            this.insertBack(task);
-            setTimeout(() => {
-                // 开始打乱顺序
-                console.log('开始打乱顺序动画');
-                let arr = this.data.back;
-                arr = this.createArr(arr);
-                this.setData({
-                    back: arr
-                })
-
-            }, 1000);
-            // 下载图片
-            // console.log('图片路径',task.img);
-            // let self = this;
-            // let url = util.downloadImgUrl;
-            // wx.downloadFile({
-            //     url: url + '?path=' + task.img, 
-            //     success: function (res) {
-            //         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-            //         console.log('图片下载结果',res);
-            //         if (res.statusCode == 200) {
-            //             let path = res.tempFilePath;
-            //             self.setData({
-            //                 left: left,
-            //                 src: path,
-            //                 col: task.col,
-            //                 row: task.row,
-            //                 total: total,
-            //                 remark: task.remark + '\n\n',
-            //                 mwidth: mwidth,
-            //                 mheight: mheight,
-            //                 nickName: task.nickName,
-            //                 avatarUrl: task.avatarUrl,
-            //             });
-            //             self.insertBack(task); // 
-            //             setTimeout(() => {
-            //                 // 开始打乱顺序
-            //                 console.log('开始打乱顺序动画');
-            //                 let arr = self.data.back;
-            //                 arr = self.createArr(arr);
-            //                 self.setData({
-            //                     back: arr
-            //                 })
-
-            //             }, 1000)
-            //         }else{
-            //             wx.showModal({
-            //                 title: '提示',
-            //                 content: '图片下载失败！',
-            //             })
-            //         }
-            //     },
-            //     fail:function(err){
-            //         console.log('下载图片失败',err);
-            //     }
-            // })
-        }
     },
 
     // 设置每个网格的背景图位置
@@ -308,4 +228,108 @@ Page({
     onShow: function () {
         
     },
+
+    getPintu: function(_id) {
+      App.HttpService.getPintuDetail(_id)
+      .then(res => {
+        let data = res.data
+        if (data.meta.code == 0) {
+          
+          this.setData({
+            itemData: data.data
+          })
+
+
+          let left = (width - 300 - 25) / 2;
+
+          let task = {
+            "col" : 3,
+            "rowNum": 3,
+            "img": "https://zhxs.tuduweb.com/static/pintu/" + data.data.imageUrl,
+            "remark": "恭喜你，完成了挑战!",
+            "nickName": "用户",
+            "content": data.data.content.replaceAll("\\n", "\n")
+          }
+
+          let total = task.col * task.rowNum;
+          let mwidth = 300/task.col,
+              mheight = 300/task.rowNum;
+
+          this.setData({
+              left: left,
+              src: task.img,
+              col: task.col,
+              row: task.rowNum,
+              total: total,
+              remark: task.remark + '\n\n',
+              mwidth: mwidth,
+              mheight: mheight,
+              nickName: task.nickName,
+              avatarUrl: task.avatarUrl,
+              content: task.content
+          });
+
+          this.insertBack(task);
+
+          setTimeout(() => {
+              // 开始打乱顺序
+              console.log('开始打乱顺序动画');
+              let arr = this.data.back;
+              arr = this.createArr(arr);
+              this.setData({
+                  back: arr
+              })
+          }, 1000);
+
+          /*
+          // 下载图片
+          // console.log('图片路径',task.img);
+          // let self = this;
+          // let url = util.downloadImgUrl;
+          // wx.downloadFile({
+          //     url: url + '?path=' + task.img, 
+          //     success: function (res) {
+          //         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          //         console.log('图片下载结果',res);
+          //         if (res.statusCode == 200) {
+          //             let path = res.tempFilePath;
+          //             self.setData({
+          //                 left: left,
+          //                 src: path,
+          //                 col: task.col,
+          //                 row: task.row,
+          //                 total: total,
+          //                 remark: task.remark + '\n\n',
+          //                 mwidth: mwidth,
+          //                 mheight: mheight,
+          //                 nickName: task.nickName,
+          //                 avatarUrl: task.avatarUrl,
+          //             });
+          //             self.insertBack(task); // 
+          //             setTimeout(() => {
+          //                 // 开始打乱顺序
+          //                 console.log('开始打乱顺序动画');
+          //                 let arr = self.data.back;
+          //                 arr = self.createArr(arr);
+          //                 self.setData({
+          //                     back: arr
+          //                 })
+
+          //             }, 1000)
+          //         }else{
+          //             wx.showModal({
+          //                 title: '提示',
+          //                 content: '图片下载失败！',
+          //             })
+          //         }
+          //     },
+          //     fail:function(err){
+          //         console.log('下载图片失败',err);
+          //     }
+          // })*/
+
+
+        }
+    })}
+
 })

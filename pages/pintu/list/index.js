@@ -1,4 +1,6 @@
 // pages/pintu/list/index.js
+App = getApp()
+
 Page({
 
   /**
@@ -12,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.initPintuIndex()
   },
 
   /**
@@ -67,10 +69,40 @@ Page({
   onItemClicked(e) {
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/pintu/game/index?id='+e.currentTarget.dataset,
+      url: '/pages/pintu/game/index?id='+e.currentTarget.dataset.id,
       success: (res) => {},
       fail: (res) => {},
       complete: (res) => {},
     })
+  },
+
+  initPintuIndex() {
+    App.HttpService.getPintuIndex()
+    .then(res => {
+      let data = res.data
+      if (data.meta.code == 0) {
+        console.log(data)
+        let pintuData = []
+        pintuData.push({
+          "classname": "丑行",
+          "data": []
+        })
+        pintuData.push({
+          "classname": "生行",
+          "data": []
+        })
+        pintuData.push({
+          "classname": "旦行",
+          "data": []
+        })
+        data.data.forEach((item, index, arr) => {
+          pintuData[item.type - 1].data.push(item)
+          this.setData({
+            pintuData: pintuData
+          })
+        })
+      }
+    })
+    .catch(err => console.log(err))
   }
 })
