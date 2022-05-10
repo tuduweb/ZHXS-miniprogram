@@ -31,7 +31,7 @@
     </view>
     <view id="msg-minutes">
       <view class="title">学习（分钟）</view>
-      <view class="value"><text>{{userInfo.studyTime}}</text>#</view>
+      <view class="value"><text>{{userInfo.studyTime}}</text></view>
     </view>
   </view>
 

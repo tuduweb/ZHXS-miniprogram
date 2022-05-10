@@ -19,11 +19,11 @@ Page({
 				text: '益智拼图',
 				path: '/pages/pintu/list/index'
 			}, 
-			// {
-			// 	icon: '../../assets/images/more_icon3@2x.png',
-			// 	text: '我的分享',
-			// 	path: '18521708248',
-			// }, 
+			{
+				icon: '../../assets/images/more_icon3@2x.png',
+				text: '我的分享',
+				path: '/pages/me/shareRecord/index',
+			}, 
 			// {
 			// 	icon: '../../assets/images/more_icon4@2x.png',
 			// 	text: '邀请好友',

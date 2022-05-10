@@ -3,12 +3,12 @@
   <view class="container">
     <view class="pintu-cate-item" wx:for="{{[0, 1, 2]}}">
     <view class="cate-title">
-      <image src="http://localhost:8082/cate-bg.png"></image>
+      <image src="https://zhxs.tuduweb.com/static/asserts/cate-bg.png"></image>
       <text>丑行</text>
     </view>
     <view class="cate-list">
       <view class="cate-list-item" wx:for="{{[0, 1, 2, 3]}}" data-id="{{index}}" bindtap="onItemClicked">
-      <image src="http://localhost:8082/%E6%9D%82%E4%B8%91.png"></image>
+      <image src="https://zhxs.tuduweb.com/static/asserts/%E6%9D%82%E4%B8%91.png"></image>
       <text>杂丑</text>
       </view>
     </view>

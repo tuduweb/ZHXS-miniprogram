@@ -1,5 +1,10 @@
 {
   "pages": [
+
+    "pages/learning/start/index",
+
+    "pages/me/shareRecord/index",
+
     "pages/me/index",
 
     "pages/rank/rank",
@@ -7,7 +12,6 @@
     "pages/questions/list/index",
 
     
-    "pages/learning/start/index",
 
     "pages/questions/result/score",
 

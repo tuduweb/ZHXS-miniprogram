@@ -48,11 +48,9 @@
         <image src="https://zhxs.tuduweb.com/static/asserts/杂丑.png"></image>
       </view>
     </view>
-
   </view>
 
   <view class="bottom">
-  
     <view class="options">
       <block wx:for="{{questions[currentIndex].options}}">
         <view data-option="{{index}}" bindtap="btn_choose" class="option-item {{ fn.indexOf(choices[currentIndex], index) ? 'checked' : '' }}"> {{fn.numToChar(index)}}. {{item}}</view>
