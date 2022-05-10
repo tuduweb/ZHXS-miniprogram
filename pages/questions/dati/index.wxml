@@ -27,7 +27,7 @@
       }
     },
     contentToDash: function(content) {
-      return content.replaceAll("@@@@@", "_____")
+      return content.replace("@@@@@", "_____").replace("@@@@@", "_____").replace("@@@@@", "_____").replace("@@@@@", "_____")
     },
     numToChar: function (num) {
       var _dict = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
@@ -44,8 +44,8 @@
     <view class="num"><text>第{{currentIndex + 1}}题</text></view>
     <view class="content">
       <text>{{fn.contentToDash(questions[currentIndex].content ? questions[currentIndex].content : questions[currentIndex].title)}}</text>
-      <view class="image">
-        <image src="https://zhxs.tuduweb.com/static/asserts/杂丑.png"></image>
+      <view class="image" wx:if="{{questions[currentIndex].imageUrl}}">
+        <image mode="heightFix" src="{{questions[currentIndex].imageUrl}}"></image>
       </view>
     </view>
   </view>

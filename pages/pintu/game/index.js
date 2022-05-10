@@ -248,7 +248,8 @@ Page({
             "img": "https://zhxs.tuduweb.com/static/pintu/" + data.data.imageUrl,
             "remark": "恭喜你，完成了挑战!",
             "nickName": "用户",
-            "content": data.data.content.replaceAll("\\n", "\n")
+            "content": data.data.content.replaceAll("\\n", "\n"),
+            "shortname": data.data.shortname
           }
 
           let total = task.col * task.rowNum;
@@ -266,7 +267,8 @@ Page({
               mheight: mheight,
               nickName: task.nickName,
               avatarUrl: task.avatarUrl,
-              content: task.content
+              content: task.content,
+              shortname: task.shortname
           });
 
           this.insertBack(task);

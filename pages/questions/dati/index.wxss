@@ -47,7 +47,7 @@ page{
 
 .bottom{
   position: absolute;
-  bottom: 100rpx;
+  bottom: 125rpx;
   width: 678rpx;
 }
 
@@ -74,9 +74,12 @@ page{
   margin-top: 10rpx;
   display: block;
   text-align: center;
+  width: 500rpx;
+  height: 300rpx;
+  overflow: hidden;
 }
 .main > .content > .image > image{
-  width: 250rpx;
+  /* width: 250rpx; */
   height: 300rpx;
 }
 
@@ -89,7 +92,9 @@ page{
 .checked{
   background-color: bisque;
 }
-
+.options{
+  background: #FFF;
+}
 .options>.option-item{
   margin-bottom: 10rpx;
 }

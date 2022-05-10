@@ -131,7 +131,18 @@ App({
 		if (!path) return ''
 		if (path.indexOf('http') !== -1) return path
 		return `${this.__config.domain}${path}`
-	},
+  },
+  
+  ShareApp: () => {
+    //通用性分享App程序 //用于全局没有特殊定义时的分享页面
+
+    //根据是否登录 分享不同的页面..
+    return {
+      title: "用户给你分享了一个小程序",
+      path: "/pages/start"
+    }
+  },
+
 	WxValidate: (rules, messages) => new WxValidate(rules, messages),
 	HttpResource: (url, paramDefaults, actions, options) => new HttpResource(url, paramDefaults, actions, options).init(),
 	HttpService: new HttpService({
