@@ -1,16 +1,16 @@
 <view class="start">
 	<swiper class="swiper_box" indicator-dots="{{ indicatorDots }}" autoplay="{{ autoplay }}" current="{{ current }}" interval="{{ interval }}" duration="{{ duration }}" circular="{{ circular }}" bindchange="swiperchange">
 	    <swiper-item>
-            <image src="../../assets/images/start1.jpg" class="slide-image" bindload="bindload" />
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start1.jpg" class="slide-image" bindload="bindload" />
         </swiper-item>
         <swiper-item>
-            <image src="../../assets/images/start2.jpg" class="slide-image" bindload="bindload" />
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start2.jpg" class="slide-image" bindload="bindload" />
         </swiper-item>
         <swiper-item>
-            <image src="../../assets/images/start3.jpg" class="slide-image" bindload="bindload" />
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start3.jpg" class="slide-image" bindload="bindload" />
         </swiper-item>
         <swiper-item>
-            <image src="../../assets/images/start-index.png" class="slide-image" bindload="bindload" />
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start-index.png" class="slide-image" bindload="bindload" />
         </swiper-item>
 	</swiper>
 </view>

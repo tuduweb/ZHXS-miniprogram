@@ -17,12 +17,14 @@
     <view class="button" bindtap="streamNext">
       <image src="/assets/images/study-btn-start.png"></image>
     </view>
-    <view class="button" catchtouchstart="streamRecord" catchtouchend="streamRecordEnd" disabled="{{!isAuthRecord}}">
+    <view class="button" catchtouchstart="streamRecordStart" catchtouchend="streamRecordEnd" disabled="{{!isAuthRecord}}">
       <image src="/assets/images/study-btn-record.png"></image>
     </view>
     <view class="button" bindtap="streamSegmentReplay">
       <image src="/assets/images/study-btn-replay.png"></image>
     </view>
+
+    <!-- <button catchtouchstart="buttonStart" catchtouchend="buttonEnd">测试</button> -->
 
 
   </view>

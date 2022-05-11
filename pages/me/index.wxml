@@ -30,8 +30,8 @@
       <view class="value"><text>{{userInfo.avgGrade}}</text></view>
     </view>
     <view id="msg-minutes">
-      <view class="title">学习（分钟）</view>
-      <view class="value"><text>{{userInfo.studyTime}}</text></view>
+      <view class="title">学习（{{userInfo.studyTimeUnit ? userInfo.studyTimeUnit : '分钟'}}）</view>
+      <view class="value"><text>{{userInfo.studyTimeCal ? userInfo.studyTimeCal : userInfo.studyTime}}</text></view>
     </view>
   </view>
 
@@ -76,7 +76,7 @@
 </block>
 
 <!-- <button bindtap="handleClick">点我显示弹窗{{isShow}}</button> -->
-<dialog isShow="{{isShow}}" title="设置学校" bind:cancle="handleClick"/>
+<dialog isShow="{{isShow}}" title="设置学校" dataLists="{{schoolLists}}" bind:cancle="handleClick"/>
 
 <!--pages/usercenter/usercenter.wxml-->
 <!-- <view class="weui-cells__title">

@@ -12,6 +12,7 @@ const AudioPlayer = wx.createInnerAudioContext()
 const audioCtx = wx.createWebAudioContext()
 
 let stopFlag = false
+let videoContext
 
 //这里可以封装成全局函数..作为一种服务
 //在视频时间戳更新时计时,
@@ -28,7 +29,6 @@ Page({
   waveView: null,
   data: {
     studyId: 1,
-    titleName: "快板式唱腔",
     currentSegmentIndex: 0,
     segments: [
       // {
@@ -55,6 +55,8 @@ Page({
     commentId: -1,
     logtxt: 'loglog',
 
+    isRecording: false,
+
     userInfo: {
       studyTimeCnt: 0,
       studyData: []
@@ -66,29 +68,17 @@ Page({
    */
   onLoad: function (options) {    
     //获取study_id
+    options.sid = 1
     console.log("options", options)
-    if(options.id) {
+    if(options.sid) {
       console.log("设置了id")
     }
     this.setData({
-      studyId: options.id
+      studyId: options.sid
     })
-    const id = this.data.studyId
-    App.HttpService.getStudyDetail(id)
-    .then(res => {
-        const data = res.data
-        console.log("studyDetail", data)
-        if (data.meta.code == 0) {
-          //调用成功
-          this.setData({
-            videoUrl: data.data.videoUrl,
-            comments: data.data.comments,
-            segments: data.data.segments
-          })
-        } else {
-          //发生错误
-        }
-    })
+    this.allocAuthorize()
+
+    this.initStudyData()
 
     this.initStudySystem()
     this.initStreamRecord()
@@ -107,23 +97,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const query = wx.createSelectorQuery()
-    query.select('#study-video').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(function (res) {
-      console.log(res[0]) // #the-id节点的上边界坐标
-      res[1].scrollTop // 显示区域的竖直滚动位置
-      const _videoObj = wx.createVideoContext("study-video", res[0])
-      console.log(_videoObj)
+    // const query = wx.createSelectorQuery()
+    // query.select('#study-video').boundingClientRect()
+    // query.selectViewport().scrollOffset()
+    // query.exec(function (res) {
+    //   console.log(res[0]) // #the-id节点的上边界坐标
+    //   res[1].scrollTop // 显示区域的竖直滚动位置
+    //   const _videoObj = wx.createVideoContext("study-video", res[0])
+    //   console.log("_videoObj", _videoObj)
 
-    })
-    console.log("onShow")
+    // })
 
     const videoObj = wx.createVideoContext('study-video')
-    console.log(videoObj)
+    console.log("videoObj", videoObj)
     //videoObj.pause()
-
-    this.allocAuthorize()
+  
+    videoContext = wx.createVideoContext('study-video', this);
 
   },
 
@@ -159,7 +148,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    //需要定制成相关..
+    return App.ShareApp()
   },
 
   onVideoTimeUpdate: function (e) {
@@ -169,7 +159,6 @@ Page({
       'userInfo.studyTimeCnt': this.data.userInfo.studyTimeCnt + 1
     })
 
-    let videoContext = wx.createVideoContext('study-video', this);
     //console.log(e.detail.currentTime)
     var currentTime = parseInt(e.detail.currentTime)
     //recordInfo
@@ -213,29 +202,39 @@ Page({
     })
   },
 
-  onVoiceRecord: function (e) {
-    RecordManager.start()
+  // onVoiceRecord: function (e) {
 
-    this.setData({
-      recordStatus: 0,
-      recording: true,
-      currentTranslate: {
-        // 当前语音输入内容
-        create: util.recordTime(new Date()),
-        text: '正在聆听中',
-      },
-    })
-    //this.scrollToNew();
+  //   this.setData({
+  //     isRecording: false
+  //   })
+ 
+  //   RecordManager.start()
 
-  },
+  //   this.setData({
+  //     recordStatus: 0,
+  //     recording: true,
+  //     currentTranslate: {
+  //       // 当前语音输入内容
+  //       create: util.recordTime(new Date()),
+  //       text: '正在聆听中',
+  //     },
+  //   })
+  //   //this.scrollToNew();
+
+  // },
 
   initStreamRecord: function () {
 
     const _this = this;
 
     RecordManager.onStop(res => {
-      console.log("onStop")
       console.log(res)
+
+      if(res.duration <= 1000) {
+        console.log("时间不够", res.duration)
+        wx.hideLoading()
+        return
+      }
 
       let _records = this.data.records
       _records.push(res)
@@ -263,14 +262,14 @@ Page({
       })
       wx.uploadFile({
         //url: "http://172.20.144.113:3001/api/study/1f2f301d/record/" + this.data.currentSegmentIndex,
-        url: __config.domain + "api/study/1/record/" + (this.data.currentSegmentIndex + 1),
+        url: __config.domain + "api/study/" + this.data.studyId +"/record/" + (this.data.currentSegmentIndex + 1),
         //url: "http://8.134.216.143:5000/upload",
         filePath: res.tempFilePath,
         name: "file",
         formData: {
           'msg': 'voice',
           'segId': this.data.currentSegmentIndex + 1,
-          'id': 1
+          'id': this.data.studyId
         }, // HTTP 请求中其他额外的 form data
         header: {
           'content-type': 'application/json',
@@ -332,6 +331,11 @@ Page({
     //流式录音接口	在onFrameRecordedzh中不断获取分片，持续获取，持续处理	
     RecordManager.onFrameRecorded(res => {
 
+      if(this.data.isRecording == false) {
+        RecordManager.stop()
+        return
+      }
+      
       console.log(res)
       _this.setData({
         recordImage: _this.data.baseRecordImage + (Math.floor(Math.random() * 5) + 2) + ".png",
@@ -346,10 +350,18 @@ Page({
 
   },
 
-  streamRecord: function (e) {
-    // console.log("streamrecord" ,e)
+  streamRecordStart: function (e) {
+    
+    this.setData({
+      isRecording: true
+    })
+
     let detail = e.detail || {}
     let buttonItem = detail.buttonItem || {}
+
+    if(this.data.isRecording == false) {
+      return
+    }
 
     RecordManager.start({
       duration: 10000,
@@ -376,14 +388,22 @@ Page({
 
   },
   streamRecordEnd: function (e) {
+
+
     let detail = e.detail || {} // 自定义组件触发事件时提供的detail对象
     let buttonItem = detail.buttonItem || {}
 
     // 防止重复触发stop函数
-    if (!this.data.recording || this.data.recordStatus != 0) {
+    if (!this.data.isRecording || this.data.recordStatus != 0) {
       console.warn("has finished!")
       return
     }
+
+    this.setData({
+      isRecording: false
+    })
+
+    //如果时间太短..
 
     //wx.hideLoading()
     wx.showLoading({
@@ -410,12 +430,16 @@ Page({
   },
   streamNext: function (e) {
     console.log(this.data.currentSegmentIndex, this.data.segments.length)
+
     if (this.data.currentSegmentIndex >= this.data.segments.length - 1)
+    {
       return
+    }
+    
     this.setData({
       currentSegmentIndex: this.data.currentSegmentIndex + 1
     })
-    let videoContext = wx.createVideoContext('study-video');
+    videoContext.seek(this.data.segments[this.data.currentSegmentIndex].start / 1000)
     videoContext.play()
   },
   streamSegmentReplay: function(e) {
@@ -423,7 +447,6 @@ Page({
     let buttonItem = detail.buttonItem || {}
 
     //可能要加入, 在播放时?禁止按重来
-    let videoContext = wx.createVideoContext('study-video');
     videoContext.seek(this.data.segments[this.data.currentSegmentIndex].start)
     videoContext.play()
   },
@@ -481,18 +504,10 @@ Page({
 
           const myArrayBuffer = audioCtx.createBuffer(2, buffer.length, audioCtx.sampleRate);
 
-          console.log(myArrayBuffer)
+          //console.log(myArrayBuffer)
 
           var chan = buffer.getChannelData(0);
-          console.log("chan", chan)
-
-          let sum = 0.0;
-          console.log("sum", sum);
-
-          for (let index = 0; index < chan.length / 5; index++) {
-            sum += chan[index];
-          }
-          console.log("sum", sum);
+          //console.log("chan", chan)
 
           this.waveView.demoBuffer(buffer);
 
@@ -562,6 +577,35 @@ Page({
     //
     console.log("init study system")
 
+  },
+
+  initStudyData: function() {
+
+    const id = this.data.studyId
+    App.HttpService.getStudyDetail(id)
+    .then(res => {
+        const data = res.data
+        console.log("studyDetail", data)
+        if (data.meta.code == 0) {
+          //调用成功
+          this.setData({
+            videoUrl: data.data.videoUrl,
+            comments: data.data.comments,
+            segments: data.data.segments
+          })
+        } else {
+          //发生错误
+        }
+    })  
+
+  },
+
+  buttonStart: function(e) {
+    console.log("button start", e)
+  },
+
+  buttonEnd: function(e) {
+    console.log("button end", e)
   }
 
 })

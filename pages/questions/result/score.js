@@ -81,7 +81,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '在朝花戏拾取得了好成绩: ' + this.data.scoreData.grade,
+      title: '我在朝花戏拾完成了竞技，获得了:' + this.data.scoreData.grade / 100 + "分",
       path: 'pages/questions/result/score?matchId='+this.data.id+'&fromUserId='+this.data.fromUserId
     }
   },
@@ -91,9 +91,14 @@ Page({
     .then(res => {
       const data = res.data
       if(data.meta.code == 0) {
+        let user = {}
+        if(data.data.owner.length > 0) {
+          user = data.data.owner[0]
+        }
         this.setData({
           scoreData: data.data,
-          results: JSON.parse(data.data.results)
+          results: JSON.parse(data.data.results),
+          user: user
         })
       }
 

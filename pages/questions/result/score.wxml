@@ -13,7 +13,7 @@
       <image src="/assets/images/avatar-bg.png"></image>
     </view>
     <view class="avatar">
-      <image src="https://thirdwx.qlogo.cn/mmopen/vi_32/RP9K73sw8yM5eLVniasIYZaz7zdYew8LERWdxufd8AzqiaIYMCDepSKsI5ONUohuh0251KjrImicyBZuQXJRaicaTA/0"></image>
+      <image src="{{user.avatar ? user.avatar : '/assets/images/faces/face1.jpeg'}}"></image>
     </view>
   </view>
 

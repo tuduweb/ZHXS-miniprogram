@@ -1,13 +1,13 @@
 {
   "pages": [
-
     "pages/learning/start/index",
 
     "pages/start/index",
 
+    "pages/learning/detail/index",
 
+    "pages/login/index",
     "pages/pintu/list/index",
-
 
     "pages/me/shareRecord/index",
 
@@ -36,7 +36,6 @@
 
     "pages/learning/list/index",
   
-    "pages/learning/detail/index",
 
     "pages/pintu/game/index",
 
@@ -47,13 +46,11 @@
 
 
 
-    "pages/me/studyRecord/index",
+    "pages/me/studyRecord/index"
 
 
 
-    "pages/index/index",
 
-    "pages/login/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f5eee6",

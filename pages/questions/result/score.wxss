@@ -31,8 +31,8 @@ page{
 }
 
 .score-top>.avatar, .score-top>.avatar>image{
-  width: 279rpx;
-  height: 279rpx;
+  width: 260rpx;
+  height: 260rpx;
 }
 
 .score-top>.bg, .score-top>.avatar{
@@ -46,7 +46,7 @@ page{
 }
 .score-top>.avatar>image{
   border: brown 10rpx solid;
-  border-radius: 140rpx;
+  border-radius: 130rpx;
 }
 
 .score-panel{

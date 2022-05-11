@@ -1,16 +1,39 @@
 .login-container {
 	height: 100%;
-	padding: 10px 30px;
-	background: #fff;
+  background: #fff;
+  position: relative;
+
+}
+
+.login-container>.bg, .login-container>.bg>image{
+  width: 750rpx;
+  height: 593rpx;
+}
+
+.login-container>.main{
+  position: absolute;
+  top: 0;
+  width: 700rpx;
+  margin: 0 25rpx;
+}
+
+.main>.logo{
+  width: 300rpx;
+  margin: 0 200rpx;
+  margin-top: 200rpx;
+}
+.main>.logo>image{
+  width: 300rpx;
+  height: 300rpx;
 }
 
 .app-info {
 	position: relative;
-	padding: 20px;
+  margin-top: 10rpx;
 	text-align: center;
 }
 
-.app-info:after {
+/* .app-info:after {
 	content: " ";
     position: absolute;
     left: 0;
@@ -23,7 +46,7 @@
     transform-origin: 0 100%;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
-}
+} */
 
 .app-info .app-logo {
 	display: block;

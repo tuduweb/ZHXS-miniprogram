@@ -78,7 +78,7 @@ Page({
     //跳转到页面
     let _studyId = idLists[e.currentTarget.dataset.id - 1]
     wx.navigateTo({
-      url: '/pages/learning/detail/index?id='+_studyId,
+      url: '/pages/learning/detail/index?sid='+e.currentTarget.dataset.sid,
       success: (res) => {},
       fail: (res) => {},
       complete: (res) => {},

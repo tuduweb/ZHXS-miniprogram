@@ -35,6 +35,9 @@ Page({
 				path: '/pages/help/list/index',
 			},
     ],
+
+    schoolLists: [{'id': '1', 'name': '紫金县第一小学'}, {'id': '2', 'name': '紫金县第二小学'}, {'id': '3', 'name': '紫金县第三小学'}, {'id': '4', 'name': '紫金县第四小学'}, {'id': '5', 'name': '紫金县第六小学'}, {'id': '6', 'name': '深圳中学河源实验学校'}, {'id': '7', 'name': '河源职业技术学院'}, {'id': '8', 'name': '紫金县职业技术学校'}, {'id': '9', 'name': '紫金县富士康希望小学'}, {'id': '10', 'name': '紫城镇中心小学'}, {'id': '11', 'name': '紫城镇第三小学'}, {'id': '12', 'name': '紫城镇林田小学'}, {'id': '13', 'name': '紫城镇荷光小学'}, {'id': '14', 'name': '紫金金山幼儿园'}, {'id': '15', 'name': '瓦溪中学'}, {'id': '16', 'name': '紫荆花舞蹈艺术培训中心'}, {'id': '17', 'name': '文武艺术培训中心'}, {'id': '18', 'name': '紫金县地税局'}, {'id': '19', 'name': '柏埔文化站'}, {'id': '20', 'name': '九和镇文化站'}, {'id': '21', 'name': '瓦溪半岗村'}, {'id': '22', 'name': '新龙村'}],
+
     // userInfo: {
     //   "nickname": "用户昵称",
     //   "school": "用户学校"
@@ -42,8 +45,13 @@ Page({
 
     userInfo: {
       "nickname": "用户昵称",
-      "school": "用户学校"
+      "school": "用户学校",
+      "studyTime": 0,
+      "avgGrade": 0,
+      "score": 0
     },
+
+
 
     hasUserInfo: false,
     canIUseGetUserProfile: false,
@@ -138,8 +146,18 @@ Page({
       console.log(res.data)
       let data = res.data
       if (data.meta.code == 0) {
+        //重新计算时间, 需要封装成函数
+        let studyTime = data.data.studyTime
+        let studyTimeUnit = "分钟"
+        if(studyTime > 999) {
+          studyTimeUnit = "小时"
+          studyTime = Math.floor(studyTime / 60)
+        }
+
         this.setData({
           userInfo: data.data,
+          'userInfo.studyTimeUnit': studyTimeUnit,
+          'userInfo.studyTimeCal': studyTime,
           isUserLogin: true
         })
       }else{
@@ -151,22 +169,24 @@ Page({
   },
 
   handleClick(e) {
-    if(e.detail && e.detail.key) {
+
+    if(e.detail && e.detail.name) {
       
-      console.log(e.detail.key)
+      console.log(e.detail.name)
 
       const originSchool = this.data.userInfo.school
-      if(e.detail.key == originSchool) {
+      console.log("school", e.detail.name, originSchool)
+      if(e.detail.name == originSchool) {
 
       }else{
 
         this.setData({
-          "userInfo.school": e.detail.key
+          "userInfo.school": e.detail.name
         })
 
         //更新结果到远程服务器
         App.HttpService.profileUpdate({
-          school: e.detail.key
+          school: e.detail.name
         })
 
       }

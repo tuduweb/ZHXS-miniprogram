@@ -11,7 +11,7 @@
     </view>
     <picker-view bindchange="handleDataChange" class="my-picker">
       <picker-view-column>
-        <view wx:for="{{dataList}}" wx:key="*this" style="text-align: center;">{{item.key}}</view>
+        <view wx:for="{{dataLists}}" wx:key="*this" style="text-align: center;">{{item.name}}</view>
       </picker-view-column>
     </picker-view>
   </view>
