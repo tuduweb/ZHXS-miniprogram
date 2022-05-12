@@ -26,8 +26,9 @@ App({
     }
 
 	},
-	onShow() {
-
+	onShow(options) {
+    //进入小程序的方式
+    console.log(options.scene)//1011 扫码进入, 场景
   },
 	onHide() {
 		console.log('onHide')
