@@ -71,14 +71,13 @@ Page({
 
   },
   onButtonClicked: function(e) {
-    console.log(e)
-    console.log(e.currentTarget.dataset.id)
+    console.log("sid", e.currentTarget.dataset.sid)
     //页面需要权限，故判断用户是否登录, 并执行登录等..
-
     //跳转到页面
-    let _studyId = idLists[e.currentTarget.dataset.id - 1]
+    let _studyId = idLists[e.currentTarget.dataset.sid - 1]
+    console.log("url", '/pages/learning/detail/index?sid='+e.currentTarget.dataset.sid+'&id='+_studyId)
     wx.navigateTo({
-      url: '/pages/learning/detail/index?id='+_studyId,
+      url: '/pages/learning/detail/index?sid='+e.currentTarget.dataset.sid+'&id='+_studyId,
       success: (res) => {},
       fail: (res) => {},
       complete: (res) => {},

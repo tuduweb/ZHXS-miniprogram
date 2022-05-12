@@ -4,7 +4,7 @@
     <image src="https://zhxs.tuduweb.com/static/asserts/start-block.png"></image>
   </view>
   <view id="start-list">
-    <view class="list-item" wx:for="{{[1, 2, 3]}}" bindtap="onButtonClicked" data-id="{{item}}">
+    <view class="list-item" wx:for="{{[1, 2, 3]}}" bindtap="onButtonClicked" data-sid="{{item}}">
       <image src="/assets/images/btn-{{item}}.png"></image>
     </view>
   </view>

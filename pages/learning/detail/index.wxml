@@ -36,7 +36,7 @@
 </view>
 <view id="result-panel" class="wenli-bg" hidden="{{!isAuthRecord}}">
   <view id="result-score">
-    <text>{{grade ? grade : "#"}}</text>
+    <text>{{grade ? grade : "?"}}</text>
   </view>
   <view id="result-wave">
     <view class="wave" id="wave_parent">
@@ -48,7 +48,7 @@
       <image src="/assets/images/title_yjfk@2x.png" style="margin-top: 10rpx;margin-left: 20rpx;vertical-align: middle;width:200rpx; height: 40rpx;"></image>
     </view>
     <view class="content">
-      {{commentId < 0 ? "请先评测" : comments[commentId]}} </view>
+      {{commentId < 0 ? "请先使用评测功能" : comments[commentId]}} </view>
     </view>
   </view>
 

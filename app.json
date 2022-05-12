@@ -23,19 +23,9 @@
 
     "pages/questions/dati/index",
 
-
-
-
-
-
     "pages/questions/detail",
 
-    "pages/questions/detail/index",
-
-
-
-    "pages/learning/list/index",
-  
+    "pages/questions/detail/index",  
 
     "pages/pintu/game/index",
 

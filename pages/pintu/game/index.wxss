@@ -1,11 +1,12 @@
 /* pages/play/play.wxss */
 @import '/assets/styles/background.wxss';
-page{
+
+page {
   padding-top: 5vh;
   height: 90vh;
 }
 
-.container{
+.container {
   height: 90vh;
   justify-content: space-between;
 
@@ -17,11 +18,11 @@ page{
 
 }
 
-.container>.top{
+.container>.top {
   padding: 20rpx 0;
 }
 
-.container>.top>text{
+.container>.top>text {
   display: block;
   font-size: 48rpx;
   text-align: center;
@@ -29,113 +30,128 @@ page{
   color: #555;
 }
 
-.imgView{
-  width: 100%;  
+.imgView {
+  width: 100%;
   position: relative;
   height: 300px;
 }
-.imgView>image{
- position: absolute; 
- top: 1px;
- width: 300px;
- height: 300px;
- border: 1px solid #aaa; 
- box-shadow: 10px 10px 5px #888;
- /* padding: 1px; */
-}
-.imgView #gridding{
- position: absolute;
- top: 0px;
- border: 1px solid #aaa;
- width: 302px;
- height: 302px;
- box-sizing: border-box;
-}
-.griddingView{
- box-sizing: border-box;
- border: 1px solid #ddd;
 
- overflow: hidden;
-
- position: absolute;
-}
-.hover{
- border-color: red;
-}
-.griddingView image{
- width: 300px;
- height: 300px;
- position: absolute;
+.imgView>image {
+  position: absolute;
+  top: 1px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #aaa;
+  box-shadow: 10px 10px 5px #888;
+  /* padding: 1px; */
 }
 
-.success{
- margin:130px auto 0;
- width: 90vw;
+.imgView #gridding {
+  position: absolute;
+  top: 0px;
+  border: 1px solid #aaa;
+  width: 302px;
+  height: 302px;
+  box-sizing: border-box;
 }
-.success .creater{
- display: flex;
- justify-content: flex-end;
+
+.griddingView {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+
+  overflow: hidden;
+
+  position: absolute;
 }
+
+.hover {
+  border-color: red;
+}
+
+.griddingView image {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+}
+
+.success {
+  margin: 130px auto 0;
+  width: 90vw;
+}
+
+.success .creater {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .userinfo-nickname {
-color: #aaa;
-line-height: 60px;
-height: 60px;
+  color: #aaa;
+  line-height: 60px;
+  height: 60px;
 }
+
 .userinfo-avatar {
-width: 40px;
-height: 40px;
-margin: 10px;
-border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 50%;
 }
 
-.handleView{
- width: 100%;
- padding: 10px 0;
- display: flex;
- justify-content: space-around;
+.handleView {
+  position: absolute;
+  bottom: 50rpx;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
 }
 
-.showPanel{
+.showPanel {
   height: 200rpx;
   display: flex;
   flex-direction: row-reverse;
 
   width: 560rpx;
-  margin:auto;
+  margin: auto;
   margin-top: 25rpx;
 
 }
 
-.thumb{
+.thumb {
   padding: 20rpx;
 }
-.thumb, .thumb > image{
+
+.thumb,
+.thumb>image {
   height: 150rpx;
-  width: 150rpx;  
+  width: 150rpx;
 }
-.content{
+
+.content {
   width: 360rpx;
   overflow: hidden;
 }
-.content > text{
+
+.content>text {
   display: block;
   writing-mode: vertical-rl;
 }
 
-.cate-title{
+.cate-title {
   /* position: relative; */
   width: 50rpx;
 }
-.cate-title > text{
+
+.cate-title>text {
   display: block;
   position: absolute;
-  writing-mode:vertical-lr;
+  writing-mode: vertical-lr;
   color: #FFF;
   padding-top: 40rpx;
   text-align: center;
 }
 
-.cate-title > image{
+.cate-title>image {
   display: block;
   position: absolute;
   width: 40rpx;

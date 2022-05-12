@@ -68,7 +68,6 @@ Page({
    */
   onLoad: function (options) {    
     //获取study_id
-    options.sid = 1
     console.log("options", options)
     if(options.sid) {
       console.log("设置了id")
@@ -318,7 +317,7 @@ Page({
 
           this.onSystemError({
             title: '网络错误',
-            content: "系统与远程服务器通信时发生错误",
+            content: "系统获取视频失败，请检查网络。",
             navBack: false
           })
 
@@ -585,7 +584,7 @@ Page({
     App.HttpService.getStudyDetail(id)
     .then(res => {
         const data = res.data
-        console.log("studyDetail", data)
+        //console.log("studyDetail", res)
         if (data.meta.code == 0) {
           //调用成功
           this.setData({
@@ -593,10 +592,26 @@ Page({
             comments: data.data.comments,
             segments: data.data.segments
           })
+
+          wx.setNavigationBarTitle({
+            title: "唱腔练习 - " + data.data.title
+          })
         } else {
           //发生错误
+          this.onSystemError({
+            title: '服务器错误',
+            content: "远程服务器发生错误",
+            navBack: true
+          })
         }
-    })  
+    })
+    .catch(err => {
+      this.onSystemError({
+        title: '网络错误',
+        content: "系统与远程服务器通信时发生错误",
+        navBack: true
+      })
+    })
 
   },
 
