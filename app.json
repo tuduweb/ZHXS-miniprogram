@@ -1,46 +1,23 @@
 {
   "pages": [
-    "pages/learning/start/index",
-
     "pages/start/index",
 
+    "pages/learning/start/index",
     "pages/learning/detail/index",
-
     "pages/login/index",
     "pages/pintu/list/index",
-
     "pages/me/shareRecord/index",
-
     "pages/me/index",
-
     "pages/rank/rank",
-
     "pages/questions/list/index",
-
-    
-
     "pages/questions/result/score",
-
     "pages/questions/dati/index",
-
     "pages/questions/detail",
-
     "pages/questions/detail/index",  
-
     "pages/pintu/game/index",
-
     "pages/wave/index",
-
     "pages/help/list/index",
-
-
-
-
     "pages/me/studyRecord/index"
-
-
-
-
   ],
   "window": {
     "navigationBarBackgroundColor": "#f5eee6",
@@ -51,7 +28,7 @@
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#e60000",
+    "selectedColor": "#8e2a2a",
     "borderStyle": "white",
     "backgroundColor": "#fff",
     "list": [

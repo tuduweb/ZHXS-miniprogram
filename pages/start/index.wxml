@@ -1,16 +1,33 @@
 <view class="start">
-	<swiper class="swiper_box" indicator-dots="{{ indicatorDots }}" autoplay="{{ autoplay }}" current="{{ current }}" interval="{{ interval }}" duration="{{ duration }}" circular="{{ circular }}" bindchange="swiperchange">
-	    <swiper-item>
-            <image src="https://zhxs.tuduweb.com/static/asserts/start/start1.jpg" class="slide-image" bindload="bindload" />
-        </swiper-item>
-        <swiper-item>
-            <image src="https://zhxs.tuduweb.com/static/asserts/start/start2.jpg" class="slide-image" bindload="bindload" />
-        </swiper-item>
-        <swiper-item>
-            <image src="https://zhxs.tuduweb.com/static/asserts/start/start3.jpg" class="slide-image" bindload="bindload" />
-        </swiper-item>
-        <swiper-item>
+	<swiper class="swiper_box" indicator-dots="{{ indicatorDots }}"  indicator-active-color="#8e2a2a" autoplay="{{ autoplay }}" current="{{ current }}" interval="{{ interval }}" duration="{{ duration }}" circular="{{ circular }}" bindchange="swiperChanged">
+        <!-- <swiper-item>
             <image src="https://zhxs.tuduweb.com/static/asserts/start/start-index.png" class="slide-image" bindload="bindload" />
+        </swiper-item> -->
+	    <swiper-item>
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start1.png" class="slide-image" bindload="bindload" mode="aspectFill"/>
+        </swiper-item>
+        <swiper-item>
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start2.png" class="slide-image" bindload="bindload" mode="aspectFill" />
+        </swiper-item>
+        <swiper-item>
+            <image src="https://zhxs.tuduweb.com/static/asserts/start/start3.png" class="slide-image" bindload="bindload" mode="aspectFill"/>
         </swiper-item>
 	</swiper>
+    <view class="main up" hidden="{{isSkipHidden}}">
+        <!-- <view class="btn-group">
+            <view class="btn-item">
+                <button bindtap="btnSkipClicked">跳过</button>
+            </view>
+            <view class="btn-item">
+                <button bindtap="btnContinueClicked">继续</button>
+            </view>
+            <view class="btn-item">
+                <button bindtap="btnContinueClicked">立即体验</button>
+            </view>
+        </view> -->
+
+        <view class="btn-center">
+            <button bindtap="btnContinueClicked">立即体验</button>
+        </view>
+    </view>
 </view>

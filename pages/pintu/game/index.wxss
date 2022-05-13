@@ -99,7 +99,7 @@ page {
 
 .handleView {
   position: absolute;
-  bottom: 50rpx;
+  bottom: 0rpx;
   width: 100%;
   padding: 10px 0;
   display: flex;
