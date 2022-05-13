@@ -59,7 +59,7 @@ page{
 #userInfo-avatar>image{
   width: 120rpx;
   height: 120rpx;
-  border: 2rpx solid orange;
+  border: 2rpx solid #8e2a2a;
   border-radius: 60rpx;
 }
 

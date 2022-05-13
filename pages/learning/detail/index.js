@@ -597,12 +597,12 @@ Page({
             title: "唱腔练习 - " + data.data.title
           })
         } else {
-          //发生错误
-          this.onSystemError({
-            title: '服务器错误',
-            content: "远程服务器发生错误",
-            navBack: true
-          })
+          //发生错误 //与登录冲突
+          // this.onSystemError({
+          //   title: '服务器错误',
+          //   content: "远程服务器发生错误",
+          //   navBack: true
+          // })
         }
     })
     .catch(err => {

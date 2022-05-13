@@ -68,7 +68,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return App.ShareApp()
   },
   onButtonClicked: function(e) {
     console.log("sid", e.currentTarget.dataset.sid)

@@ -60,7 +60,7 @@ page{
   width: 206rpx;
   height: 206rpx;
   margin: 20rpx;
-  border: 1rpx solid orange;
+  border: 1rpx solid #8e2a2a;
   text-align: center;
   background-size: 100% 100%;
 }

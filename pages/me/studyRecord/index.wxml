@@ -22,7 +22,7 @@
     </view>
     <view class="tr" wx:else>
       <view class="td">{{item.create_at}}</view>
-      <view class="td" wx:if="{{item.state == 2}}">{{item.grade}}</view>
+      <view class="td" wx:if="{{item.state == 2}}">{{item.grade / 100}}</view>
       <view class="td" wx:else>未完成</view>
       <view class="td">{{item.finish_at}}</view>
     </view>

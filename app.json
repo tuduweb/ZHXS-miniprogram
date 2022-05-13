@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/learning/start/index",
+
     "pages/start/index",
 
-    "pages/learning/start/index",
     "pages/learning/detail/index",
     "pages/login/index",
     "pages/pintu/list/index",

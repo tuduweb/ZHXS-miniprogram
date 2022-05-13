@@ -22,13 +22,18 @@ App({
       if(wx.getStorageSync('token')) {
         wx.removeStorageSync('token')
       }
-      wx.setStorageSync('version', version)
+			wx.setStorageSync('version', version)
     }
 
 	},
 	onShow(options) {
     //进入小程序的方式
-    console.log(options.scene)//1011 扫码进入, 场景
+		console.log(options.scene)//1011 扫码进入, 场景
+		if(options.scene == 1011) {
+			wx.navigateTo({
+				url: '/pages/start/index',
+			})
+		}
   },
 	onHide() {
 		console.log('onHide')
