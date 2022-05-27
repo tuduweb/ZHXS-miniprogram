@@ -3,12 +3,12 @@
 <view id="userInfo-panel" class="panel">
   <view id="top-info-panel">
     <view id="userInfo-avatar">
-      <image src="{{userInfo.avatar ? userInfo.avatar : '/assets/images/faces/face1.jpeg'}}"></image>
+      <image src="{{!userInfo.avatar ? userInfo.avatar : '/assets/images/faces/face.png'}}"></image>
     </view>
     <view id="userInfo-infos">
       <view id="userInfo-userName">
         <text>{{userInfo.nickname ? userInfo.nickname : ""}}</text>
-        <text bindtap="getUserProfile" wx:if="{{!userInfo.nickname}}">获取用户信息</text>
+        <button size="mini" style="font-size: 28rpx;" bindtap="getUserProfile" wx:if="{{!userInfo.nickname}}">获取用户信息</button>
       </view>
       <view id="userInfo-school">
         <text bindtap="handleClick">{{userInfo.school ? userInfo.school : "点击设置学校"}}</text>
@@ -18,7 +18,7 @@
 
   <view id="top-msg-panel">
     <view id="msg-lowCase">
-      <view class="title">积分</view>
+      <view class="title">学习积分</view>
       <view class="value"><text>{{userInfo.score}}</text></view>
     </view>
     <!-- <view id="msg-lowCase">
@@ -26,8 +26,8 @@
       <view class="value"><text>{{userInfo.difenSet}}</text></view>
     </view> -->
     <view id="msg-average">
-      <view class="title">选段平均分</view>
-      <view class="value"><text>{{userInfo.avgGrade}}</text></view>
+      <view class="title">学习次数</view>
+      <view class="value"><text>{{userInfo.studyCnt ? userInfo.studyCnt : 0}}</text></view>
     </view>
     <view id="msg-minutes">
       <view class="title">学习（{{userInfo.studyTimeUnit ? userInfo.studyTimeUnit : '分钟'}}）</view>
