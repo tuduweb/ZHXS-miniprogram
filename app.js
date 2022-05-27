@@ -29,10 +29,12 @@ App({
 	onShow(options) {
     //进入小程序的方式
 		console.log(options.scene)//1011 扫码进入, 场景
-		if(options.scene == 1011) {
-			wx.navigateTo({
-				url: '/pages/start/index',
-			})
+		if(options.scene == 1011 || options.scene == 1047) {
+			if(!wx.getStorageSync('token')) {
+				wx.navigateTo({
+					url: '/pages/start/index',
+				})
+			}
 		}
   },
 	onHide() {
