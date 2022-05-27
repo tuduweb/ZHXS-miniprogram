@@ -239,6 +239,10 @@ Page({
             itemData: data.data
           })
 
+          wx.setNavigationBarTitle({
+            title: "拼图游戏 - " + data.data.shortname
+          })
+
 
           let left = (width - 300 - 25) / 2;
 
