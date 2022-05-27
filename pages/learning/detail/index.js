@@ -57,6 +57,8 @@ Page({
 
     isRecording: false,
 
+    isBackgoundPlaying: false,
+
     userInfo: {
       studyTimeCnt: 0,
       studyData: []
@@ -82,6 +84,8 @@ Page({
     this.initStudySystem()
     this.initStreamRecord()
     this.initWave()
+
+    this.initBackgoundPlayer()
 
   },
 
@@ -416,16 +420,27 @@ Page({
   },
 
   streamAudioPlay: function (e) {
-    console.log(e.currentTarget.dataset.filepath)
-    let filePath = e.currentTarget.dataset.filepath
+    console.log(e)
+    console.log("records", this.data.records)
+    if(this.data.records.length == 0)
+      return
+    let record = this.data.records[this.data.records.length - 1]
+    let filePath = record.tempFilePath
     AudioPlayer.src = filePath
-    AudioPlayer.autoplay = true
-    AudioPlayer.onPlay(() => {
-      console.log('开始播放')
-    })
-    AudioPlayer.onEnded(() => {
-      console.log('结束')
-    })
+    //AudioPlayer.autoplay = true
+    AudioPlayer.play()
+    // AudioPlayer.onPlay(() => {
+    //   console.log('开始播放')
+    //   this.data.isBackgoundPlaying = true
+    // })
+    // AudioPlayer.onEnded(() => {
+    //   console.log('结束')
+    //   this.data.isBackgoundPlaying = false
+    // })
+    // AudioPlayer.onPause(() => {
+    //   console.log('结束')
+    //   this.data.isBackgoundPlaying = false
+    // })
   },
   streamNext: function (e) {
     console.log(this.data.currentSegmentIndex, this.data.segments.length)
@@ -597,20 +612,21 @@ Page({
             title: "唱腔练习 - " + data.data.title
           })
         } else {
-          //发生错误 //与登录冲突
-          // this.onSystemError({
-          //   title: '服务器错误',
-          //   content: "远程服务器发生错误",
-          //   navBack: true
-          // })
+          //发生错误
+          this.onSystemError({
+            title: '服务器错误',
+            content: "远程服务器发生错误",
+            navBack: true
+          })
         }
     })
     .catch(err => {
-      this.onSystemError({
-        title: '网络错误',
-        content: "系统与远程服务器通信时发生错误",
-        navBack: true
-      })
+      //与登录冲突
+      // this.onSystemError({
+      //   title: '网络错误',
+      //   content: "系统与远程服务器通信时发生错误",
+      //   navBack: true
+      // })
     })
 
   },
@@ -621,6 +637,21 @@ Page({
 
   buttonEnd: function(e) {
     console.log("button end", e)
+  },
+
+  initBackgoundPlayer: function() {
+    AudioPlayer.onPlay(() => {
+      console.log('开始播放')
+      this.data.isBackgoundPlaying = true
+    })
+    AudioPlayer.onEnded(() => {
+      console.log('结束')
+      this.data.isBackgoundPlaying = false
+    })
+    AudioPlayer.onPause(() => {
+      console.log('暂停')
+      this.data.isBackgoundPlaying = false
+    })
   }
 
 })

@@ -39,7 +39,7 @@
     <text>{{grade ? grade : "?"}}</text>
   </view>
   <view id="result-wave">
-    <view class="wave" id="wave_parent">
+    <view class="wave" id="wave_parent" bindtap="streamAudioPlay">
       <canvas id="wave" type="2d" class="canvas"></canvas>
     </view>
   </view>
